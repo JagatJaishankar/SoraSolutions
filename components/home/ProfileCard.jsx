@@ -258,28 +258,28 @@ export default function ProfileCard({
     backgroundImage: `
       repeating-linear-gradient(
         0deg,
-        #2362fd44 calc(var(--space) * 1),
-        #fd660044 calc(var(--space) * 2),
-        #fab34744 calc(var(--space) * 3),
-        #2362fd44 calc(var(--space) * 4),
-        #fd660044 calc(var(--space) * 5),
-        #fab34744 calc(var(--space) * 6),
-        #2362fd44 calc(var(--space) * 7)
+        #9741FE44 calc(var(--space) * 1),
+        #23287244 calc(var(--space) * 2),
+        #D9D1FB44 calc(var(--space) * 3),
+        #9741FE44 calc(var(--space) * 4),
+        #23287244 calc(var(--space) * 5),
+        #D9D1FB44 calc(var(--space) * 6),
+        #9741FE44 calc(var(--space) * 7)
       ),
       repeating-linear-gradient(
         var(--angle),
-        #fef3e2 0%,
-        hsl(30, 60%, 75%) 3.8%,
-        hsl(30, 50%, 80%) 4.5%,
-        hsl(30, 60%, 75%) 5.2%,
-        #fef3e2 10%,
-        #fef3e2 12%
+        #f3f0ff 0%,
+        hsl(260, 60%, 80%) 3.8%,
+        hsl(260, 50%, 85%) 4.5%,
+        hsl(260, 60%, 80%) 5.2%,
+        #f3f0ff 10%,
+        #f3f0ff 12%
       ),
       radial-gradient(
         farthest-corner circle at var(--pointer-x) var(--pointer-y),
-        hsla(30, 20%, 90%, 0.1) 12%,
-        hsla(30, 20%, 80%, 0.15) 20%,
-        hsla(30, 20%, 70%, 0.25) 120%
+        hsla(260, 20%, 90%, 0.1) 12%,
+        hsla(260, 20%, 80%, 0.15) 20%,
+        hsla(260, 20%, 70%, 0.25) 120%
       )
     `.replace(/\s+/g, " "),
     gridArea: "1 / -1",
@@ -292,8 +292,8 @@ export default function ProfileCard({
     overflow: "hidden",
     backgroundImage: `radial-gradient(
       farthest-corner circle at var(--pointer-x) var(--pointer-y),
-      hsl(30, 40%, 90%) 12%,
-      hsla(220, 30%, 70%, 0.5) 90%
+      hsl(260, 40%, 90%) 12%,
+      hsla(260, 30%, 70%, 0.5) 90%
     )`,
     mixBlendMode: "overlay",
     filter: "brightness(0.9) contrast(1.1)",
@@ -319,7 +319,7 @@ export default function ProfileCard({
           className="absolute inset-0 z-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(circle at var(--pointer-x) var(--pointer-y), rgba(250, 179, 71, 0.4) 0%, transparent 50%)",
+              "radial-gradient(circle at var(--pointer-x) var(--pointer-y), rgba(217, 209, 251, 0.4) 0%, transparent 50%)",
             filter: "blur(50px) saturate(1.1)",
           }}
         />
@@ -329,7 +329,7 @@ export default function ProfileCard({
           className="absolute inset-0 z-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(circle at 50% 60%, rgba(250, 179, 71, 0.3) 0%, transparent 60%)",
+              "radial-gradient(circle at 50% 60%, rgba(217, 209, 251, 0.3) 0%, transparent 60%)",
             filter: "blur(40px)",
           }}
         />
@@ -347,7 +347,7 @@ export default function ProfileCard({
             transition: "transform 1s ease",
             transform: "translateZ(0) rotateX(0deg) rotateY(0deg)",
             background:
-              "linear-gradient(145deg, #fef3e2 0%, #fde8d0 50%, #fef3e2 100%)",
+              "linear-gradient(145deg, #f3f0ff 0%, #e8e0ff 50%, #f3f0ff 100%)",
           }}
           onMouseEnter={(e) => {
             if (isMobile) return;
@@ -372,7 +372,7 @@ export default function ProfileCard({
             className="absolute inset-0"
             style={{
               backgroundImage:
-                "linear-gradient(145deg, rgba(250, 179, 71, 0.15) 0%, rgba(35, 98, 253, 0.08) 100%)",
+                "linear-gradient(145deg, rgba(217, 209, 251, 0.15) 0%, rgba(151, 65, 254, 0.08) 100%)",
               borderRadius: "1rem",
               display: "grid",
               gridArea: "1 / -1",
@@ -417,7 +417,7 @@ export default function ProfileCard({
                     className="w-32 h-32 rounded-full"
                     style={{
                       background:
-                        "linear-gradient(135deg, #2362fd33, #fd660033, #fab34733)",
+                        "linear-gradient(135deg, #9741FE33, #23287233, #D9D1FB33)",
                     }}
                   />
                 </div>

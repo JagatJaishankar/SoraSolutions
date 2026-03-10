@@ -10,7 +10,7 @@ export default function BuiltByTradie() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-[100px] bg-gradient-to-r from-[#2362fd]/10 to-[#fd6600]/10">
+    <section className="py-[100px] bg-gradient-to-r from-[#9741FE]/10 to-[#232872]/10">
       <div
         ref={ref}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
@@ -39,7 +39,7 @@ export default function BuiltByTradie() {
 
             {/* Pull quote */}
             <motion.blockquote
-              className="mt-10 border-l-2 border-[#2362fd] pl-6"
+              className="mt-10 border-l-2 border-[#9741FE] pl-6"
               initial={{ opacity: 0, x: -30 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
               transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
@@ -58,7 +58,7 @@ export default function BuiltByTradie() {
 
             <motion.a
               href="/about"
-              className="inline-block mt-8 text-[#2362fd] font-medium hover:underline"
+              className="inline-block mt-8 text-[#9741FE] font-medium hover:underline"
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : { opacity: 0 }}
               transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}

@@ -118,7 +118,7 @@ export default function TradeRotator() {
             <motion.span
               animate={{ scaleX: stripeScaleX }}
               transition={{ duration: 0.35, ease: "easeOut" }}
-              className="absolute -inset-x-1.5 bottom-0 h-1/2 bg-[#F97316]/45 rounded"
+              className="absolute -inset-x-1.5 bottom-0 h-1/2 bg-[#9741FE]/45 rounded"
               style={{ transformOrigin: stripeOrigin }}
             />
           </span>

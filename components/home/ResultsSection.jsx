@@ -8,7 +8,7 @@ import useCountUp from "@/hooks/useCountUp";
 const results = [
   {
     tag: "Plumbing",
-    tagClasses: "bg-blue-500/10 text-blue-600",
+    tagClasses: "bg-[#D9D1FB] text-[#9741FE]",
     prefix: "$",
     target: 85,
     suffix: "K",
@@ -16,7 +16,7 @@ const results = [
   },
   {
     tag: "Electrical",
-    tagClasses: "bg-yellow-500/10 text-yellow-600",
+    tagClasses: "bg-[#D9D1FB] text-[#9741FE]",
     prefix: "#",
     target: 1,
     suffix: "",
@@ -24,7 +24,7 @@ const results = [
   },
   {
     tag: "Building",
-    tagClasses: "bg-orange-500/10 text-orange-600",
+    tagClasses: "bg-[#D9D1FB] text-[#9741FE]",
     prefix: "",
     target: 340,
     suffix: "%",
@@ -46,7 +46,7 @@ function ResultCard({ result, index, sectionInView }) {
     >
       <GlassCard className="p-8 overflow-hidden" hover>
         {/* Gradient top border */}
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#2362fd] to-[#fd6600]" />
+        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#9741FE] to-[#232872]" />
 
         {/* Trade tag */}
         <span
@@ -56,7 +56,7 @@ function ResultCard({ result, index, sectionInView }) {
         </span>
 
         {/* Hero metric */}
-        <div className="mt-6 mb-4 text-5xl font-black bg-gradient-to-r from-[#2362fd] to-[#fd6600] bg-clip-text text-transparent">
+        <div className="mt-6 mb-4 text-5xl font-black bg-gradient-to-r from-[#9741FE] to-[#232872] bg-clip-text text-transparent">
           {result.prefix}
           {count}
           {result.suffix}

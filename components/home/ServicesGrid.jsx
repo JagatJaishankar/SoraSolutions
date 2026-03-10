@@ -104,8 +104,8 @@ function ServiceCardContent({ icon: Icon, title, description, badge }) {
   return (
     <div className="flex flex-col h-full p-8 [transform-style:preserve-3d]">
       <div className="will-change-transform [transform:translateZ(60px)]">
-        <div className="w-12 h-12 rounded-xl bg-[#2362fd]/10 flex items-center justify-center">
-          <Icon className="w-6 h-6 text-[#2362fd]" strokeWidth={1.5} />
+        <div className="w-12 h-12 rounded-xl bg-[#9741FE]/10 flex items-center justify-center">
+          <Icon className="w-6 h-6 text-[#9741FE]" strokeWidth={1.5} />
         </div>
         <h3 className="text-xl font-bold tracking-tight text-black mt-4">
           {title}
@@ -117,10 +117,10 @@ function ServiceCardContent({ icon: Icon, title, description, badge }) {
           {description}
         </p>
         <div className="mt-auto pt-4 flex items-center justify-between">
-          <span className="text-xs bg-[#fd6600]/10 text-[#fd6600] font-semibold px-3 py-1 rounded-full">
+          <span className="text-xs bg-[#D9D1FB] text-[#9741FE] font-semibold px-3 py-1 rounded-full">
             {badge}
           </span>
-          <span className="text-sm text-[#2362fd] font-medium hover:underline">
+          <span className="text-sm text-[#9741FE] font-medium hover:underline">
             Learn more &rarr;
           </span>
         </div>

@@ -20,12 +20,15 @@
 
 ## Design System
 
-### Colours (defined in @theme in globals.css)
-- --color-primary: #2362fd (blue — CTAs, links, accents)
-- --color-secondary: #fd6600 (orange — main CTA buttons, highlights)
-- --color-accent: #fab347 (warm amber — gradients, hover states)
-- --color-base: #ffffff (white base)
-- --color-black: #000000 (text)
+### Colours — STRICTLY 6 colours only (defined in @theme in globals.css)
+- --color-primary: #9741FE (vibrant purple — CTAs, links, accents, buttons, icons, active states)
+- --color-secondary: #232872 (dark indigo — dark accents, gradient endpoints, dark section backgrounds)
+- --color-accent: #D9D1FB (light lavender — tints, hover states, badge backgrounds, icon containers, subtle fills)
+- --color-base: #ffffff (white — dominant base, cards, glassmorphism)
+- --color-black: #000000 (black — body text, headings)
+- --color-deep: #090B3C (deep navy — footer, darkest backgrounds)
+
+NO OTHER COLOURS ALLOWED. No orange, no blue (#2362fd), no green, no red, no amber.
 
 ### Typography
 - Display/Headings: Plus Jakarta Sans — font-extrabold or font-black
@@ -46,11 +49,21 @@
 - Background: bg-white/50 to bg-white/70
 - Blur: backdrop-blur-xl
 - Border: border border-white/20
-- Gradient border: 1.5px padding wrapper with linear-gradient(135deg, #2362fd, #fd6600)
+- Gradient border: 1.5px padding wrapper with linear-gradient(135deg, #9741FE, #232872)
 
 ### Gradient Text
-- Blue to orange: background linear-gradient(135deg, #2362fd, #fd6600)
+- Purple to indigo: background linear-gradient(135deg, #9741FE, #232872)
 - Applied with bg-clip-text text-transparent
+
+### Dark Sections
+- Final CTA: bg-[#232872], text white, #9741FE glow accents
+- Footer: bg-[#090B3C], text white with opacity, link hover: text-[#D9D1FB]
+
+### Badges & Pills
+- All badges: bg-[#D9D1FB] text-[#9741FE] text-xs font-semibold px-3 py-1 rounded-full
+
+### Icon Containers
+- All icon circles: bg-[#D9D1FB] with icon in text-[#9741FE]
 
 ## Animation Defaults (Framer Motion)
 - Fade up: from y:30 opacity:0 → y:0 opacity:1, duration 0.6s, easeOut
@@ -62,7 +75,7 @@
 - Counter: 0 to target, ease-out cubic, ~2s, viewport triggered
 
 ## Site-Wide Background (layout.js)
-- GradientBackground: fixed z-0 animated gradient blobs (blue + orange brand colours)
+- GradientBackground: fixed z-0 animated gradient blobs (purple + indigo brand colours)
 - GridOverlay: fixed z-1 subtle dot grid
 - Both pointer-events-none, render behind all content
 

@@ -9,7 +9,7 @@ export default function PrimaryButton({
   className = "",
   type = "button",
 }) {
-  const classes = `shimmer-button inline-flex items-center justify-center bg-[#fd6600] text-white font-bold rounded-xl px-6 py-3 cursor-pointer ${className}`;
+  const classes = `shimmer-button inline-flex items-center justify-center bg-[#9741FE] text-white font-bold rounded-xl px-6 py-3 cursor-pointer ${className}`;
 
   if (href) {
     return (

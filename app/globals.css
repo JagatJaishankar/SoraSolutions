@@ -5,19 +5,20 @@ html {
 }
 
 @theme {
-  --color-primary: #2362fd;
-  --color-secondary: #fd6600;
-  --color-accent: #fab347;
+  --color-primary: #9741FE;
+  --color-secondary: #232872;
+  --color-accent: #D9D1FB;
   --color-base: #ffffff;
   --color-black: #000000;
+  --color-deep: #090B3C;
   --color-bg1: rgb(248, 250, 252);
   --color-bg2: rgb(243, 244, 246);
-  --color1: 59, 130, 246;
-  --color2: 249, 115, 22;
-  --color3: 96, 165, 250;
-  --color4: 251, 146, 60;
-  --color5: 249, 115, 22;
-  --color-interactive: 59, 130, 246;
+  --color1: 151, 65, 254;
+  --color2: 35, 40, 114;
+  --color3: 217, 209, 251;
+  --color4: 151, 65, 254;
+  --color5: 35, 40, 114;
+  --color-interactive: 151, 65, 254;
   --circle-size: 70%;
   --blending: screen;
 }
@@ -33,15 +34,15 @@ html {
 }
 
 .gradient-border-wrapper {
-  background: linear-gradient(135deg, #2362fd, #fd6600);
+  background: linear-gradient(135deg, #9741FE, #232872);
 }
 
 .gradient-text {
-  @apply bg-gradient-to-r from-[#2362fd] to-[#fd6600] bg-clip-text text-transparent;
+  @apply bg-gradient-to-r from-[#9741FE] to-[#232872] bg-clip-text text-transparent;
 }
 
 .input-glass {
-  @apply bg-white/40 backdrop-blur-md border border-white/20 rounded-xl outline-none transition-all duration-300 focus:border-[#2362fd]/50;
+  @apply bg-white/40 backdrop-blur-md border border-white/20 rounded-xl outline-none transition-all duration-300 focus:border-[#9741FE]/50;
 }
 
 /* ── WordFlip ── */
@@ -85,7 +86,7 @@ html {
 }
 
 .floating-label-group input {
-  @apply bg-white/40 backdrop-blur-md border border-white/20 rounded-xl outline-none transition-all duration-300 focus:border-[#2362fd]/50 w-full px-4 pt-5 pb-2 text-sm text-black;
+  @apply bg-white/40 backdrop-blur-md border border-white/20 rounded-xl outline-none transition-all duration-300 focus:border-[#9741FE]/50 w-full px-4 pt-5 pb-2 text-sm text-black;
 }
 
 .floating-label-group input::placeholder {
@@ -98,7 +99,7 @@ html {
 
 .floating-label-group input:focus ~ label,
 .floating-label-group input:not(:placeholder-shown) ~ label {
-  @apply top-2.5 translate-y-0 text-xs text-[#2362fd];
+  @apply top-2.5 translate-y-0 text-xs text-[#9741FE];
 }
 
 /* ── Shimmer button ── */

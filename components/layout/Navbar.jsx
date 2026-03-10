@@ -78,14 +78,14 @@ export default function Navbar() {
                           href={link.href}
                           className={`flex items-center gap-1 text-sm font-medium px-3 py-1.5 rounded-full transition-colors duration-200 ${
                             active
-                              ? "text-black bg-[#fd6600]/10"
+                              ? "text-black bg-[#D9D1FB]"
                               : "text-black/70 hover:text-black"
                           }`}
                         >
                           <span className="relative">
                             {link.label}
                             {active && (
-                              <span className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#fd6600]" />
+                              <span className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#9741FE]" />
                             )}
                           </span>
                           <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${servicesOpen ? "rotate-180" : ""}`} />
@@ -103,14 +103,14 @@ export default function Navbar() {
                       href={link.href}
                       className={`text-sm font-medium px-3 py-1.5 rounded-full transition-colors duration-200 ${
                         active
-                          ? "text-black bg-[#fd6600]/10"
+                          ? "text-black bg-[#D9D1FB]"
                           : "text-black/70 hover:text-black"
                       }`}
                     >
                       <span className="relative">
                         {link.label}
                         {active && (
-                          <span className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#fd6600]" />
+                          <span className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#9741FE]" />
                         )}
                       </span>
                     </Link>
@@ -130,7 +130,7 @@ export default function Navbar() {
               <span className="text-black/20">|</span>
               <Link
                 href="/contact"
-                className="bg-[#fd6600] text-white font-semibold text-sm px-4 py-2 rounded-full transition-transform duration-200 hover:scale-[1.02]"
+                className="bg-[#9741FE] text-white font-semibold text-sm px-4 py-2 rounded-full transition-transform duration-200 hover:scale-[1.02]"
               >
                 Book a Free Strategy Call
               </Link>

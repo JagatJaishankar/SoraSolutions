@@ -20,7 +20,7 @@ export default function GlassCard({
 
   if (gradientBorder) {
     return (
-      <div className="p-[1.5px] rounded-2xl bg-gradient-to-br from-[#2362fd] to-[#fd6600]">
+      <div className="p-[1.5px] rounded-2xl bg-gradient-to-br from-[#9741FE] to-[#232872]">
         {inner}
       </div>
     );

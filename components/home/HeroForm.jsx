@@ -85,9 +85,9 @@ export default function HeroForm() {
                 key={i}
                 className={`h-1.5 rounded-full transition-all duration-300 ${
                   i === step
-                    ? "w-6 bg-[#fd6600]"
+                    ? "w-6 bg-[#9741FE]"
                     : i < step
-                    ? "w-1.5 bg-[#fd6600]/50"
+                    ? "w-1.5 bg-[#9741FE]/50"
                     : "w-1.5 bg-black/15"
                 }`}
               />
@@ -118,7 +118,7 @@ export default function HeroForm() {
                         onClick={() => selectTrade(trade)}
                         className={`rounded-xl px-3 py-2.5 text-xs font-medium transition-all duration-200 cursor-pointer ${
                           form.trade === trade
-                            ? "bg-[#fd6600]/10 border-[#fd6600]/30 border text-[#fd6600] font-semibold"
+                            ? "bg-[#9741FE]/10 border-[#9741FE]/30 border text-[#9741FE] font-semibold"
                             : "bg-white/40 border border-white/20 text-black/70 hover:bg-white/60"
                         }`}
                       >
@@ -132,7 +132,7 @@ export default function HeroForm() {
                     onClick={() => setStep(1)}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="shimmer-button w-full bg-[#fd6600] text-white font-bold text-sm rounded-xl px-6 py-3 mt-4 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="shimmer-button w-full bg-[#9741FE] text-white font-bold text-sm rounded-xl px-6 py-3 mt-4 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     Next →
                   </motion.button>
@@ -176,7 +176,7 @@ export default function HeroForm() {
                     disabled={!canProceed()}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="shimmer-button w-full bg-[#fd6600] text-white font-bold text-sm rounded-xl px-6 py-3 mt-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="shimmer-button w-full bg-[#9741FE] text-white font-bold text-sm rounded-xl px-6 py-3 mt-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     Next →
                   </motion.button>
@@ -245,7 +245,7 @@ export default function HeroForm() {
                     disabled={!canProceed()}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="shimmer-button w-full bg-[#fd6600] text-white font-bold text-sm rounded-xl px-6 py-3 mt-1 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="shimmer-button w-full bg-[#9741FE] text-white font-bold text-sm rounded-xl px-6 py-3 mt-1 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     Get My Audit →
                   </motion.button>

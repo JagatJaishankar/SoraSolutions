@@ -47,7 +47,7 @@ export default function ExitIntentPopup() {
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
           >
             {/* Gradient border wrapper */}
-            <div className="rounded-2xl bg-gradient-to-br from-[#2362fd] to-[#fd6600] p-[1.5px]">
+            <div className="rounded-2xl bg-gradient-to-br from-[#9741FE] to-[#232872] p-[1.5px]">
               <div className="bg-white/90 backdrop-blur-xl rounded-2xl p-8 relative">
                 {/* Close button */}
                 <button
@@ -80,18 +80,18 @@ export default function ExitIntentPopup() {
                     type="text"
                     placeholder="Your name"
                     required
-                    className="bg-white/40 backdrop-blur-md border border-white/20 rounded-xl outline-none transition-all duration-300 focus:border-[#2362fd]/50 w-full px-4 py-3 text-sm text-black"
+                    className="bg-white/40 backdrop-blur-md border border-white/20 rounded-xl outline-none transition-all duration-300 focus:border-[#9741FE]/50 w-full px-4 py-3 text-sm text-black"
                   />
                   <input
                     type="email"
                     placeholder="Your email"
                     required
-                    className="bg-white/40 backdrop-blur-md border border-white/20 rounded-xl outline-none transition-all duration-300 focus:border-[#2362fd]/50 w-full px-4 py-3 text-sm text-black"
+                    className="bg-white/40 backdrop-blur-md border border-white/20 rounded-xl outline-none transition-all duration-300 focus:border-[#9741FE]/50 w-full px-4 py-3 text-sm text-black"
                   />
                   <select
                     required
                     defaultValue=""
-                    className="bg-white/40 backdrop-blur-md border border-white/20 rounded-xl outline-none transition-all duration-300 focus:border-[#2362fd]/50 w-full px-4 py-3 text-sm text-black appearance-none"
+                    className="bg-white/40 backdrop-blur-md border border-white/20 rounded-xl outline-none transition-all duration-300 focus:border-[#9741FE]/50 w-full px-4 py-3 text-sm text-black appearance-none"
                   >
                     <option value="" disabled>
                       Select your trade

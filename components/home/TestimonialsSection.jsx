@@ -52,7 +52,7 @@ function Stars() {
       {[...Array(5)].map((_, i) => (
         <svg
           key={i}
-          className="w-5 h-5 text-[#fab347]"
+          className="w-5 h-5 text-[#9741FE]"
           fill="currentColor"
           viewBox="0 0 20 20"
         >
@@ -71,8 +71,8 @@ function TestimonialCard({ testimonial }) {
         &ldquo;{testimonial.quote}&rdquo;
       </p>
       <div className="flex items-center gap-3 mt-6">
-        <div className="w-12 h-12 rounded-full bg-[#2362fd]/10 flex items-center justify-center flex-shrink-0">
-          <span className="text-sm font-bold text-[#2362fd]">
+        <div className="w-12 h-12 rounded-full bg-[#D9D1FB] flex items-center justify-center flex-shrink-0">
+          <span className="text-sm font-bold text-[#9741FE]">
             {testimonial.initials}
           </span>
         </div>

@@ -63,7 +63,7 @@ function SpotlightMockup({ item }) {
           onClick={handleTap}
         >
           {/* Full-colour content layer */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#2362fd]/5 to-[#fd6600]/5 flex items-center justify-center">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#9741FE]/5 to-[#232872]/5 flex items-center justify-center">
             <span className="text-black/30 text-sm font-light select-none">
               {item.placeholder}
             </span>

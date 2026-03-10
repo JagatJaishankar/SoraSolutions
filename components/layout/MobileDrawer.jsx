@@ -134,14 +134,14 @@ export default function MobileDrawer({ isOpen, onClose, pathname }) {
                                         key={item.title}
                                         href={item.href}
                                         onClick={onClose}
-                                        className="flex flex-col gap-1 rounded-xl p-3 transition-colors duration-200 active:bg-[#fd6600]/5"
+                                        className="flex flex-col gap-1 rounded-xl p-3 transition-colors duration-200 active:bg-[#D9D1FB]/30"
                                       >
                                         <div className="flex items-center gap-2">
                                           <span className="text-base">{item.emoji}</span>
                                           <span className="font-semibold text-sm text-black">{item.title}</span>
                                         </div>
                                         <p className="text-sm text-black/60">{item.subtitle}</p>
-                                        <span className="mt-1 inline-block self-start text-xs font-medium text-[#fd6600] bg-[#fd6600]/10 rounded-full px-2 py-0.5">
+                                        <span className="mt-1 inline-block self-start text-xs font-medium text-[#9741FE] bg-[#9741FE]/10 rounded-full px-2 py-0.5">
                                           {item.badge}
                                         </span>
                                       </Link>
@@ -180,7 +180,7 @@ export default function MobileDrawer({ isOpen, onClose, pathname }) {
               <Link
                 href="/contact"
                 onClick={onClose}
-                className="block text-center bg-[#fd6600] text-white font-semibold text-sm px-6 py-3 rounded-full"
+                className="block text-center bg-[#9741FE] text-white font-semibold text-sm px-6 py-3 rounded-full"
               >
                 Book a Free Strategy Call
               </Link>

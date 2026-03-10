@@ -16,7 +16,7 @@ function AgencyPanel() {
   return (
     <div className="bg-black/[0.02] border border-dashed border-black/10 rounded-2xl p-8 md:p-10">
       <div className="mb-6">
-        <span className="bg-red-100 text-red-600 text-sm font-bold px-4 py-2 rounded-full">
+        <span className="bg-black/10 text-black/60 text-sm font-bold px-4 py-2 rounded-full">
           Most Agencies
         </span>
       </div>
@@ -26,11 +26,11 @@ function AgencyPanel() {
             key={row.label}
             className={`py-5 ${i < rows.length - 1 ? "border-b border-black/10" : ""}`}
           >
-            <div className="text-xs font-bold text-[#2362fd] uppercase tracking-widest mb-2">
+            <div className="text-xs font-bold text-[#9741FE] uppercase tracking-widest mb-2">
               {row.label}
             </div>
             <div className="text-lg font-light text-black/50 flex items-start">
-              <span className="text-red-400 mr-3 flex-shrink-0 w-5 h-5 mt-0.5">&#10060;</span>
+              <span className="text-black/30 mr-3 flex-shrink-0 w-5 h-5 mt-0.5">&#10060;</span>
               {row.agency}
             </div>
           </div>
@@ -44,13 +44,13 @@ function SoraPanel({ revealSora }) {
   return (
     <div className="relative">
       {/* Subtle green glow behind the panel */}
-      <div className="absolute inset-0 bg-green-400/5 blur-3xl rounded-full scale-90 -z-10" />
+      <div className="absolute inset-0 bg-[#9741FE]/5 blur-3xl rounded-full scale-90 -z-10" />
 
       {/* Gradient border wrapper */}
-      <div className="rounded-2xl bg-gradient-to-br from-[#2362fd] to-[#fd6600] p-[1.5px] h-full">
+      <div className="rounded-2xl bg-gradient-to-br from-[#9741FE] to-[#232872] p-[1.5px] h-full">
         <div className="bg-white/70 backdrop-blur-xl rounded-2xl p-8 md:p-10 h-full">
           <div className="mb-6">
-            <span className="bg-green-100 text-green-700 text-sm font-bold px-4 py-2 rounded-full">
+            <span className="bg-[#D9D1FB] text-[#9741FE] text-sm font-bold px-4 py-2 rounded-full">
               With Sora
             </span>
           </div>
@@ -58,18 +58,18 @@ function SoraPanel({ revealSora }) {
             {rows.map((row, i) => (
               <motion.div
                 key={row.label}
-                className={`py-5 cursor-default hover:bg-green-500/5 hover:scale-[1.01] transition-all duration-200 rounded-lg ${
+                className={`py-5 cursor-default hover:bg-[#D9D1FB]/50 hover:scale-[1.01] transition-all duration-200 rounded-lg ${
                   i < rows.length - 1 ? "border-b border-black/5" : ""
                 }`}
                 initial={{ opacity: 0, x: 20 }}
                 animate={revealSora ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
                 transition={{ delay: i * 0.15, duration: 0.5, ease: "easeOut" }}
               >
-                <div className="text-xs font-bold text-[#2362fd] uppercase tracking-widest mb-2">
+                <div className="text-xs font-bold text-[#9741FE] uppercase tracking-widest mb-2">
                   {row.label}
                 </div>
                 <div className="text-lg font-medium text-black flex items-start">
-                  <span className="text-green-500 mr-3 flex-shrink-0 w-5 h-5 mt-0.5">&#9989;</span>
+                  <span className="text-[#9741FE] mr-3 flex-shrink-0 w-5 h-5 mt-0.5">&#9989;</span>
                   {row.sora}
                 </div>
               </motion.div>
