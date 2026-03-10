@@ -85,7 +85,7 @@ html {
 }
 
 .floating-label-group input {
-  @apply input-glass w-full px-4 pt-5 pb-2 text-sm text-black;
+  @apply bg-white/40 backdrop-blur-md border border-white/20 rounded-xl outline-none transition-all duration-300 focus:border-[#2362fd]/50 w-full px-4 pt-5 pb-2 text-sm text-black;
 }
 
 .floating-label-group input::placeholder {
