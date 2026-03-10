@@ -1,0 +1,492 @@
+"use client";
+
+import { useEffect, useRef, useCallback, useMemo, useState } from "react";
+
+const ANIMATION_CONFIG = {
+  INITIAL_DURATION: 1200,
+  INITIAL_X_OFFSET: 70,
+  INITIAL_Y_OFFSET: 60,
+  ENTER_TRANSITION_MS: 180,
+};
+
+const clamp = (v, min = 0, max = 100) => Math.min(Math.max(v, min), max);
+const round = (v, precision = 3) => parseFloat(v.toFixed(precision));
+const adjust = (v, fMin, fMax, tMin, tMax) =>
+  round(tMin + ((tMax - tMin) * (v - fMin)) / (fMax - fMin));
+
+export default function ProfileCard({
+  avatarUrl,
+  name = "Joel Willis",
+  title = "Founder, Sora Solutions",
+  contactText = "Read Full Story →",
+  onContactClick,
+  className = "",
+}) {
+  const wrapRef = useRef(null);
+  const shellRef = useRef(null);
+  const enterTimerRef = useRef(null);
+  const leaveRafRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  const tiltEngine = useMemo(() => {
+    if (typeof window === "undefined") return null;
+
+    let rafId = null;
+    let running = false;
+    let lastTs = 0;
+    let currentX = 0;
+    let currentY = 0;
+    let targetX = 0;
+    let targetY = 0;
+
+    const DEFAULT_TAU = 0.14;
+    const INITIAL_TAU = 0.6;
+    let initialUntil = 0;
+
+    const setVarsFromXY = (x, y) => {
+      const shell = shellRef.current;
+      const wrap = wrapRef.current;
+      if (!shell || !wrap) return;
+
+      const width = shell.clientWidth || 1;
+      const height = shell.clientHeight || 1;
+
+      const percentX = clamp((100 / width) * x);
+      const percentY = clamp((100 / height) * y);
+
+      const centerX = percentX - 50;
+      const centerY = percentY - 50;
+
+      const properties = {
+        "--pointer-x": `${percentX}%`,
+        "--pointer-y": `${percentY}%`,
+        "--background-x": `${adjust(percentX, 0, 100, 35, 65)}%`,
+        "--background-y": `${adjust(percentY, 0, 100, 35, 65)}%`,
+        "--pointer-from-center": `${clamp(Math.hypot(percentY - 50, percentX - 50) / 50, 0, 1)}`,
+        "--pointer-from-top": `${percentY / 100}`,
+        "--pointer-from-left": `${percentX / 100}`,
+        "--rotate-x": `${round(-(centerX / 6))}deg`,
+        "--rotate-y": `${round(centerY / 5)}deg`,
+      };
+
+      for (const [k, v] of Object.entries(properties))
+        wrap.style.setProperty(k, v);
+    };
+
+    const step = (ts) => {
+      if (!running) return;
+      if (lastTs === 0) lastTs = ts;
+      const dt = (ts - lastTs) / 1000;
+      lastTs = ts;
+
+      const tau = ts < initialUntil ? INITIAL_TAU : DEFAULT_TAU;
+      const k = 1 - Math.exp(-dt / tau);
+
+      currentX += (targetX - currentX) * k;
+      currentY += (targetY - currentY) * k;
+
+      setVarsFromXY(currentX, currentY);
+
+      const stillFar =
+        Math.abs(targetX - currentX) > 0.05 ||
+        Math.abs(targetY - currentY) > 0.05;
+
+      if (stillFar || document.hasFocus()) {
+        rafId = requestAnimationFrame(step);
+      } else {
+        running = false;
+        lastTs = 0;
+        if (rafId) {
+          cancelAnimationFrame(rafId);
+          rafId = null;
+        }
+      }
+    };
+
+    const start = () => {
+      if (running) return;
+      running = true;
+      lastTs = 0;
+      rafId = requestAnimationFrame(step);
+    };
+
+    return {
+      setImmediate(x, y) {
+        currentX = x;
+        currentY = y;
+        setVarsFromXY(currentX, currentY);
+      },
+      setTarget(x, y) {
+        targetX = x;
+        targetY = y;
+        start();
+      },
+      toCenter() {
+        const shell = shellRef.current;
+        if (!shell) return;
+        this.setTarget(shell.clientWidth / 2, shell.clientHeight / 2);
+      },
+      beginInitial(durationMs) {
+        initialUntil = performance.now() + durationMs;
+        start();
+      },
+      getCurrent() {
+        return { x: currentX, y: currentY, tx: targetX, ty: targetY };
+      },
+      cancel() {
+        if (rafId) cancelAnimationFrame(rafId);
+        rafId = null;
+        running = false;
+        lastTs = 0;
+      },
+    };
+  }, []);
+
+  const getOffsets = (evt, el) => {
+    const rect = el.getBoundingClientRect();
+    return { x: evt.clientX - rect.left, y: evt.clientY - rect.top };
+  };
+
+  const handlePointerMove = useCallback(
+    (event) => {
+      const shell = shellRef.current;
+      if (!shell || !tiltEngine || isMobile) return;
+      const { x, y } = getOffsets(event, shell);
+      tiltEngine.setTarget(x, y);
+    },
+    [tiltEngine, isMobile]
+  );
+
+  const handlePointerEnter = useCallback(
+    (event) => {
+      const shell = shellRef.current;
+      if (!shell || !tiltEngine || isMobile) return;
+
+      shell.classList.add("active", "entering");
+      if (enterTimerRef.current) window.clearTimeout(enterTimerRef.current);
+      enterTimerRef.current = window.setTimeout(() => {
+        shell.classList.remove("entering");
+      }, ANIMATION_CONFIG.ENTER_TRANSITION_MS);
+
+      const { x, y } = getOffsets(event, shell);
+      tiltEngine.setTarget(x, y);
+    },
+    [tiltEngine, isMobile]
+  );
+
+  const handlePointerLeave = useCallback(() => {
+    const shell = shellRef.current;
+    if (!shell || !tiltEngine || isMobile) return;
+
+    tiltEngine.toCenter();
+
+    const checkSettle = () => {
+      const { x, y, tx, ty } = tiltEngine.getCurrent();
+      const settled = Math.hypot(tx - x, ty - y) < 0.6;
+      if (settled) {
+        shell.classList.remove("active");
+        leaveRafRef.current = null;
+      } else {
+        leaveRafRef.current = requestAnimationFrame(checkSettle);
+      }
+    };
+    if (leaveRafRef.current) cancelAnimationFrame(leaveRafRef.current);
+    leaveRafRef.current = requestAnimationFrame(checkSettle);
+  }, [tiltEngine, isMobile]);
+
+  useEffect(() => {
+    if (!tiltEngine || isMobile) return;
+
+    const shell = shellRef.current;
+    if (!shell) return;
+
+    shell.addEventListener("pointerenter", handlePointerEnter);
+    shell.addEventListener("pointermove", handlePointerMove);
+    shell.addEventListener("pointerleave", handlePointerLeave);
+
+    const initialX =
+      (shell.clientWidth || 0) - ANIMATION_CONFIG.INITIAL_X_OFFSET;
+    const initialY = ANIMATION_CONFIG.INITIAL_Y_OFFSET;
+    tiltEngine.setImmediate(initialX, initialY);
+    tiltEngine.toCenter();
+    tiltEngine.beginInitial(ANIMATION_CONFIG.INITIAL_DURATION);
+
+    return () => {
+      shell.removeEventListener("pointerenter", handlePointerEnter);
+      shell.removeEventListener("pointermove", handlePointerMove);
+      shell.removeEventListener("pointerleave", handlePointerLeave);
+      if (enterTimerRef.current) window.clearTimeout(enterTimerRef.current);
+      if (leaveRafRef.current) cancelAnimationFrame(leaveRafRef.current);
+      tiltEngine.cancel();
+      shell.classList.remove("entering");
+    };
+  }, [
+    tiltEngine,
+    isMobile,
+    handlePointerMove,
+    handlePointerEnter,
+    handlePointerLeave,
+  ]);
+
+  const cardVars = {
+    "--pointer-x": "50%",
+    "--pointer-y": "50%",
+    "--pointer-from-center": "0",
+    "--pointer-from-top": "0.5",
+    "--pointer-from-left": "0.5",
+    "--rotate-x": "0deg",
+    "--rotate-y": "0deg",
+    "--background-x": "50%",
+    "--background-y": "50%",
+  };
+
+  const shineStyle = {
+    filter: "brightness(0.8) contrast(1.1) saturate(0.4) opacity(0.35)",
+    mixBlendMode: "color-dodge",
+    "--space": "5%",
+    "--angle": "-45deg",
+    transform: "translate3d(0, 0, 1px)",
+    overflow: "hidden",
+    zIndex: 3,
+    backgroundImage: `
+      repeating-linear-gradient(
+        0deg,
+        #2362fd44 calc(var(--space) * 1),
+        #fd660044 calc(var(--space) * 2),
+        #fab34744 calc(var(--space) * 3),
+        #2362fd44 calc(var(--space) * 4),
+        #fd660044 calc(var(--space) * 5),
+        #fab34744 calc(var(--space) * 6),
+        #2362fd44 calc(var(--space) * 7)
+      ),
+      repeating-linear-gradient(
+        var(--angle),
+        #fef3e2 0%,
+        hsl(30, 60%, 75%) 3.8%,
+        hsl(30, 50%, 80%) 4.5%,
+        hsl(30, 60%, 75%) 5.2%,
+        #fef3e2 10%,
+        #fef3e2 12%
+      ),
+      radial-gradient(
+        farthest-corner circle at var(--pointer-x) var(--pointer-y),
+        hsla(30, 20%, 90%, 0.1) 12%,
+        hsla(30, 20%, 80%, 0.15) 20%,
+        hsla(30, 20%, 70%, 0.25) 120%
+      )
+    `.replace(/\s+/g, " "),
+    gridArea: "1 / -1",
+    borderRadius: "1rem",
+    pointerEvents: "none",
+  };
+
+  const glareStyle = {
+    transform: "translate3d(0, 0, 1.1px)",
+    overflow: "hidden",
+    backgroundImage: `radial-gradient(
+      farthest-corner circle at var(--pointer-x) var(--pointer-y),
+      hsl(30, 40%, 90%) 12%,
+      hsla(220, 30%, 70%, 0.5) 90%
+    )`,
+    mixBlendMode: "overlay",
+    filter: "brightness(0.9) contrast(1.1)",
+    zIndex: 4,
+    gridArea: "1 / -1",
+    borderRadius: "1rem",
+    pointerEvents: "none",
+  };
+
+  return (
+    <div
+      ref={wrapRef}
+      className={`relative touch-none ${className}`}
+      style={{
+        perspective: isMobile ? "none" : "500px",
+        transform: "translate3d(0, 0, 0.1px)",
+        ...cardVars,
+      }}
+    >
+      {/* Behind glow */}
+      {!isMobile && (
+        <div
+          className="absolute inset-0 z-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(circle at var(--pointer-x) var(--pointer-y), rgba(250, 179, 71, 0.4) 0%, transparent 50%)",
+            filter: "blur(50px) saturate(1.1)",
+          }}
+        />
+      )}
+      {isMobile && (
+        <div
+          className="absolute inset-0 z-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(circle at 50% 60%, rgba(250, 179, 71, 0.3) 0%, transparent 60%)",
+            filter: "blur(40px)",
+          }}
+        />
+      )}
+
+      <div ref={shellRef} className="relative z-[1]">
+        <section
+          className="grid relative overflow-hidden"
+          style={{
+            aspectRatio: "3/4",
+            borderRadius: "1rem",
+            boxShadow: isMobile
+              ? "0 20px 40px -10px rgba(0, 0, 0, 0.15)"
+              : "rgba(0, 0, 0, 0.2) calc((var(--pointer-from-left) * 8px) - 3px) calc((var(--pointer-from-top) * 16px) - 5px) 20px -5px",
+            transition: "transform 1s ease",
+            transform: "translateZ(0) rotateX(0deg) rotateY(0deg)",
+            background:
+              "linear-gradient(145deg, #fef3e2 0%, #fde8d0 50%, #fef3e2 100%)",
+          }}
+          onMouseEnter={(e) => {
+            if (isMobile) return;
+            e.currentTarget.style.transition = "none";
+            e.currentTarget.style.transform =
+              "translateZ(0) rotateX(var(--rotate-y)) rotateY(var(--rotate-x))";
+          }}
+          onMouseLeave={(e) => {
+            if (isMobile) return;
+            const shell = shellRef.current;
+            e.currentTarget.style.transition = shell?.classList.contains(
+              "entering"
+            )
+              ? "transform 180ms ease-out"
+              : "transform 1s ease";
+            e.currentTarget.style.transform =
+              "translateZ(0) rotateX(0deg) rotateY(0deg)";
+          }}
+        >
+          {/* Inner gradient layer */}
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage:
+                "linear-gradient(145deg, rgba(250, 179, 71, 0.15) 0%, rgba(35, 98, 253, 0.08) 100%)",
+              borderRadius: "1rem",
+              display: "grid",
+              gridArea: "1 / -1",
+            }}
+          >
+            {/* Shine layer */}
+            {!isMobile && <div style={shineStyle} />}
+
+            {/* Glare layer */}
+            {!isMobile && <div style={glareStyle} />}
+
+            {/* Avatar area */}
+            <div
+              className="overflow-visible"
+              style={{
+                transform: isMobile ? "none" : "translateZ(2px)",
+                gridArea: "1 / -1",
+                borderRadius: "1rem",
+                pointerEvents: "none",
+              }}
+            >
+              {avatarUrl ? (
+                <img
+                  className="w-full absolute left-1/2 bottom-0"
+                  src={avatarUrl}
+                  alt={`${name} avatar`}
+                  loading="lazy"
+                  style={{
+                    transformOrigin: "50% 100%",
+                    transform: isMobile
+                      ? "translateX(-50%)"
+                      : "translateX(calc(-50% + (var(--pointer-from-left) - 0.5) * 6px)) translateZ(0) scaleY(calc(1 + (var(--pointer-from-top) - 0.5) * 0.02)) scaleX(calc(1 + (var(--pointer-from-left) - 0.5) * 0.01))",
+                    borderRadius: "1rem",
+                  }}
+                  onError={(e) => {
+                    e.target.style.display = "none";
+                  }}
+                />
+              ) : (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div
+                    className="w-32 h-32 rounded-full"
+                    style={{
+                      background:
+                        "linear-gradient(135deg, #2362fd33, #fd660033, #fab34733)",
+                    }}
+                  />
+                </div>
+              )}
+            </div>
+
+            {/* Name + title at top */}
+            <div
+              className="max-h-full overflow-hidden text-center relative z-[5]"
+              style={{
+                transform: isMobile
+                  ? "none"
+                  : "translate3d(calc(var(--pointer-from-left) * -6px + 3px), calc(var(--pointer-from-top) * -6px + 3px), 0.1px)",
+                gridArea: "1 / -1",
+                borderRadius: "1rem",
+                pointerEvents: "none",
+              }}
+            >
+              <div className="w-full absolute flex flex-col top-8">
+                <h3
+                  className="font-bold text-2xl md:text-3xl"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(to bottom, #1a1a1a, #555)",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                    WebkitBackgroundClip: "text",
+                  }}
+                >
+                  {name}
+                </h3>
+                <p
+                  className="text-sm font-semibold -mt-1"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(to bottom, #333, #888)",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                    WebkitBackgroundClip: "text",
+                  }}
+                >
+                  {title}
+                </p>
+              </div>
+            </div>
+
+            {/* Bottom info bar */}
+            <div
+              className="absolute z-[6] flex items-center justify-center pointer-events-auto bottom-5 left-5 right-5"
+              style={{ borderRadius: "0.75rem" }}
+            >
+              <button
+                className="w-full py-3 px-4 text-sm font-bold text-black/70 cursor-pointer transition-all duration-200 hover:-translate-y-px"
+                style={{
+                  background: "rgba(255, 255, 255, 0.5)",
+                  backdropFilter: "blur(20px)",
+                  WebkitBackdropFilter: "blur(20px)",
+                  border: "1px solid rgba(0, 0, 0, 0.08)",
+                  borderRadius: "0.75rem",
+                }}
+                onClick={onContactClick}
+                type="button"
+              >
+                {contactText}
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  );
+}
