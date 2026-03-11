@@ -2,6 +2,7 @@ import HeroSection from "@/components/home/HeroSection";
 import TrustBarSection from "@/components/home/TrustBarSection";
 import ProblemCards from "@/components/home/ProblemCards";
 import ServicesGrid from "@/components/home/ServicesGrid";
+import WebsiteShowcase from "@/components/home/WebsiteShowcase";
 import ComparisonTable from "@/components/home/ComparisonTable";
 import HowItWorks from "@/components/home/HowItWorks";
 import WhatYouGet from "@/components/home/WhatYouGet";
@@ -22,6 +23,7 @@ export default function Home() {
       <TrustBarSection />
       <ProblemCards />
       <ServicesGrid />
+      <WebsiteShowcase />
       <ComparisonTable />
       <HowItWorks />
       <WhatYouGet />
