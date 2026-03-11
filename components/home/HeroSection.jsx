@@ -23,7 +23,7 @@ export default function HeroSection() {
             </motion.div>
 
             {/* Headline */}
-            <h1 className="text-5xl sm:text-6xl xl:text-7xl font-black tracking-tighter text-black leading-[1.25]">
+            <h1 className="text-[2.6rem] sm:text-6xl xl:text-7xl font-black tracking-tighter text-black leading-[1.25]">
               <motion.span
                 className="block"
                 initial={{ y: 40, opacity: 0 }}
