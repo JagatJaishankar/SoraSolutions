@@ -15,20 +15,27 @@ const SLIDES = [
     url: "https://landscaping-demo-delta.vercel.app",
   },
   {
-    tag: "Trust & Authority",
-    feature: "Credentials That Convert",
-    name: "Licensed, Insured & Proven",
-    desc: "Accreditation badges, lifetime guarantees, and quality promises displayed prominently \u2014 building confidence before they even scroll.",
-    img: "/carousel/electrical-features.png",
-    url: "https://electrical-demo-pearl.vercel.app",
+    tag: "Mobile Design",
+    feature: "Mobile Optimised",
+    name: "Looks Perfect on Every Device",
+    desc: "Every site is built mobile-first. Fast load, thumb-friendly CTAs, responsive layouts \u2014 your clients book from their phones, so your site has to perform there.",
+    img: "/carousel/mobile-optimised.png",
+    contain: true,
+  },
+  {
+    tag: "Smart Forms",
+    feature: "Smart Lead Qualification",
+    name: "Multi-Step Forms That Filter & Qualify",
+    desc: "Job type selectors, photo uploads, timeline pickers \u2014 every enquiry arrives with the detail you need to quote confidently and weed out time-wasters.",
+    img: "/carousel/smart-form.png",
+    contain: true,
   },
   {
     tag: "Portfolio",
     feature: "Work Portfolio",
-    name: "Results That Speak for Themselves",
-    desc: "Photo galleries showcasing real projects with masonry layouts \u2014 so your workmanship does the selling for you.",
-    img: "/carousel/plumbing-portfolio.png",
-    url: "https://plumbing-deploy.vercel.app",
+    name: "Craft That Sells Itself",
+    desc: "Photo galleries showcasing real projects \u2014 so your workmanship does the selling for you.",
+    img: "/carousel/plumbing-collage.png",
   },
   {
     tag: "Service Pages",
@@ -39,12 +46,21 @@ const SLIDES = [
     url: "https://painter-deploy.vercel.app",
   },
   {
-    tag: "Transformations",
-    feature: "Before & After",
-    name: "See the Difference Proper Work Makes",
-    desc: "Real project showcases with before and after photography \u2014 proof that builds trust and sets expectations for quality.",
-    img: "/carousel/landscaping-transformation.png",
-    url: "https://landscaping-demo-delta.vercel.app",
+    tag: "Interactive",
+    feature: "Interactive Elements",
+    name: "Websites That Actually Do Things",
+    desc: "Click the lightbulb \u2014 it toggles on and off. Scroll animations, interactive maps, live price calculators. Not just pretty \u2014 engaging.",
+    imgA: "/carousel/electrical-lights.png",
+    imgB: "/carousel/electrical-lights-on.png",
+    toggle: true,
+    url: "https://electrical-demo-pearl.vercel.app",
+  },
+  {
+    tag: "Service Areas",
+    feature: "Service Area Coverage",
+    name: "Show Where You Work",
+    desc: "Interactive maps with suburb grids \u2014 clients instantly know you cover their area. Builds local trust and pre-qualifies location before they even enquire.",
+    img: "/carousel/service-areas.png",
   },
   {
     tag: "Process & Trust",
@@ -55,6 +71,8 @@ const SLIDES = [
     url: "https://roofing-deploy.vercel.app",
   },
 ];
+
+const TOGGLE_SLIDE_INDEX = 5;
 
 const POSITIONS = [
   { tx: -540, tz: -190, ry: 52, s: 0.66, o: 0.2 },
@@ -82,6 +100,7 @@ function getOffset(index, current, total) {
 export default function WebsiteShowcase() {
   const [current, setCurrent] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [toggleOn, setToggleOn] = useState(false);
   const touchStartX = useRef(0);
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
@@ -92,6 +111,16 @@ export default function WebsiteShowcase() {
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
   }, []);
+
+  // Toggle slide auto-alternate
+  useEffect(() => {
+    if (current !== TOGGLE_SLIDE_INDEX) {
+      setToggleOn(false);
+      return;
+    }
+    const id = setInterval(() => setToggleOn((prev) => !prev), 1800);
+    return () => clearInterval(id);
+  }, [current]);
 
   const navigate = useCallback(
     (dir) => setCurrent((prev) => (prev + dir + SLIDES.length) % SLIDES.length),
@@ -187,11 +216,12 @@ export default function WebsiteShowcase() {
             const posIndex = offset + 2;
             const pos = positions[posIndex];
             const isActive = offset === 0;
+            const objFit = slide.contain ? "object-contain" : "object-cover";
 
             return (
               <div
                 key={i}
-                className="absolute cursor-pointer rounded-[10px] overflow-hidden shadow-lg"
+                className="absolute cursor-pointer rounded-[10px] overflow-hidden shadow-lg bg-white"
                 style={{
                   width: cardW,
                   height: cardH,
@@ -213,20 +243,59 @@ export default function WebsiteShowcase() {
                   if (!isActive) setCurrent(i);
                 }}
               >
-                {/* Tag */}
-                <span className="absolute top-3 left-3 z-20 bg-white/80 backdrop-blur-sm border border-black/5 rounded-full px-2.5 py-1 text-[9px] font-semibold tracking-widest uppercase text-black/70">
+                {/* Tag — consistent top-left */}
+                <span className="absolute top-2.5 left-2.5 z-20 bg-white/80 backdrop-blur-sm border border-black/5 rounded-full px-2.5 py-1 text-[9px] font-semibold tracking-widest uppercase text-black/70">
                   {slide.tag}
                 </span>
 
-                {/* Image */}
-                <Image
-                  src={slide.img}
-                  alt={slide.name}
-                  fill
-                  sizes="(max-width: 768px) 320px, 480px"
-                  className="object-cover object-center"
-                  draggable={false}
-                />
+                {/* Image(s) */}
+                {slide.toggle ? (
+                  <>
+                    <Image
+                      src={slide.imgA}
+                      alt={slide.name}
+                      fill
+                      sizes="(max-width: 768px) 320px, 480px"
+                      className={`object-cover object-top transition-opacity duration-[900ms] ease ${
+                        toggleOn ? "opacity-0" : "opacity-100"
+                      }`}
+                      draggable={false}
+                    />
+                    <Image
+                      src={slide.imgB}
+                      alt={`${slide.name} - on`}
+                      fill
+                      sizes="(max-width: 768px) 320px, 480px"
+                      className={`object-cover object-top transition-opacity duration-[900ms] ease ${
+                        toggleOn ? "opacity-100" : "opacity-0"
+                      }`}
+                      draggable={false}
+                    />
+                    {isActive && (
+                      <span className="absolute bottom-2.5 right-2.5 z-20 bg-white/80 backdrop-blur-sm border border-black/5 rounded-full px-2.5 py-1 text-[9px] font-semibold tracking-widest uppercase text-black/70">
+                        ⚡ Click to Toggle
+                      </span>
+                    )}
+                  </>
+                ) : slide.contain ? (
+                  <Image
+                    src={slide.img}
+                    alt={slide.name}
+                    fill
+                    sizes="(max-width: 768px) 320px, 480px"
+                    className="object-contain object-center"
+                    draggable={false}
+                  />
+                ) : (
+                  <Image
+                    src={slide.img}
+                    alt={slide.name}
+                    fill
+                    sizes="(max-width: 768px) 320px, 480px"
+                    className="object-cover object-top"
+                    draggable={false}
+                  />
+                )}
               </div>
             );
           })}
@@ -259,15 +328,17 @@ export default function WebsiteShowcase() {
           <p className="text-[13px] font-light text-black/50 max-w-[440px] mx-auto leading-relaxed mb-3">
             {activeSlide.desc}
           </p>
-          <a
-            href={activeSlide.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-black/50 text-[12.5px] border border-black/10 rounded-full px-4 py-1.5 transition-all duration-200 hover:text-[#9741FE] hover:border-[#9741FE]/30 hover:bg-[#D9D1FB]/30"
-          >
-            View live demo
-            <ExternalLink className="w-[11px] h-[11px]" />
-          </a>
+          {activeSlide.url && (
+            <a
+              href={activeSlide.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-black/50 text-[12.5px] border border-black/10 rounded-full px-4 py-1.5 transition-all duration-200 hover:text-[#9741FE] hover:border-[#9741FE]/30 hover:bg-[#D9D1FB]/30"
+            >
+              View live demo
+              <ExternalLink className="w-[11px] h-[11px]" />
+            </a>
+          )}
         </div>
 
         {/* Dots */}

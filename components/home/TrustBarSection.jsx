@@ -24,7 +24,7 @@ export default function TrustBarSection() {
         Powered by industry-leading platforms
       </p>
 
-      <div className="grayscale hover:grayscale-0 transition-all duration-300">
+      <div>
         <LogoLoop
           logos={logos}
           speed={100}
