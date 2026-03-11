@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
+import Image from "next/image";
 
 const SLIDES = [
   {
@@ -218,11 +219,12 @@ export default function WebsiteShowcase() {
                 </span>
 
                 {/* Image */}
-                <img
+                <Image
                   src={slide.img}
                   alt={slide.name}
-                  className="w-full h-full object-cover object-center"
-                  loading="lazy"
+                  fill
+                  sizes="(max-width: 768px) 320px, 480px"
+                  className="object-cover object-center"
                   draggable={false}
                 />
               </div>
