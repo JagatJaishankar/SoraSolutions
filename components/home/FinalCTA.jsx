@@ -2,9 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Phone } from "lucide-react";
 import PrimaryButton from "@/components/ui/PrimaryButton";
-import SecondaryButton from "@/components/ui/SecondaryButton";
 
 export default function FinalCTA() {
   const ref = useRef(null);
@@ -55,13 +53,6 @@ export default function FinalCTA() {
           >
             Book a Free Strategy Call
           </PrimaryButton>
-          <SecondaryButton
-            href="tel:+61409422868"
-            className="text-white border-white hover:bg-white hover:text-black hover:border-white px-8 py-4 text-lg"
-          >
-            <Phone className="w-5 h-5 mr-2" />
-            Call +61 409 422 868
-          </SecondaryButton>
         </motion.div>
       </div>
     </section>

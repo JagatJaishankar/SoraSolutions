@@ -59,7 +59,7 @@ export default function StatsSection() {
   return (
     <motion.section
       ref={sectionRef}
-      className="py-[100px] bg-gradient-to-r from-[#9741FE]/10 to-[#232872]/10"
+      className="py-[100px] bg-gradient-to-r from-[#9741FE]/3 to-[#232872]/3"
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : { opacity: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}

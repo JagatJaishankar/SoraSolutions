@@ -11,8 +11,8 @@ const SLIDES = [
     feature: "First Impressions",
     name: "Instant Authority & Trust",
     desc: "Stunning hero sections with lead forms, star ratings, trust badges, and a clear offer above the fold \u2014 designed to convert from the first second.",
-    img: "/carousel/landscaping-hero.png",
-    url: "https://landscaping-demo-delta.vercel.app",
+    img: "/carousel/waterproofing-hero.png",
+    url: "https://waterproofing-demo.vercel.app",
   },
   {
     tag: "Mobile Design",
@@ -156,7 +156,7 @@ export default function WebsiteShowcase() {
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, ease: "easeOut" }}
-      className="relative py-[100px] overflow-hidden bg-gradient-to-r from-[#9741FE]/10 to-[#232872]/10"
+      className="relative py-[100px] overflow-visible bg-gradient-to-r from-[#9741FE]/3 to-[#232872]/3"
     >
       <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -221,7 +221,7 @@ export default function WebsiteShowcase() {
             return (
               <div
                 key={i}
-                className="absolute cursor-pointer rounded-[10px] overflow-hidden shadow-lg bg-white"
+                className="absolute cursor-pointer overflow-visible"
                 style={{
                   width: cardW,
                   height: cardH,
@@ -234,9 +234,6 @@ export default function WebsiteShowcase() {
                   transition:
                     "transform 0.65s cubic-bezier(0.3,0,0.1,1), opacity 0.65s",
                   zIndex: 5 - absOffset,
-                  boxShadow: isActive
-                    ? "0 20px 50px rgba(151,65,254,0.15), 0 40px 80px rgba(151,65,254,0.08)"
-                    : undefined,
                   pointerEvents: absOffset > 2 ? "none" : "auto",
                 }}
                 onClick={() => {

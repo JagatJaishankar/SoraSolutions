@@ -22,7 +22,7 @@ export default function TiltCard({ children, className = "", href, accentLine = 
   const spotlightOpacity = useSpring(0, { damping: 20, stiffness: 300 });
   const liftY = useSpring(0, springValues);
 
-  const spotlightBg = useMotionTemplate`radial-gradient(200px circle at ${mouseX}px ${mouseY}px, rgba(151, 65, 254, 0.08), transparent 100%)`;
+  const spotlightBg = useMotionTemplate`radial-gradient(200px circle at ${mouseX}px ${mouseY}px, rgba(151, 65, 254, 0.04), transparent 100%)`;
 
   function handleMouse(e) {
     if (!ref.current) return;
@@ -60,10 +60,10 @@ export default function TiltCard({ children, className = "", href, accentLine = 
       onMouseLeave={handleMouseLeave}
     >
       <motion.div
-        className={`relative h-full border rounded-2xl [transform-style:preserve-3d] will-change-transform [transition:background_300ms,backdrop-filter_300ms,box-shadow_300ms] ${
+        className={`relative h-full border rounded-2xl [transform-style:preserve-3d] will-change-transform [transition:box-shadow_300ms,border-color_300ms] bg-white/50 backdrop-blur-xl ${
           hovered
-            ? "bg-white/85 backdrop-blur-2xl border-white/20 shadow-lg"
-            : "bg-white/40 backdrop-blur-xl border-white/20 shadow-md"
+            ? "border-[#9741FE]/10 shadow-xl"
+            : "border-white/20 shadow-md"
         }`}
         style={{ rotateX, rotateY, y: liftY }}
       >

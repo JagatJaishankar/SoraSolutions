@@ -10,7 +10,7 @@ export default function BuiltByTradie() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-[100px] bg-gradient-to-r from-[#9741FE]/10 to-[#232872]/10">
+    <section className="py-[100px] bg-gradient-to-r from-[#9741FE]/3 to-[#232872]/3">
       <div
         ref={ref}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"

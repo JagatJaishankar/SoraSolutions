@@ -21,11 +21,11 @@ export default function FlipCard({
 
   return (
     <div
-      className={`perspective-[1000px] h-[360px] group cursor-pointer ${className}`}
+      className={`perspective-[800px] h-[360px] group cursor-pointer ${className}`}
       onClick={handleClick}
     >
       <div
-        className={`relative w-full h-full transition-transform duration-[600ms] [transform-style:preserve-3d] md:group-hover:[transform:rotateY(180deg)] ${
+        className={`relative w-full h-full [transition:transform_800ms_cubic-bezier(0.4,0,0.2,1)] [transform-style:preserve-3d] md:group-hover:[transform:rotateY(180deg)] ${
           tapped ? "max-md:[transform:rotateY(180deg)]" : ""
         }`}
       >

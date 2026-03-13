@@ -22,7 +22,7 @@ export default function WordFlip() {
 
   useEffect(() => {
     if (phase === "show") {
-      const t = setTimeout(() => setPhase("tick"), 2500);
+      const t = setTimeout(() => setPhase("tick"), 3500);
       return () => clearTimeout(t);
     }
     if (phase === "tick") {
@@ -34,18 +34,18 @@ export default function WordFlip() {
     }
     if (phase === "spinning") {
       if (wordIndex < WORDS.length - 1) {
-        const t = setTimeout(() => setWordIndex((i) => i + 1), 240);
+        const t = setTimeout(() => setWordIndex((i) => i + 1), 300);
         return () => clearTimeout(t);
       } else {
         const t = setTimeout(() => {
           setWordIndex(0);
           setPhase("landing");
-        }, 240);
+        }, 300);
         return () => clearTimeout(t);
       }
     }
     if (phase === "landing") {
-      const t = setTimeout(() => setPhase("tick"), 2750);
+      const t = setTimeout(() => setPhase("tick"), 3750);
       return () => clearTimeout(t);
     }
   }, [phase, wordIndex]);
