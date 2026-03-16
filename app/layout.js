@@ -110,7 +110,7 @@ export default function RootLayout({ children }) {
         <GradientBackground />
         <GridOverlay />
         <FloatingLogos />
-        <div className="relative z-10 overflow-x-hidden w-full">
+        <div className="relative z-10 w-full">
           <Navbar />
           {children}
           <Footer />
