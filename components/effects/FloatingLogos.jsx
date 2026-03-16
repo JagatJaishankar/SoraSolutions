@@ -9,13 +9,17 @@ function tooClose(a, b) {
 }
 
 const generateLogos = () => {
+  const isMobile = window.innerWidth < 768;
+  const maxSize = isMobile ? 80 : 128;
+  const minSize = isMobile ? 30 : 40;
+
   const logos = [];
   let attempts = 0;
   while (logos.length < 5 && attempts < 100) {
     const candidate = {
-      x: Math.random() * 80 + 10,
+      x: Math.random() * 60 + 10,
       y: Math.random() * 80 + 10,
-      size: Math.random() * 88 + 40,
+      size: Math.random() * (maxSize - minSize) + minSize,
       rotation: Math.random() * 90 - 45,
       opacity: Math.random() * 0.12 + 0.12,
     };
@@ -37,7 +41,7 @@ export default function FloatingLogos() {
   if (logos.length === 0) return null;
 
   return (
-    <div className="fixed inset-0 z-[2] pointer-events-none overflow-hidden">
+    <div className="fixed top-0 left-0 w-full h-full z-[2] pointer-events-none overflow-hidden">
       {logos.map((logo, i) => (
         <img
           key={i}

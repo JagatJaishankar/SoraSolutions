@@ -1,6 +1,10 @@
 @import "tailwindcss";
 
-html {
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
   scroll-behavior: smooth;
 }
 
@@ -213,8 +217,8 @@ h1, h2, h3, h4, h5, h6 {
 .gradient-bg {
   position: fixed;
   inset: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
   background: linear-gradient(40deg, var(--color-bg1), var(--color-bg2));
   z-index: 0;

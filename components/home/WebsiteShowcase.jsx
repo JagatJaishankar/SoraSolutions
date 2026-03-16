@@ -156,7 +156,7 @@ export default function WebsiteShowcase() {
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, ease: "easeOut" }}
-      className="relative py-[100px] overflow-visible"
+      className="relative py-[100px] overflow-x-hidden"
     >
       <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -195,7 +195,7 @@ export default function WebsiteShowcase() {
 
         {/* Carousel */}
         <div
-          className="relative mx-auto"
+          className="relative mx-auto overflow-hidden"
           style={{ height: cardH + 40, perspective: "1600px" }}
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
