@@ -23,7 +23,7 @@ function VideoCard({ video, index, isInView, onPlay }) {
         {/* Thumbnail */}
         <button
           type="button"
-          className="relative w-full aspect-video bg-gradient-to-br from-[#9741FE]/10 to-[#232872]/10 flex items-center justify-center cursor-pointer group"
+          className="relative w-full aspect-video bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center cursor-pointer group"
           onClick={() => onPlay(video)}
           aria-label={`Play ${video.title}`}
         >

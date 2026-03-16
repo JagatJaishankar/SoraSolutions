@@ -5,7 +5,7 @@ import { ChevronDown } from "lucide-react";
 
 export default function AccordionItem({ question, answer, isOpen, onToggle }) {
   return (
-    <div className={`border-b border-black/10 ${isOpen ? "border-l-2 border-l-[#9741FE]" : ""}`}>
+    <div className={`border-b border-black/10 ${isOpen ? "border-l-2 border-l-primary" : ""}`}>
       <button
         type="button"
         onClick={onToggle}

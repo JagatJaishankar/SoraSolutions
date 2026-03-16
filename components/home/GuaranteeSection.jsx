@@ -13,8 +13,8 @@ export default function GuaranteeSection() {
     <section className="py-[100px]">
       <div ref={ref} className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Gradient border wrapper */}
-        <div className="rounded-2xl bg-gradient-to-br from-[#9741FE] to-[#232872] p-[1.5px]">
-          <div className="bg-white/50 backdrop-blur-xl border border-white/20 rounded-2xl p-8 md:p-12">
+        <div className="rounded-2xl bg-gradient-to-br from-primary to-secondary p-[1.5px]">
+          <div className="bg-white/80 backdrop-blur-xl border border-white/20 rounded-2xl p-8 md:p-12">
             <div className="flex flex-col items-center text-center">
               {/* Shield icon */}
               <motion.div
@@ -22,7 +22,7 @@ export default function GuaranteeSection() {
                 animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
               >
-                <ShieldCheck className="w-16 h-16 text-[#9741FE]" />
+                <ShieldCheck className="w-16 h-16 text-primary" />
               </motion.div>
 
               {/* Heading */}

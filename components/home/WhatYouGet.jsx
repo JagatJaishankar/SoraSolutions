@@ -63,7 +63,7 @@ function SpotlightMockup({ item }) {
           onClick={handleTap}
         >
           {/* Full-colour content layer */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#9741FE]/5 to-[#232872]/5 flex items-center justify-center">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 flex items-center justify-center">
             <span className="text-black/30 text-sm font-light select-none">
               {item.placeholder}
             </span>
@@ -98,7 +98,7 @@ export default function WhatYouGet() {
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-[100px]">
+    <section className="py-[100px] bg-bluewhite section-shadow">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <div className="text-center mb-16">

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const WORDS = [
-  { word: "Jobs.", fontVar: "var(--font-plus-jakarta)", fontWeight: 800 },
+  { word: "Jobs.", fontVar: "var(--font-maven-pro)", fontWeight: 800 },
   { word: "Leads.", fontVar: "var(--font-oswald)", fontWeight: 700 },
   { word: "Reviews.", fontVar: "var(--font-playfair)", fontWeight: 700 },
   { word: "Time.", fontVar: "var(--font-space-mono)", fontWeight: 700 },
@@ -52,7 +52,7 @@ export default function WordFlip() {
 
   const isSpin = phase === "spinning";
   const current = WORDS[wordIndex];
-  const fontStyle = { fontFamily: current.fontVar, fontWeight: current.fontWeight, color: "#000" };
+  const fontStyle = { fontFamily: current.fontVar, fontWeight: current.fontWeight, color: "var(--color-black)" };
 
   return (
     <span className="wordflip-container">

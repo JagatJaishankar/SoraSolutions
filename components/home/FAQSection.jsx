@@ -36,7 +36,7 @@ export default function FAQSection() {
         </motion.div>
 
         {/* Glass container */}
-        <div className="bg-white/50 backdrop-blur-xl border border-white/20 rounded-2xl p-4 md:p-8">
+        <div className="bg-white/80 backdrop-blur-xl border border-white/20 rounded-2xl p-4 md:p-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-8">
             {/* Left column */}
             <div>

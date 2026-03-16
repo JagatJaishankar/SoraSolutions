@@ -50,7 +50,7 @@ export default function ProblemCards() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-[100px] bg-gradient-to-r from-[#9741FE]/3 to-[#232872]/3">
+    <section className="py-[100px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeading
         heading="Sound Familiar?"

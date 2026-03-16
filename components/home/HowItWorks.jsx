@@ -43,7 +43,7 @@ function StepCard({ step, index }) {
       {/* Circle node */}
       <div className="flex justify-center z-10">
         <motion.div
-          className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-[#9741FE] to-[#232872] flex items-center justify-center text-white font-bold text-xs md:text-sm shadow-lg"
+          className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-xs md:text-sm shadow-lg"
           initial={{ scale: 0 }}
           animate={isInView ? { scale: [0, 1.15, 1] } : { scale: 0 }}
           transition={{ duration: 0.5, ease: "easeOut", times: [0, 0.6, 1] }}
@@ -54,7 +54,7 @@ function StepCard({ step, index }) {
 
       {/* Horizontal connector */}
       <div className="flex items-center h-10 md:h-12">
-        <div className="w-full h-[2px] bg-gradient-to-r from-[#9741FE] to-[#232872] opacity-30" />
+        <div className="w-full h-[2px] bg-gradient-to-r from-primary to-secondary opacity-30" />
       </div>
 
       {/* Card */}
@@ -67,8 +67,8 @@ function StepCard({ step, index }) {
           <div className="flex flex-col md:flex-row md:gap-8">
             {/* Left: icon + title */}
             <div className="flex-shrink-0 md:w-[30%]">
-              <div className="w-12 h-12 rounded-xl bg-[#D9D1FB] flex items-center justify-center mb-3">
-                <Icon className="w-6 h-6 text-[#9741FE]" />
+              <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center mb-3">
+                <Icon className="w-6 h-6 text-primary" />
               </div>
               <h3 className="text-2xl font-bold text-black mb-3 md:mb-0">{step.title}</h3>
             </div>
@@ -82,7 +82,7 @@ function StepCard({ step, index }) {
                 {step.pills.map((pill) => (
                   <span
                     key={pill}
-                    className="bg-[#D9D1FB] text-[#9741FE] text-xs font-semibold rounded-full px-3 py-1"
+                    className="bg-accent text-primary text-xs font-semibold rounded-full px-3 py-1"
                   >
                     {pill}
                   </span>
@@ -123,7 +123,7 @@ export default function HowItWorks() {
           <div className="absolute left-[19px] md:left-[23px] top-0 bottom-0 w-[2px] md:w-[3px]">
             <div className="absolute inset-0 bg-black/10 rounded-full" />
             <motion.div
-              className="absolute top-0 left-0 right-0 origin-top bg-gradient-to-b from-[#9741FE] to-[#232872] rounded-full"
+              className="absolute top-0 left-0 right-0 origin-top bg-gradient-to-b from-primary to-secondary rounded-full"
               style={{ scaleY: lineScaleY, height: "100%" }}
             />
           </div>

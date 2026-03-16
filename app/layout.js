@@ -1,5 +1,6 @@
 import {
-  Plus_Jakarta_Sans,
+  Maven_Pro,
+  Poppins,
   Oswald,
   Playfair_Display,
   Space_Mono,
@@ -12,15 +13,23 @@ import {
 import "./globals.css";
 import { GradientBackground } from "@/components/effects/GradientBackground";
 import { GridOverlay } from "@/components/effects/GridOverlay";
+// import { PatternOverlay } from "@/components/effects/PatternOverlay";
+import FloatingLogos from "@/components/effects/FloatingLogos";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import StickyBottomCTA from "@/components/layout/StickyBottomCTA";
 import ExitIntentPopup from "@/components/layout/ExitIntentPopup";
 
-const plusJakarta = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta",
+const mavenPro = Maven_Pro({
+  variable: "--font-maven-pro",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+const poppins = Poppins({
+  variable: "--font-poppins",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 const oswald = Oswald({
@@ -78,7 +87,8 @@ export const metadata = {
 };
 
 const fontVars = [
-  plusJakarta,
+  mavenPro,
+  poppins,
   oswald,
   playfair,
   spaceMono,
@@ -94,9 +104,12 @@ const fontVars = [
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${fontVars} font-[family-name:var(--font-plus-jakarta)] antialiased`}>
+      <body
+        className={`${fontVars} font-[family-name:var(--font-poppins)] antialiased`}
+      >
         <GradientBackground />
         <GridOverlay />
+        <FloatingLogos />
         <div className="relative z-10">
           <Navbar />
           {children}

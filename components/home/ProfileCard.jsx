@@ -258,22 +258,22 @@ export default function ProfileCard({
     backgroundImage: `
       repeating-linear-gradient(
         0deg,
-        #9741FE44 calc(var(--space) * 1),
-        #23287244 calc(var(--space) * 2),
-        #D9D1FB44 calc(var(--space) * 3),
-        #9741FE44 calc(var(--space) * 4),
-        #23287244 calc(var(--space) * 5),
-        #D9D1FB44 calc(var(--space) * 6),
-        #9741FE44 calc(var(--space) * 7)
+        color-mix(in srgb, var(--color-primary) 27%, transparent) calc(var(--space) * 1),
+        color-mix(in srgb, var(--color-secondary) 27%, transparent) calc(var(--space) * 2),
+        color-mix(in srgb, var(--color-accent) 27%, transparent) calc(var(--space) * 3),
+        color-mix(in srgb, var(--color-primary) 27%, transparent) calc(var(--space) * 4),
+        color-mix(in srgb, var(--color-secondary) 27%, transparent) calc(var(--space) * 5),
+        color-mix(in srgb, var(--color-accent) 27%, transparent) calc(var(--space) * 6),
+        color-mix(in srgb, var(--color-primary) 27%, transparent) calc(var(--space) * 7)
       ),
       repeating-linear-gradient(
         var(--angle),
-        #f3f0ff 0%,
+        var(--color-bluewhite) 0%,
         hsl(260, 60%, 80%) 3.8%,
         hsl(260, 50%, 85%) 4.5%,
         hsl(260, 60%, 80%) 5.2%,
-        #f3f0ff 10%,
-        #f3f0ff 12%
+        var(--color-bluewhite) 10%,
+        var(--color-bluewhite) 12%
       ),
       radial-gradient(
         farthest-corner circle at var(--pointer-x) var(--pointer-y),
@@ -319,7 +319,7 @@ export default function ProfileCard({
           className="absolute inset-0 z-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(circle at var(--pointer-x) var(--pointer-y), rgba(217, 209, 251, 0.4) 0%, transparent 50%)",
+              "radial-gradient(circle at var(--pointer-x) var(--pointer-y), color-mix(in srgb, var(--color-accent) 40%, transparent) 0%, transparent 50%)",
             filter: "blur(50px) saturate(1.1)",
           }}
         />
@@ -329,7 +329,7 @@ export default function ProfileCard({
           className="absolute inset-0 z-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(circle at 50% 60%, rgba(217, 209, 251, 0.3) 0%, transparent 60%)",
+              "radial-gradient(circle at 50% 60%, color-mix(in srgb, var(--color-accent) 30%, transparent) 0%, transparent 60%)",
             filter: "blur(40px)",
           }}
         />
@@ -347,7 +347,7 @@ export default function ProfileCard({
             transition: "transform 1s ease",
             transform: "translateZ(0) rotateX(0deg) rotateY(0deg)",
             background:
-              "linear-gradient(145deg, #f3f0ff 0%, #e8e0ff 50%, #f3f0ff 100%)",
+              "linear-gradient(145deg, var(--color-bluewhite) 0%, var(--color-accent) 50%, var(--color-bluewhite) 100%)",
           }}
           onMouseEnter={(e) => {
             if (isMobile) return;
@@ -372,7 +372,7 @@ export default function ProfileCard({
             className="absolute inset-0"
             style={{
               backgroundImage:
-                "linear-gradient(145deg, rgba(217, 209, 251, 0.15) 0%, rgba(151, 65, 254, 0.08) 100%)",
+                "linear-gradient(145deg, color-mix(in srgb, var(--color-accent) 15%, transparent) 0%, color-mix(in srgb, var(--color-primary) 8%, transparent) 100%)",
               borderRadius: "1rem",
               display: "grid",
               gridArea: "1 / -1",
@@ -417,7 +417,7 @@ export default function ProfileCard({
                     className="w-32 h-32 rounded-full"
                     style={{
                       background:
-                        "linear-gradient(135deg, #9741FE33, #23287233, #D9D1FB33)",
+                        "linear-gradient(135deg, color-mix(in srgb, var(--color-primary) 20%, transparent), color-mix(in srgb, var(--color-secondary) 20%, transparent), color-mix(in srgb, var(--color-accent) 20%, transparent))",
                     }}
                   />
                 </div>
@@ -441,7 +441,7 @@ export default function ProfileCard({
                   className="font-bold text-2xl md:text-3xl"
                   style={{
                     backgroundImage:
-                      "linear-gradient(to bottom, #1a1a1a, #555)",
+                      "linear-gradient(to bottom, var(--color-black), color-mix(in srgb, var(--color-black) 33%, transparent))",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
                     WebkitBackgroundClip: "text",
@@ -453,7 +453,7 @@ export default function ProfileCard({
                   className="text-sm font-semibold -mt-1"
                   style={{
                     backgroundImage:
-                      "linear-gradient(to bottom, #333, #888)",
+                      "linear-gradient(to bottom, color-mix(in srgb, var(--color-black) 80%, transparent), color-mix(in srgb, var(--color-black) 47%, transparent))",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
                     WebkitBackgroundClip: "text",

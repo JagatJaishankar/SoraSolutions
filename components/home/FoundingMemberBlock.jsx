@@ -14,7 +14,7 @@ export default function FoundingMemberBlock() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-[80px] bg-gradient-to-r from-[#9741FE]/3 to-[#232872]/3">
+    <section className="py-[80px] bg-bluewhite section-shadow">
       <div ref={ref} className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ y: 30, opacity: 0 }}
@@ -34,7 +34,7 @@ export default function FoundingMemberBlock() {
                 {/* Progress bar */}
                 <div className="w-full h-4 md:h-5 rounded-full bg-black/5 overflow-hidden mt-8">
                   <motion.div
-                    className="h-full rounded-full bg-gradient-to-r from-[#9741FE] to-[#232872]"
+                    className="h-full rounded-full bg-gradient-to-r from-primary to-secondary"
                     initial={{ width: "0%" }}
                     animate={
                       isInView
@@ -52,8 +52,8 @@ export default function FoundingMemberBlock() {
                   animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                   transition={{ duration: 0.5, ease: "easeOut", delay: 1.5 }}
                 >
-                  <span className="w-2 h-2 rounded-full bg-[#9741FE] animate-pulse" />
-                  <span className="font-semibold text-black underline decoration-[#9741FE] decoration-2 underline-offset-4">
+                  <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                  <span className="font-semibold text-black underline decoration-primary decoration-2 underline-offset-4">
                     {SPOTS_REMAINING} spots remaining
                   </span>
                 </motion.div>

@@ -36,10 +36,10 @@ function FooterLink({ href, children }) {
   return (
     <a
       href={href}
-      className="group relative text-sm text-white/50 hover:text-[#D9D1FB] transition-colors duration-200 w-fit"
+      className="group relative text-sm text-white/50 hover:text-accent transition-colors duration-200 w-fit"
     >
       {children}
-      <span className="absolute left-0 -bottom-0.5 h-px w-full origin-left scale-x-0 bg-[#D9D1FB] transition-transform duration-300 group-hover:scale-x-100" />
+      <span className="absolute left-0 -bottom-0.5 h-px w-full origin-left scale-x-0 bg-accent transition-transform duration-300 group-hover:scale-x-100" />
     </a>
   );
 }
@@ -49,9 +49,9 @@ export default function Footer() {
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
-    <footer className="bg-[#090B3C]">
+    <footer className="bg-deep">
       {/* Top gradient accent line */}
-      <div className="h-[2px] bg-gradient-to-r from-[#9741FE] to-[#232872]" />
+      <div className="h-[2px] bg-gradient-to-r from-primary to-secondary" />
 
       <motion.div
         ref={ref}
@@ -65,20 +65,20 @@ export default function Footer() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
             {/* Column 1 — Brand */}
             <div>
-              <div className="text-2xl font-black text-white">SORA</div>
+              <img src="/images/sora-logo.png" alt="Sora Solutions" className="h-10 w-auto object-contain brightness-0 invert" />
               <p className="text-sm text-white/50 mt-2">
                 Marketing, AI & Growth Systems for Trades
               </p>
               <div className="flex flex-col gap-1.5 mt-4">
                 <a
                   href="mailto:hello@sorasolution.com"
-                  className="text-sm text-white/60 hover:text-[#D9D1FB] transition-colors duration-200"
+                  className="text-sm text-white/60 hover:text-accent transition-colors duration-200"
                 >
                   hello@sorasolution.com
                 </a>
                 <a
                   href="tel:+61409422868"
-                  className="text-sm text-white/60 hover:text-[#D9D1FB] transition-colors duration-200"
+                  className="text-sm text-white/60 hover:text-accent transition-colors duration-200"
                 >
                   +61 409 422 868
                 </a>
@@ -92,7 +92,7 @@ export default function Footer() {
                     key={social.label}
                     href={social.href}
                     aria-label={social.label}
-                    className="text-white/50 hover:text-[#D9D1FB] transition-colors duration-200"
+                    className="text-white/50 hover:text-primary transition-colors duration-200"
                   >
                     <social.icon className="w-5 h-5" />
                   </a>
@@ -149,7 +149,7 @@ export default function Footer() {
               &copy; 2026 Sora Business Solutions Pty Ltd. All rights reserved.
             </p>
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#9741FE] animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               <span className="text-xs text-white/40">
                 All systems operational
               </span>

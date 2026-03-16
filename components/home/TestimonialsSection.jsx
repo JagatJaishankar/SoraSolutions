@@ -10,7 +10,7 @@ const reviews = [
       "Testimonial placeholder — real client reviews will be added here once founding members provide feedback.",
     name: "Client A.",
     initials: "CA",
-    color: "bg-purple-500",
+    color: "bg-primary",
     timeAgo: "2 weeks ago",
   },
   {
@@ -18,7 +18,7 @@ const reviews = [
       "Testimonial placeholder — real client reviews will be added here once founding members provide feedback.",
     name: "Client B.",
     initials: "CB",
-    color: "bg-green-500",
+    color: "bg-secondary",
     timeAgo: "5 weeks ago",
   },
   {
@@ -26,7 +26,7 @@ const reviews = [
       "Testimonial placeholder — real client reviews will be added here once founding members provide feedback.",
     name: "Client C.",
     initials: "CC",
-    color: "bg-blue-500",
+    color: "bg-primary",
     timeAgo: "3 weeks ago",
   },
   {
@@ -34,7 +34,7 @@ const reviews = [
       "Testimonial placeholder — real client reviews will be added here once founding members provide feedback.",
     name: "Client D.",
     initials: "CD",
-    color: "bg-amber-500",
+    color: "bg-secondary",
     timeAgo: "1 week ago",
   },
   {
@@ -42,7 +42,7 @@ const reviews = [
       "Testimonial placeholder — real client reviews will be added here once founding members provide feedback.",
     name: "Client E.",
     initials: "CE",
-    color: "bg-rose-500",
+    color: "bg-primary",
     timeAgo: "4 weeks ago",
   },
 ];
@@ -63,7 +63,7 @@ function CardStars() {
   return (
     <div className="flex gap-0.5 mb-4">
       {[...Array(5)].map((_, i) => (
-        <StarIcon key={i} className="w-5 h-5 text-[#F59E0B]" />
+        <StarIcon key={i} className="w-5 h-5 text-star" />
       ))}
     </div>
   );
@@ -83,7 +83,7 @@ function GoogleIcon() {
 
 function ReviewCard({ review }) {
   return (
-    <div className="bg-white/60 backdrop-blur-xl border border-black/5 rounded-2xl p-6 h-full flex flex-col select-none">
+    <div className="bg-white/85 backdrop-blur-xl border border-black/5 rounded-2xl p-6 h-full flex flex-col select-none">
       <CardStars />
       <p className="text-base font-light text-black/70 leading-relaxed flex-1">
         &ldquo;{review.quote}&rdquo;
@@ -194,7 +194,7 @@ export default function TestimonialsSection() {
     "w-[calc(100vw-4rem)] sm:w-[calc(50vw-3.5rem)] lg:w-[calc(33.333vw-3.5rem)] xl:w-[380px]";
 
   return (
-    <section ref={sectionRef} className="py-[100px] overflow-hidden">
+    <section ref={sectionRef} className="py-[100px] bg-bluewhite section-shadow overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -215,7 +215,7 @@ export default function TestimonialsSection() {
               {[...Array(5)].map((_, i) => (
                 <StarIcon
                   key={i}
-                  className="w-8 h-8 text-[#F59E0B]"
+                  className="w-8 h-8 text-star"
                 />
               ))}
             </div>

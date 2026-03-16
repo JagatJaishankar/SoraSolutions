@@ -17,27 +17,31 @@
 - **No height shifts** — animated elements must not cause layout shift. Use fixed heights or invisible sizers
 - **max-w-7xl** on all section containers unless specifically noted otherwise
 - **Mobile-first** — all components must be responsive
+- **STRICT COLOUR ENFORCEMENT** — only the 7 approved brand colours may be used anywhere. The ONLY exception is #F59E0B for gold star ratings in the Google Reviews section.
 
 ## Design System
 
-### Colours — STRICTLY 6 colours only (defined in @theme in globals.css)
-- --color-primary: #9741FE (vibrant purple — CTAs, links, accents, buttons, icons, active states)
-- --color-secondary: #232872 (dark indigo — dark accents, gradient endpoints, dark section backgrounds)
-- --color-accent: #D9D1FB (light lavender — tints, hover states, badge backgrounds, icon containers, subtle fills)
-- --color-base: #ffffff (white — dominant base, cards, glassmorphism)
-- --color-black: #000000 (black — body text, headings)
-- --color-deep: #090B3C (deep navy — footer, darkest backgrounds)
+### Colours — STRICTLY 7 colours only (defined in @theme in globals.css)
+- --color-primary: #9740fe (Sora Violet — CTAs, links, accents, buttons, icons, active states)
+- --color-secondary: #222872 (Intense Blue — dark accents, gradient endpoints, dark section backgrounds)
+- --color-accent: #d9d0fb (Lilac — tints, hover states, badge backgrounds, icon containers, subtle fills)
+- --color-base: #ffffff (White — dominant base, cards, glassmorphism)
+- --color-black: #000000 (Black — body text, headings)
+- --color-deep: #090b3c (Midnight Blue — footer, darkest backgrounds, Final CTA)
+- --color-bluewhite: #f5f3ff (Blue White — alternating section backgrounds)
 
 NO OTHER COLOURS ALLOWED. No orange, no blue (#2362fd), no green, no red, no amber.
+Exception: #F59E0B for star ratings in reviews section ONLY.
 
 ### Typography
-- Display/Headings: Plus Jakarta Sans — font-extrabold or font-black
-- Body: Plus Jakarta Sans — font-light (300 weight), tracking-wide
+- Display/Headings: Maven Pro (--font-maven-pro) — font-extrabold or font-black
+- Body: Poppins (--font-poppins) — font-light (300 weight), tracking-wide
 - Hero heading: text-5xl, tracking-tight/tighter
 - Section headings: text-4xl, tracking-tight
 - Body text: text-base, font-light, tracking-wide
 - Button text: font-bold or font-semibold (heavier than body)
-- WordFlip fonts: Oswald, Playfair Display, Space Mono, Bebas Neue, Raleway, Black Han Sans, Caveat, Barlow
+- WordFlip base word ("Jobs."): Maven Pro (matches heading font)
+- WordFlip spin fonts: Oswald, Playfair Display, Space Mono, Bebas Neue, Raleway, Black Han Sans, Caveat, Barlow
 
 ### Spacing
 - Section padding: py-[100px] unless noted otherwise
@@ -46,24 +50,29 @@ NO OTHER COLOURS ALLOWED. No orange, no blue (#2362fd), no green, no red, no amb
 - Card gaps: gap-6 md:gap-8
 
 ### Glassmorphism
-- Background: bg-white/50 to bg-white/70
+- Background: bg-white/80 (increased for readability over pattern background)
 - Blur: backdrop-blur-xl
 - Border: border border-white/20
-- Gradient border: 1.5px padding wrapper with linear-gradient(135deg, #9741FE, #232872)
+- Gradient border: 1.5px padding wrapper with linear-gradient(135deg, #9740fe, #222872)
 
 ### Gradient Text
-- Purple to indigo: background linear-gradient(135deg, #9741FE, #232872)
+- Purple to indigo: background linear-gradient(135deg, #9740fe, #222872)
 - Applied with bg-clip-text text-transparent
 
 ### Dark Sections
-- Final CTA: bg-[#232872], text white, #9741FE glow accents
-- Footer: bg-[#090B3C], text white with opacity, link hover: text-[#D9D1FB]
+- Final CTA: bg-[#090b3c], text white, #9740fe glow accents
+- Footer: bg-[#090b3c], text white with opacity, link hover: text-[#d9d0fb], social icon hover: text-[#9740fe]
 
 ### Badges & Pills
-- All badges: bg-[#D9D1FB] text-[#9741FE] text-xs font-semibold px-3 py-1 rounded-full
+- All badges: bg-[#d9d0fb] text-[#9740fe] text-xs font-semibold px-3 py-1 rounded-full
 
 ### Icon Containers
-- All icon circles: bg-[#D9D1FB] with icon in text-[#9741FE]
+- All icon circles: bg-[#d9d0fb] with icon in text-[#9740fe]
+
+### Section Background Rhythm
+- Alternating sections use bg-[#f5f3ff] (Blue White) for visual rhythm:
+  - ProblemCards, ComparisonTable, WhatYouGet, StatsSection, TestimonialsSection, FAQSection
+- Remaining sections stay on white/transparent base
 
 ## Animation Defaults (Framer Motion)
 - Fade up: from y:30 opacity:0 → y:0 opacity:1, duration 0.6s, easeOut
@@ -75,9 +84,14 @@ NO OTHER COLOURS ALLOWED. No orange, no blue (#2362fd), no green, no red, no amb
 - Counter: 0 to target, ease-out cubic, ~2s, viewport triggered
 
 ## Site-Wide Background (layout.js)
-- GradientBackground: fixed z-0 animated gradient blobs (purple + indigo brand colours)
-- GridOverlay: fixed z-1 subtle dot grid
-- Both pointer-events-none, render behind all content
+- GradientBackground: fixed z-0 animated gradient blobs (purple + indigo brand colours), wrapped in opacity-50 div
+- PatternOverlay: fixed z-[2] repeating Sora S pattern (/images/sora-pattern.png) at 10% opacity
+- GridOverlay: commented out (replaced by PatternOverlay)
+- All pointer-events-none, render behind all content
+
+## Logo
+- Logo image: /images/sora-logo.png (transparent PNG with purple S icon + "SoraSolutions" wordmark)
+- Used in Navbar, Footer (with brightness-0 invert for dark bg), and MobileDrawer
 
 ## Mobile
 - Sticky bottom bar: click-to-call ONLY, fixed bottom, mobile only (lg:hidden)

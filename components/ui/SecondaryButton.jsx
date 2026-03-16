@@ -9,7 +9,7 @@ export default function SecondaryButton({
   className = "",
   type = "button",
 }) {
-  const classes = `inline-flex items-center justify-center border-2 border-current bg-transparent font-bold rounded-xl px-6 py-3 cursor-pointer transition-colors duration-300 hover:bg-[#9741FE] hover:text-white hover:border-[#9741FE] ${className}`;
+  const classes = `inline-flex items-center justify-center border-2 border-current bg-transparent font-bold rounded-xl px-6 py-3 cursor-pointer transition-colors duration-300 hover:bg-primary hover:text-white hover:border-primary ${className}`;
 
   if (href) {
     return (

@@ -22,7 +22,7 @@ export default function TiltCard({ children, className = "", href, accentLine = 
   const spotlightOpacity = useSpring(0, { damping: 20, stiffness: 300 });
   const liftY = useSpring(0, springValues);
 
-  const spotlightBg = useMotionTemplate`radial-gradient(200px circle at ${mouseX}px ${mouseY}px, rgba(151, 65, 254, 0.04), transparent 100%)`;
+  const spotlightBg = useMotionTemplate`radial-gradient(200px circle at ${mouseX}px ${mouseY}px, color-mix(in srgb, var(--color-primary) 4%, transparent), transparent 100%)`;
 
   function handleMouse(e) {
     if (!ref.current) return;
@@ -60,9 +60,9 @@ export default function TiltCard({ children, className = "", href, accentLine = 
       onMouseLeave={handleMouseLeave}
     >
       <motion.div
-        className={`relative h-full border rounded-2xl [transform-style:preserve-3d] will-change-transform [transition:box-shadow_300ms,border-color_300ms] bg-white/50 backdrop-blur-xl ${
+        className={`relative h-full border rounded-2xl [transform-style:preserve-3d] will-change-transform [transition:box-shadow_300ms,border-color_300ms] bg-white/80 backdrop-blur-xl ${
           hovered
-            ? "border-[#9741FE]/10 shadow-xl"
+            ? "border-primary/10 shadow-xl"
             : "border-white/20 shadow-md"
         }`}
         style={{ rotateX, rotateY, y: liftY }}
@@ -70,7 +70,7 @@ export default function TiltCard({ children, className = "", href, accentLine = 
         {/* Clipping layer for accent line + spotlight (overflow-hidden here won't affect 3D content below) */}
         <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none z-10">
           {accentLine && (
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#9741FE] to-[#232872]" />
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-primary to-secondary" />
           )}
           <motion.div
             className="absolute inset-0"

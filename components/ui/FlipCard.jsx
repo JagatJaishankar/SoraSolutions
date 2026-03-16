@@ -30,8 +30,8 @@ export default function FlipCard({
         }`}
       >
         {/* Front Face */}
-        <div className="absolute inset-0 [backface-visibility:hidden] bg-white/50 backdrop-blur-xl border border-white/20 rounded-2xl p-8 flex flex-col items-center justify-center text-center">
-          <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#9741FE] to-[#232872] flex items-center justify-center mb-5">
+        <div className="absolute inset-0 [backface-visibility:hidden] bg-white/80 backdrop-blur-xl border border-white/20 rounded-2xl p-8 flex flex-col items-center justify-center text-center">
+          <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center mb-5">
             <Icon className="w-7 h-7 text-white" strokeWidth={1.5} />
           </div>
           <h3 className="text-xl font-extrabold tracking-tight text-black mb-3">
@@ -49,11 +49,11 @@ export default function FlipCard({
         </div>
 
         {/* Back Face */}
-        <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-white/50 backdrop-blur-xl border border-white/20 rounded-2xl p-8 flex flex-col items-center justify-center text-center">
+        <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-white/80 backdrop-blur-xl border border-white/20 rounded-2xl p-8 flex flex-col items-center justify-center text-center">
           <p className="text-base font-light tracking-wide text-black/70 leading-relaxed mb-6">
             {backCopy}
           </p>
-          <p className="text-sm font-bold bg-gradient-to-r from-[#9741FE] to-[#232872] bg-clip-text text-transparent">
+          <p className="text-sm font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
             {backFooter}
           </p>
         </div>

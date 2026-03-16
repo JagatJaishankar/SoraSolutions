@@ -156,7 +156,7 @@ export default function WebsiteShowcase() {
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, ease: "easeOut" }}
-      className="relative py-[100px] overflow-visible bg-gradient-to-r from-[#9741FE]/3 to-[#232872]/3"
+      className="relative py-[100px] overflow-visible"
     >
       <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -166,23 +166,23 @@ export default function WebsiteShowcase() {
             <span
               className="block w-8 h-px"
               style={{
-                background: "linear-gradient(to right, transparent, #9741FE)",
+                background: "linear-gradient(to right, transparent, var(--color-primary))",
               }}
             />
-            <span className="text-[10px] font-medium tracking-[0.25em] uppercase text-[#9741FE]">
+            <span className="text-[10px] font-medium tracking-[0.25em] uppercase text-primary">
               What&apos;s Inside Every Site
             </span>
             <span
               className="block w-8 h-px"
               style={{
-                background: "linear-gradient(to left, transparent, #9741FE)",
+                background: "linear-gradient(to left, transparent, var(--color-primary))",
               }}
             />
           </div>
 
           <h2 className="text-4xl font-extrabold tracking-tight text-black">
             Built to{" "}
-            <span className="underline decoration-[#9741FE] decoration-4 underline-offset-4">
+            <span className="underline decoration-primary decoration-4 underline-offset-4">
               Win Work
             </span>
           </h2>
@@ -300,14 +300,14 @@ export default function WebsiteShowcase() {
           {/* Nav buttons */}
           <button
             onClick={() => navigate(-1)}
-            className="absolute z-20 top-1/2 -translate-y-1/2 left-0 md:left-2 w-[42px] h-[42px] rounded-full bg-white/80 backdrop-blur-md border border-black/10 text-black/50 flex items-center justify-center cursor-pointer transition-all duration-200 hover:border-[#9741FE]/30 hover:text-[#9741FE] hover:bg-[#D9D1FB]/30 hover:shadow-md"
+            className="absolute z-20 top-1/2 -translate-y-1/2 left-0 md:left-2 w-[42px] h-[42px] rounded-full bg-white/80 backdrop-blur-md border border-black/10 text-black/50 flex items-center justify-center cursor-pointer transition-all duration-200 hover:border-primary/30 hover:text-primary hover:bg-accent/30 hover:shadow-md"
             aria-label="Previous slide"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
           <button
             onClick={() => navigate(1)}
-            className="absolute z-20 top-1/2 -translate-y-1/2 right-0 md:right-2 w-[42px] h-[42px] rounded-full bg-white/80 backdrop-blur-md border border-black/10 text-black/50 flex items-center justify-center cursor-pointer transition-all duration-200 hover:border-[#9741FE]/30 hover:text-[#9741FE] hover:bg-[#D9D1FB]/30 hover:shadow-md"
+            className="absolute z-20 top-1/2 -translate-y-1/2 right-0 md:right-2 w-[42px] h-[42px] rounded-full bg-white/80 backdrop-blur-md border border-black/10 text-black/50 flex items-center justify-center cursor-pointer transition-all duration-200 hover:border-primary/30 hover:text-primary hover:bg-accent/30 hover:shadow-md"
             aria-label="Next slide"
           >
             <ChevronRight className="w-5 h-5" />
@@ -316,7 +316,7 @@ export default function WebsiteShowcase() {
 
         {/* Info panel */}
         <div className="text-center mt-10 min-h-[160px]">
-          <p className="text-[10px] tracking-[0.22em] uppercase text-[#9741FE] mb-2">
+          <p className="text-[10px] tracking-[0.22em] uppercase text-primary mb-2">
             {activeSlide.feature}
           </p>
           <h3 className="text-xl md:text-[28px] font-bold tracking-tight text-black mb-2.5">
@@ -330,7 +330,7 @@ export default function WebsiteShowcase() {
               href={activeSlide.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-black/50 text-[12.5px] border border-black/10 rounded-full px-4 py-1.5 transition-all duration-200 hover:text-[#9741FE] hover:border-[#9741FE]/30 hover:bg-[#D9D1FB]/30"
+              className="inline-flex items-center gap-1.5 text-black/50 text-[12.5px] border border-black/10 rounded-full px-4 py-1.5 transition-all duration-200 hover:text-primary hover:border-primary/30 hover:bg-accent/30"
             >
               View live demo
               <ExternalLink className="w-[11px] h-[11px]" />
@@ -347,7 +347,7 @@ export default function WebsiteShowcase() {
               aria-label={`Go to slide ${i + 1}`}
               className={`h-[3px] rounded-sm cursor-pointer transition-all duration-300 ${
                 i === current
-                  ? "w-[32px] bg-[#9741FE] shadow-[0_0_8px_rgba(151,65,254,0.4)]"
+                  ? "w-[32px] bg-primary shadow-[0_0_8px_color-mix(in_srgb,var(--color-primary)_40%,transparent)]"
                   : "w-[18px] bg-black/15 hover:bg-black/25"
               }`}
             />
@@ -360,7 +360,7 @@ export default function WebsiteShowcase() {
             className="block w-14 h-px"
             style={{
               background:
-                "linear-gradient(to right, transparent, rgba(151,65,254,0.2))",
+                "linear-gradient(to right, transparent, color-mix(in srgb, var(--color-primary) 20%, transparent))",
             }}
           />
           <span className="text-[12.5px] font-light text-black/30">
@@ -370,7 +370,7 @@ export default function WebsiteShowcase() {
             className="block w-14 h-px"
             style={{
               background:
-                "linear-gradient(to left, transparent, rgba(151,65,254,0.2))",
+                "linear-gradient(to left, transparent, color-mix(in srgb, var(--color-primary) 20%, transparent))",
             }}
           />
         </div>

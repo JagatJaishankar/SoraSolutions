@@ -256,11 +256,11 @@ const LogoLoop = memo(function LogoLoop({
         <>
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-y-0 left-0 z-10 w-[clamp(24px,8%,120px)] bg-[linear-gradient(to_right,var(--logoloop-fadeColor,#ffffff)_0%,rgba(0,0,0,0)_100%)]"
+            className="pointer-events-none absolute inset-y-0 left-0 z-10 w-[clamp(24px,8%,120px)] bg-[linear-gradient(to_right,var(--logoloop-fadeColor,var(--color-base))_0%,rgba(0,0,0,0)_100%)]"
           />
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-y-0 right-0 z-10 w-[clamp(24px,8%,120px)] bg-[linear-gradient(to_left,var(--logoloop-fadeColor,#ffffff)_0%,rgba(0,0,0,0)_100%)]"
+            className="pointer-events-none absolute inset-y-0 right-0 z-10 w-[clamp(24px,8%,120px)] bg-[linear-gradient(to_left,var(--logoloop-fadeColor,var(--color-base))_0%,rgba(0,0,0,0)_100%)]"
           />
         </>
       )}

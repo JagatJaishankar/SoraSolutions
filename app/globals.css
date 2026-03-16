@@ -4,45 +4,80 @@ html {
   scroll-behavior: smooth;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-maven-pro);
+}
+
 @theme {
-  --color-primary: #9741FE;
-  --color-secondary: #232872;
-  --color-accent: #D9D1FB;
+  --color-primary: #9740fe;
+  --color-secondary: #222872;
+  --color-accent: #d9d0fb;
   --color-base: #ffffff;
   --color-black: #000000;
-  --color-deep: #090B3C;
-  --color-bg1: rgb(248, 250, 252);
-  --color-bg2: rgb(243, 244, 246);
-  --color1: 151, 65, 254;
-  --color2: 35, 40, 114;
-  --color3: 217, 209, 251;
-  --color4: 151, 65, 254;
-  --color5: 35, 40, 114;
-  --color-interactive: 151, 65, 254;
+  --color-deep: #090b3c;
+  --color-bluewhite: #f5f3ff;
+  --color-star: #F59E0B;
+  --color-bg1: rgb(245, 243, 255);
+  --color-bg2: rgb(245, 243, 255);
+  --color1: 151, 64, 254;
+  --color2: 34, 40, 114;
+  --color3: 217, 208, 251;
+  --color4: 151, 64, 254;
+  --color5: 34, 40, 114;
+  --color-interactive: 151, 64, 254;
   --circle-size: 70%;
   --blending: screen;
+}
+
+/* ── Section shadows ── */
+
+.section-shadow {
+  position: relative;
+  box-shadow:
+    0 -12px 24px -12px rgba(0, 0, 0, 0.08),
+    0 12px 24px -12px rgba(0, 0, 0, 0.08);
+}
+
+.section-shadow::before,
+.section-shadow::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  pointer-events: none;
+}
+
+.section-shadow::before {
+  top: 0;
+  background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.06), transparent);
+}
+
+.section-shadow::after {
+  bottom: 0;
+  background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.06), transparent);
 }
 
 /* ── Utility classes ── */
 
 .glass {
-  @apply bg-white/50 backdrop-blur-xl border border-white/20 rounded-2xl;
+  @apply bg-white/80 backdrop-blur-xl border border-white/20 rounded-2xl;
 }
 
 .glass-light {
-  @apply bg-white/30 backdrop-blur-lg border border-black/10 rounded-full;
+  @apply bg-white/60 backdrop-blur-lg border border-black/10 rounded-full;
 }
 
 .gradient-border-wrapper {
-  background: linear-gradient(135deg, #9741FE, #232872);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
 }
 
 .gradient-text {
-  @apply bg-gradient-to-r from-[#9741FE] to-[#232872] bg-clip-text text-transparent;
+  @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
 }
 
 .input-glass {
-  @apply bg-white/40 backdrop-blur-md border border-white/20 rounded-xl outline-none transition-all duration-300 focus:border-[#9741FE]/50;
+  @apply bg-white/70 backdrop-blur-md border border-white/20 rounded-xl outline-none transition-all duration-300 focus:border-primary/50;
 }
 
 /* ── WordFlip ── */
@@ -86,7 +121,7 @@ html {
 }
 
 .floating-label-group input {
-  @apply bg-white/40 backdrop-blur-md border border-white/20 rounded-xl outline-none transition-all duration-300 focus:border-[#9741FE]/50 w-full px-4 pt-5 pb-2 text-sm text-black;
+  @apply bg-white/70 backdrop-blur-md border border-white/20 rounded-xl outline-none transition-all duration-300 focus:border-primary/50 w-full px-4 pt-5 pb-2 text-sm text-black;
 }
 
 .floating-label-group input::placeholder {
@@ -99,7 +134,7 @@ html {
 
 .floating-label-group input:focus ~ label,
 .floating-label-group input:not(:placeholder-shown) ~ label {
-  @apply top-2.5 translate-y-0 text-xs text-[#9741FE];
+  @apply top-2.5 translate-y-0 text-xs text-primary;
 }
 
 /* ── Shimmer button ── */

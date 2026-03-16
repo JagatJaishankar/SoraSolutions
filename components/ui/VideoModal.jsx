@@ -58,7 +58,7 @@ export default function VideoModal({ isOpen, onClose, title }) {
             </button>
 
             {/* Placeholder content */}
-            <div className="aspect-video flex flex-col items-center justify-center bg-gradient-to-br from-[#9741FE]/20 to-[#232872]/20">
+            <div className="aspect-video flex flex-col items-center justify-center bg-gradient-to-br from-primary/20 to-secondary/20">
               <p className="text-white/50 text-lg font-light">
                 Video coming soon
               </p>

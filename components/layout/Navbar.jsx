@@ -54,8 +54,8 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center relative h-14">
             {/* Left pill — Logo */}
             <div className={`pointer-events-auto bg-white/70 backdrop-blur-2xl border border-white/20 rounded-full px-5 h-12 flex items-center transition-shadow duration-300 ${scrolled ? "shadow-lg" : ""}`}>
-              <Link href="/" className="text-lg font-extrabold tracking-tight text-black">
-                SORA
+              <Link href="/" className="flex items-center">
+                <img src="/images/sora-logo.png" alt="Sora Solutions" className="h-9 w-auto object-contain" />
               </Link>
             </div>
 
@@ -78,14 +78,14 @@ export default function Navbar() {
                           href={link.href}
                           className={`flex items-center gap-1 text-sm font-medium px-3 py-1.5 rounded-full transition-colors duration-200 ${
                             active
-                              ? "text-black bg-[#D9D1FB]"
+                              ? "text-black bg-accent"
                               : "text-black/70 hover:text-black"
                           }`}
                         >
                           <span className="relative">
                             {link.label}
                             {active && (
-                              <span className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#9741FE]" />
+                              <span className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary" />
                             )}
                           </span>
                           <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${servicesOpen ? "rotate-180" : ""}`} />
@@ -103,14 +103,14 @@ export default function Navbar() {
                       href={link.href}
                       className={`text-sm font-medium px-3 py-1.5 rounded-full transition-colors duration-200 ${
                         active
-                          ? "text-black bg-[#D9D1FB]"
+                          ? "text-black bg-accent"
                           : "text-black/70 hover:text-black"
                       }`}
                     >
                       <span className="relative">
                         {link.label}
                         {active && (
-                          <span className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#9741FE]" />
+                          <span className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary" />
                         )}
                       </span>
                     </Link>
@@ -130,7 +130,7 @@ export default function Navbar() {
               <span className="text-black/20">|</span>
               <Link
                 href="/contact"
-                className="bg-[#9741FE] text-white font-bold text-sm px-5 py-2.5 rounded-full shadow-sm transition-transform duration-200 hover:scale-[1.02]"
+                className="bg-primary text-white font-bold text-sm px-5 py-2.5 rounded-full shadow-sm transition-transform duration-200 hover:scale-[1.02]"
               >
                 Book a Free Strategy Call
               </Link>
@@ -144,7 +144,7 @@ export default function Navbar() {
               href="/"
               className={`pointer-events-auto bg-white/70 backdrop-blur-2xl border border-white/20 rounded-full px-5 h-12 flex items-center transition-shadow duration-300 ${scrolled ? "shadow-lg" : ""}`}
             >
-              <span className="text-lg font-extrabold tracking-tight text-black">SORA</span>
+              <img src="/images/sora-logo.png" alt="Sora Solutions" className="h-9 w-auto object-contain" />
             </Link>
 
             {/* Right pill — Hamburger */}

@@ -83,7 +83,7 @@ export default function ServicesDropdown() {
                 <Link
                   key={item.title}
                   href={item.href}
-                  className="group flex flex-col gap-1 rounded-xl p-3 transition-all duration-200 hover:bg-[#D9D1FB]/30 hover:-translate-y-1"
+                  className="group flex flex-col gap-1 rounded-xl p-3 transition-all duration-200 hover:bg-accent/30 hover:-translate-y-1"
                 >
                   <div className="flex items-center gap-2">
                     <span className="text-base">{item.emoji}</span>
@@ -94,7 +94,7 @@ export default function ServicesDropdown() {
                   <p className="text-sm text-black/60 leading-snug">
                     {item.subtitle}
                   </p>
-                  <span className="mt-1 inline-block self-start text-xs font-medium text-[#9741FE] bg-[#9741FE]/10 rounded-full px-2 py-0.5">
+                  <span className="mt-1 inline-block self-start text-xs font-medium text-primary bg-primary/10 rounded-full px-2 py-0.5">
                     {item.badge}
                   </span>
                 </Link>

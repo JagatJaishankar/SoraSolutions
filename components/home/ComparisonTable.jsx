@@ -26,7 +26,7 @@ function AgencyPanel() {
             key={row.label}
             className={`py-5 ${i < rows.length - 1 ? "border-b border-black/10" : ""}`}
           >
-            <div className="text-xs font-bold text-[#9741FE] uppercase tracking-widest mb-2">
+            <div className="text-xs font-bold text-primary uppercase tracking-widest mb-2">
               {row.label}
             </div>
             <div className="text-lg font-light text-black/50 flex items-start">
@@ -44,13 +44,13 @@ function SoraPanel({ revealSora }) {
   return (
     <div className="relative">
       {/* Subtle green glow behind the panel */}
-      <div className="absolute inset-0 bg-[#9741FE]/5 blur-3xl rounded-full scale-90 -z-10" />
+      <div className="absolute inset-0 bg-primary/5 blur-3xl rounded-full scale-90 -z-10" />
 
       {/* Gradient border wrapper */}
-      <div className="rounded-2xl bg-gradient-to-br from-[#9741FE] to-[#232872] p-[1.5px] h-full">
+      <div className="rounded-2xl bg-gradient-to-br from-primary to-secondary p-[1.5px] h-full">
         <div className="bg-white/70 backdrop-blur-xl rounded-2xl p-8 md:p-10 h-full">
           <div className="mb-6">
-            <span className="bg-[#D9D1FB] text-[#9741FE] text-sm font-bold px-4 py-2 rounded-full">
+            <span className="bg-accent text-primary text-sm font-bold px-4 py-2 rounded-full">
               With Sora
             </span>
           </div>
@@ -58,18 +58,18 @@ function SoraPanel({ revealSora }) {
             {rows.map((row, i) => (
               <motion.div
                 key={row.label}
-                className={`py-5 cursor-default hover:bg-[#D9D1FB]/50 hover:scale-[1.01] transition-all duration-200 rounded-lg ${
+                className={`py-5 cursor-default hover:bg-accent/50 hover:scale-[1.01] transition-all duration-200 rounded-lg ${
                   i < rows.length - 1 ? "border-b border-black/5" : ""
                 }`}
                 initial={{ opacity: 0, x: 20 }}
                 animate={revealSora ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
                 transition={{ delay: i * 0.15, duration: 0.5, ease: "easeOut" }}
               >
-                <div className="text-xs font-bold text-[#9741FE] uppercase tracking-widest mb-2">
+                <div className="text-xs font-bold text-primary uppercase tracking-widest mb-2">
                   {row.label}
                 </div>
                 <div className="text-lg font-medium text-black flex items-start">
-                  <span className="text-[#9741FE] mr-3 flex-shrink-0 w-5 h-5 mt-0.5">&#9989;</span>
+                  <span className="text-primary mr-3 flex-shrink-0 w-5 h-5 mt-0.5">&#9989;</span>
                   {row.sora}
                 </div>
               </motion.div>
@@ -94,7 +94,7 @@ export default function ComparisonTable() {
   }, [isInView]);
 
   return (
-    <section className="py-[100px]">
+    <section className="py-[100px] bg-bluewhite section-shadow">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <div className="text-center mb-16">

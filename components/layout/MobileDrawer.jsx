@@ -63,7 +63,7 @@ export default function MobileDrawer({ isOpen, onClose, pathname }) {
           {/* Header */}
           <div className="flex items-center justify-between px-4 pt-4 pb-2">
             <Link href="/" onClick={onClose} className="bg-white/70 backdrop-blur-2xl border border-white/20 rounded-full px-5 h-12 flex items-center">
-              <span className="text-lg font-extrabold tracking-tight text-black">SORA</span>
+              <img src="/images/sora-logo.png" alt="Sora Solutions" className="h-9 w-auto object-contain" />
             </Link>
             <button
               type="button"
@@ -134,14 +134,14 @@ export default function MobileDrawer({ isOpen, onClose, pathname }) {
                                         key={item.title}
                                         href={item.href}
                                         onClick={onClose}
-                                        className="flex flex-col gap-1 rounded-xl p-3 transition-colors duration-200 active:bg-[#D9D1FB]/30"
+                                        className="flex flex-col gap-1 rounded-xl p-3 transition-colors duration-200 active:bg-accent/30"
                                       >
                                         <div className="flex items-center gap-2">
                                           <span className="text-base">{item.emoji}</span>
                                           <span className="font-semibold text-sm text-black">{item.title}</span>
                                         </div>
                                         <p className="text-sm text-black/60">{item.subtitle}</p>
-                                        <span className="mt-1 inline-block self-start text-xs font-medium text-[#9741FE] bg-[#9741FE]/10 rounded-full px-2 py-0.5">
+                                        <span className="mt-1 inline-block self-start text-xs font-medium text-primary bg-primary/10 rounded-full px-2 py-0.5">
                                           {item.badge}
                                         </span>
                                       </Link>
@@ -169,7 +169,7 @@ export default function MobileDrawer({ isOpen, onClose, pathname }) {
           </nav>
 
           {/* Fixed bottom CTAs */}
-          <div className="shrink-0 border-t border-black/10 px-6 py-5 bg-white/60 backdrop-blur-xl">
+          <div className="shrink-0 border-t border-black/10 px-6 py-5 bg-white/85 backdrop-blur-xl">
             <div className="flex flex-col gap-3">
               <a
                 href="tel:+61409422868"
@@ -180,7 +180,7 @@ export default function MobileDrawer({ isOpen, onClose, pathname }) {
               <Link
                 href="/contact"
                 onClick={onClose}
-                className="block text-center bg-[#9741FE] text-white font-semibold text-sm px-6 py-3 rounded-full"
+                className="block text-center bg-primary text-white font-semibold text-sm px-6 py-3 rounded-full"
               >
                 Book a Free Strategy Call
               </Link>
