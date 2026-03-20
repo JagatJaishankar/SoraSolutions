@@ -9,6 +9,7 @@ import {
   Black_Han_Sans,
   Caveat,
   Barlow,
+  Roboto_Flex,
 } from "next/font/google";
 import "./globals.css";
 import { GradientBackground } from "@/components/effects/GradientBackground";
@@ -80,6 +81,12 @@ const barlow = Barlow({
   weight: ["600", "800"],
 });
 
+const robotoFlex = Roboto_Flex({
+  variable: "--font-roboto-flex",
+  subsets: ["latin"],
+  axes: ["wght"],
+});
+
 export const metadata = {
   title: "Sora Solutions — Marketing, AI & Growth Systems for Trades",
   description:
@@ -97,6 +104,7 @@ const fontVars = [
   blackHanSans,
   caveat,
   barlow,
+  robotoFlex,
 ]
   .map((f) => f.variable)
   .join(" ");
