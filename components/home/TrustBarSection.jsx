@@ -35,7 +35,7 @@ const logos = [
     className: "scale-90",
   },
   {
-    src: "/images/logos/Notion.png",
+    src: "/images/logos/Notio.png",
     alt: "Notion",
     title: "Notion",
     className: "scale-[1.2] mx-4",
