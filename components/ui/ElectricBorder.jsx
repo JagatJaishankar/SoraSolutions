@@ -19,6 +19,7 @@ export default function ElectricBorder({
   const containerRef = useRef(null);
   const animationRef = useRef(null);
   const timeRef = useRef(0);
+  const isVisibleRef = useRef(false);
 
   const draw = useCallback(() => {
     const canvas = canvasRef.current;
@@ -166,12 +167,35 @@ export default function ElectricBorder({
     ctx.shadowColor = "transparent";
     ctx.shadowBlur = 0;
 
-    animationRef.current = requestAnimationFrame(draw);
+    if (isVisibleRef.current) {
+      animationRef.current = requestAnimationFrame(draw);
+    }
   }, [color, borderRadius, chaos, speed, intensity]);
 
   useEffect(() => {
-    animationRef.current = requestAnimationFrame(draw);
+    const container = containerRef.current;
+    if (!container) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          isVisibleRef.current = true;
+          animationRef.current = requestAnimationFrame(draw);
+        } else {
+          isVisibleRef.current = false;
+          if (animationRef.current) {
+            cancelAnimationFrame(animationRef.current);
+            animationRef.current = null;
+          }
+        }
+      },
+      { threshold: 0 }
+    );
+
+    observer.observe(container);
+
     return () => {
+      observer.disconnect();
       if (animationRef.current) cancelAnimationFrame(animationRef.current);
     };
   }, [draw]);

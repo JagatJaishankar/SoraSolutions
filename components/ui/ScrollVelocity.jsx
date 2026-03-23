@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useLayoutEffect, useState } from "react";
+import { useRef, useLayoutEffect, useState, useEffect } from "react";
 import {
   motion,
   useScroll,
@@ -81,8 +81,24 @@ export const ScrollVelocity = ({
     });
 
     const directionFactor = useRef(1);
+    const isVisibleRef = useRef(true);
+    const parallaxRef = useRef(null);
+
+    useEffect(() => {
+      const el = parallaxRef.current;
+      if (!el) return;
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          isVisibleRef.current = entry.isIntersecting;
+        },
+        { threshold: 0 }
+      );
+      observer.observe(el);
+      return () => observer.disconnect();
+    }, []);
 
     useAnimationFrame((t, delta) => {
+      if (!isVisibleRef.current) return;
       let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
       if (velocityFactor.get() < 0) directionFactor.current = -1;
       else if (velocityFactor.get() > 0) directionFactor.current = 1;
@@ -105,11 +121,12 @@ export const ScrollVelocity = ({
 
     return (
       <div
+        ref={parallaxRef}
         className={`${pClass || ""} relative overflow-hidden`}
         style={pStyle}
       >
         <motion.div
-          className={`${sClass || ""} flex whitespace-nowrap`}
+          className={`${sClass || ""} flex whitespace-nowrap will-change-transform`}
           style={{ x, ...sStyle }}
         >
           {spans}

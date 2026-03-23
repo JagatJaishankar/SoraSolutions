@@ -13,7 +13,7 @@ export default function SectionWrapper({
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className={`${maxWidth} mx-auto px-4 sm:px-6 lg:px-8 ${padding} ${className}`}>
+    <section className={`section-contain ${maxWidth} mx-auto px-4 sm:px-6 lg:px-8 ${padding} ${className}`}>
       <motion.div
         ref={ref}
         initial={{ y: 30, opacity: 0 }}

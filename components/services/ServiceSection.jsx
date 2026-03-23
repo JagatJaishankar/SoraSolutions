@@ -56,7 +56,7 @@ export default function ServiceSection({
   return (
     <section
       id={id}
-      className={`py-[60px] sm:py-[100px] px-4 sm:px-6 lg:px-8 scroll-mt-[140px] ${
+      className={`section-contain py-[60px] sm:py-[100px] px-4 sm:px-6 lg:px-8 scroll-mt-[140px] ${
         tinted
           ? "bg-[#f5f3ff] shadow-[inset_0_8px_16px_-8px_rgba(0,0,0,0.06),inset_0_-8px_16px_-8px_rgba(0,0,0,0.06)]"
           : ""

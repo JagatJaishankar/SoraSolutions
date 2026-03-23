@@ -37,7 +37,7 @@ export const GradientBackground = () => {
   }, []);
 
   return (
-    <div className="gradient-bg overflow-hidden">
+    <div className="gradient-bg overflow-hidden" style={{ contain: "paint" }}>
       <div className="opacity-50 absolute inset-0 w-full h-full">
         <svg className="absolute top-0 left-0 w-0 h-0" xmlns="http://www.w3.org/2000/svg">
           <defs>

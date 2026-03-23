@@ -130,6 +130,7 @@ export default function TestimonialsSection() {
   const isHoveredRef = useRef(false);
   const offsetRef = useRef(0);
   const velocityRef = useRef(0);
+  const isScrollVisibleRef = useRef(true);
 
   const gap =
     typeof window !== "undefined" && window.innerWidth < 768
@@ -157,6 +158,19 @@ export default function TestimonialsSection() {
   }, [updateDimensions]);
 
   useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isScrollVisibleRef.current = entry.isIntersecting;
+      },
+      { threshold: 0 }
+    );
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
 
@@ -164,6 +178,12 @@ export default function TestimonialsSection() {
     let lastTs = null;
 
     const tick = (timestamp) => {
+      if (!isScrollVisibleRef.current) {
+        lastTs = null;
+        rafId = requestAnimationFrame(tick);
+        return;
+      }
+
       if (lastTs === null) lastTs = timestamp;
       const dt = Math.max(0, timestamp - lastTs) / 1000;
       lastTs = timestamp;

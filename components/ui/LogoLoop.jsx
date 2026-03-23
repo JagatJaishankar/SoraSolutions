@@ -128,6 +128,22 @@ const LogoLoop = memo(function LogoLoop({
   }, [seqWidth]);
 
   // Animation loop — only tears down on mount/unmount
+  // Pauses when off-screen via IntersectionObserver
+  const isInViewRef = useRef(true);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isInViewRef.current = entry.isIntersecting;
+      },
+      { threshold: 0 }
+    );
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, []);
+
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
@@ -145,6 +161,12 @@ const LogoLoop = memo(function LogoLoop({
     let lastTimestamp = null;
 
     const animate = (timestamp) => {
+      if (!isInViewRef.current) {
+        lastTimestamp = null;
+        rafId = requestAnimationFrame(animate);
+        return;
+      }
+
       if (lastTimestamp === null) lastTimestamp = timestamp;
       const dt = Math.max(0, timestamp - lastTimestamp) / 1000;
       lastTimestamp = timestamp;
