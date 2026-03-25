@@ -1,5 +1,6 @@
 import HeroSection from "@/components/home/HeroSection";
 import TrustBarSection from "@/components/home/TrustBarSection";
+import AuditFormSection from "@/components/home/AuditFormSection";
 import ProblemCards from "@/components/home/ProblemCards";
 import ServicesGrid from "@/components/home/ServicesGrid";
 import WebsiteShowcase from "@/components/home/WebsiteShowcase";
@@ -21,6 +22,7 @@ export default function Home() {
     <main>
       <HeroSection />
       <TrustBarSection />
+      <AuditFormSection />
       <ProblemCards />
       <ServicesGrid />
       <WebsiteShowcase />

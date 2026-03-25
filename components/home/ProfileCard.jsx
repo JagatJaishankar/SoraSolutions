@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useCallback, useMemo, useState } from "react";
+import Image from "next/image";
 
 const ANIMATION_CONFIG = {
   INITIAL_DURATION: 1200,
@@ -378,49 +379,32 @@ export default function ProfileCard({
               gridArea: "1 / -1",
             }}
           >
-            {/* Shine layer */}
-            {!isMobile && <div style={shineStyle} />}
-
-            {/* Glare layer */}
-            {!isMobile && <div style={glareStyle} />}
-
-            {/* Avatar area */}
+            {/* Avatar area — circular centered */}
             <div
-              className="overflow-visible"
+              className="absolute inset-0 flex items-center justify-center"
               style={{
                 transform: isMobile ? "none" : "translateZ(2px)",
-                gridArea: "1 / -1",
-                borderRadius: "1rem",
                 pointerEvents: "none",
               }}
             >
               {avatarUrl ? (
-                <img
-                  className="w-full absolute left-1/2 bottom-0"
-                  src={avatarUrl}
-                  alt={`${name} avatar`}
-                  loading="lazy"
-                  style={{
-                    transformOrigin: "50% 100%",
-                    transform: isMobile
-                      ? "translateX(-50%)"
-                      : "translateX(calc(-50% + (var(--pointer-from-left) - 0.5) * 6px)) translateZ(0) scaleY(calc(1 + (var(--pointer-from-top) - 0.5) * 0.02)) scaleX(calc(1 + (var(--pointer-from-left) - 0.5) * 0.01))",
-                    borderRadius: "1rem",
-                  }}
-                  onError={(e) => {
-                    e.target.style.display = "none";
-                  }}
-                />
-              ) : (
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div
-                    className="w-32 h-32 rounded-full"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, color-mix(in srgb, var(--color-primary) 20%, transparent), color-mix(in srgb, var(--color-secondary) 20%, transparent), color-mix(in srgb, var(--color-accent) 20%, transparent))",
-                    }}
+                <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-white/30 shadow-lg relative">
+                  <Image
+                    className="object-cover"
+                    src={avatarUrl}
+                    alt={`${name} avatar`}
+                    fill
+                    sizes="160px"
                   />
                 </div>
+              ) : (
+                <div
+                  className="w-32 h-32 rounded-full"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, color-mix(in srgb, var(--color-primary) 20%, transparent), color-mix(in srgb, var(--color-secondary) 20%, transparent), color-mix(in srgb, var(--color-accent) 20%, transparent))",
+                  }}
+                />
               )}
             </div>
 

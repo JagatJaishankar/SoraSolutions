@@ -30,8 +30,8 @@ export default function TiltCard({ children, className = "", href, accentLine = 
     const offsetX = e.clientX - rect.left - rect.width / 2;
     const offsetY = e.clientY - rect.top - rect.height / 2;
 
-    rotateX.set((offsetY / (rect.height / 2)) * -8);
-    rotateY.set((offsetX / (rect.width / 2)) * 8);
+    rotateX.set((offsetY / (rect.height / 2)) * -6);
+    rotateY.set((offsetX / (rect.width / 2)) * 6);
 
     mouseX.set(e.clientX - rect.left);
     mouseY.set(e.clientY - rect.top);

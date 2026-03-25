@@ -364,6 +364,26 @@ h1, h2, h3, h4, h5, h6 {
   100% { box-shadow: 0 0 0 0 rgba(151, 64, 254, 0); }
 }
 
+/* ── Gentle float animations ── */
+
+@keyframes gentle-float-1 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(10px, -15px) rotate(1deg); }
+  50% { transform: translate(-5px, 10px) rotate(-1deg); }
+  75% { transform: translate(15px, 5px) rotate(0.5deg); }
+}
+
+@keyframes gentle-float-2 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(-12px, 8px) rotate(-1.5deg); }
+  66% { transform: translate(8px, -10px) rotate(1deg); }
+}
+
+@keyframes gentle-float-3 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(-10px, -12px) rotate(1.5deg); }
+}
+
 /* ── Contact page animations ── */
 
 @keyframes float-up {

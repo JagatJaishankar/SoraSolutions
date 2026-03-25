@@ -1,13 +1,12 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import Image from "next/image";
 
 const SLIDES = [
   {
-    tag: "Hero Design",
     feature: "First Impressions",
     name: "Instant Authority & Trust",
     desc: "Stunning hero sections with lead forms, star ratings, trust badges, and a clear offer above the fold \u2014 designed to convert from the first second.",
@@ -15,7 +14,6 @@ const SLIDES = [
     url: "https://waterproofing-demo.vercel.app",
   },
   {
-    tag: "Mobile Design",
     feature: "Mobile Optimised",
     name: "Looks Perfect on Every Device",
     desc: "Every site is built mobile-first. Fast load, thumb-friendly CTAs, responsive layouts \u2014 your clients book from their phones, so your site has to perform there.",
@@ -23,7 +21,6 @@ const SLIDES = [
     contain: true,
   },
   {
-    tag: "Smart Forms",
     feature: "Smart Lead Qualification",
     name: "Multi-Step Forms That Filter & Qualify",
     desc: "Job type selectors, photo uploads, timeline pickers \u2014 every enquiry arrives with the detail you need to quote confidently and weed out time-wasters.",
@@ -31,14 +28,12 @@ const SLIDES = [
     contain: true,
   },
   {
-    tag: "Portfolio",
     feature: "Work Portfolio",
     name: "Craft That Sells Itself",
     desc: "Photo galleries showcasing real projects \u2014 so your workmanship does the selling for you.",
     img: "/carousel/plumbing-collage.png",
   },
   {
-    tag: "Service Pages",
     feature: "Service Targeting",
     name: "\u201CWhich Best Describes You?\u201D",
     desc: "Segment residential, commercial, and strata clients on one page \u2014 each card speaks directly to their situation and drives its own conversion.",
@@ -46,7 +41,6 @@ const SLIDES = [
     url: "https://painter-deploy.vercel.app",
   },
   {
-    tag: "Interactive",
     feature: "Interactive Elements",
     name: "Websites That Actually Do Things",
     desc: "Click the lightbulb \u2014 it toggles on and off. Scroll animations, interactive maps, live price calculators. Not just pretty \u2014 engaging.",
@@ -56,14 +50,12 @@ const SLIDES = [
     url: "https://electrical-demo-pearl.vercel.app",
   },
   {
-    tag: "Service Areas",
     feature: "Service Area Coverage",
     name: "Show Where You Work",
     desc: "Interactive maps with suburb grids \u2014 clients instantly know you cover their area. Builds local trust and pre-qualifies location before they even enquire.",
     img: "/carousel/service-areas.png",
   },
   {
-    tag: "Process & Trust",
     feature: "Business Process",
     name: "You Run This \u2014 They Just Show Up",
     desc: "Clear step-by-step process sections set expectations, establish authority, and reduce friction. Clients arrive prepared and confident.",
@@ -76,17 +68,17 @@ const TOGGLE_SLIDE_INDEX = 5;
 
 const POSITIONS = [
   { tx: -540, tz: -190, ry: 52, s: 0.66, o: 0.2 },
-  { tx: -300, tz: -90, ry: 40, s: 0.84, o: 0.58 },
+  { tx: -300, tz: -90, ry: 40, s: 0.78, o: 0.58 },
   { tx: 0, tz: 0, ry: 0, s: 1, o: 1 },
-  { tx: 300, tz: -90, ry: -40, s: 0.84, o: 0.58 },
+  { tx: 300, tz: -90, ry: -40, s: 0.78, o: 0.58 },
   { tx: 540, tz: -190, ry: -52, s: 0.66, o: 0.2 },
 ];
 
 const MOBILE_POSITIONS = [
   { tx: -360, tz: -190, ry: 52, s: 0.66, o: 0.2 },
-  { tx: -200, tz: -90, ry: 40, s: 0.84, o: 0.58 },
+  { tx: -200, tz: -90, ry: 40, s: 0.78, o: 0.58 },
   { tx: 0, tz: 0, ry: 0, s: 1, o: 1 },
-  { tx: 200, tz: -90, ry: -40, s: 0.84, o: 0.58 },
+  { tx: 200, tz: -90, ry: -40, s: 0.78, o: 0.58 },
   { tx: 360, tz: -190, ry: -52, s: 0.66, o: 0.2 },
 ];
 
@@ -112,7 +104,6 @@ export default function WebsiteShowcase() {
     return () => window.removeEventListener("resize", check);
   }, []);
 
-  // Toggle slide auto-alternate
   useEffect(() => {
     if (current !== TOGGLE_SLIDE_INDEX) {
       setToggleOn(false);
@@ -148,6 +139,7 @@ export default function WebsiteShowcase() {
   const positions = isMobile ? MOBILE_POSITIONS : POSITIONS;
   const cardW = isMobile ? 320 : 480;
   const cardH = isMobile ? 210 : 320;
+  const reflectionH = isMobile ? 50 : 80;
   const activeSlide = SLIDES[current];
 
   return (
@@ -161,7 +153,6 @@ export default function WebsiteShowcase() {
       <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-14">
-          {/* Eyebrow */}
           <div className="flex items-center justify-center gap-4 mb-5">
             <span
               className="block w-8 h-px"
@@ -196,7 +187,7 @@ export default function WebsiteShowcase() {
         {/* Carousel */}
         <div
           className="relative mx-auto overflow-hidden"
-          style={{ height: cardH + 40, perspective: "1600px" }}
+          style={{ height: cardH + reflectionH + 20, perspective: "1600px" }}
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
@@ -216,7 +207,6 @@ export default function WebsiteShowcase() {
             const posIndex = offset + 2;
             const pos = positions[posIndex];
             const isActive = offset === 0;
-            const objFit = slide.contain ? "object-contain" : "object-cover";
 
             return (
               <div
@@ -228,11 +218,11 @@ export default function WebsiteShowcase() {
                   left: "50%",
                   top: "50%",
                   marginLeft: -cardW / 2,
-                  marginTop: -cardH / 2,
+                  marginTop: -(cardH + reflectionH) / 2,
                   transform: `translateX(${pos.tx}px) translateZ(${pos.tz}px) rotateY(${pos.ry}deg) scale(${pos.s})`,
                   opacity: pos.o,
                   transition:
-                    "transform 0.65s cubic-bezier(0.3,0,0.1,1), opacity 0.65s",
+                    "transform 0.8s cubic-bezier(0.3,0,0.1,1), opacity 0.8s",
                   zIndex: 5 - absOffset,
                   pointerEvents: absOffset > 2 ? "none" : "auto",
                 }}
@@ -240,58 +230,94 @@ export default function WebsiteShowcase() {
                   if (!isActive) setCurrent(i);
                 }}
               >
-                {/* Tag — consistent top-left */}
-                <span className="absolute top-2.5 left-2.5 z-20 bg-white/80 backdrop-blur-sm border border-black/5 rounded-full px-2.5 py-1 text-[9px] font-semibold tracking-widest uppercase text-black/70">
-                  {slide.tag}
-                </span>
+                {/* Main card */}
+                <div className="relative w-full overflow-hidden rounded-xl" style={{ height: cardH }}>
+                  {isActive && (
+                    <div className="absolute inset-0 rounded-xl shadow-[0_20px_60px_rgba(0,0,0,0.15)] pointer-events-none z-30" />
+                  )}
 
-                {/* Image(s) */}
-                {slide.toggle ? (
-                  <>
+                  {slide.toggle ? (
+                    <>
+                      <Image
+                        src={slide.imgA}
+                        alt={slide.name}
+                        fill
+                        sizes="(max-width: 768px) 320px, 480px"
+                        className={`object-cover object-top transition-opacity duration-[900ms] ease ${
+                          toggleOn ? "opacity-0" : "opacity-100"
+                        }`}
+                        draggable={false}
+                      />
+                      <Image
+                        src={slide.imgB}
+                        alt={`${slide.name} - on`}
+                        fill
+                        sizes="(max-width: 768px) 320px, 480px"
+                        className={`object-cover object-top transition-opacity duration-[900ms] ease ${
+                          toggleOn ? "opacity-100" : "opacity-0"
+                        }`}
+                        draggable={false}
+                      />
+                      {isActive && (
+                        <span className="absolute bottom-2.5 right-2.5 z-20 bg-white/80 backdrop-blur-sm border border-black/5 rounded-full px-2.5 py-1 text-[9px] font-semibold tracking-widest uppercase text-black/70">
+                          ⚡ Click to Toggle
+                        </span>
+                      )}
+                    </>
+                  ) : slide.contain ? (
                     <Image
-                      src={slide.imgA}
+                      src={slide.img}
                       alt={slide.name}
                       fill
                       sizes="(max-width: 768px) 320px, 480px"
-                      className={`object-cover object-top transition-opacity duration-[900ms] ease ${
-                        toggleOn ? "opacity-0" : "opacity-100"
-                      }`}
+                      className="object-contain object-center"
                       draggable={false}
                     />
+                  ) : (
                     <Image
-                      src={slide.imgB}
-                      alt={`${slide.name} - on`}
+                      src={slide.img}
+                      alt={slide.name}
                       fill
                       sizes="(max-width: 768px) 320px, 480px"
-                      className={`object-cover object-top transition-opacity duration-[900ms] ease ${
-                        toggleOn ? "opacity-100" : "opacity-0"
-                      }`}
+                      className="object-cover object-top"
                       draggable={false}
                     />
-                    {isActive && (
-                      <span className="absolute bottom-2.5 right-2.5 z-20 bg-white/80 backdrop-blur-sm border border-black/5 rounded-full px-2.5 py-1 text-[9px] font-semibold tracking-widest uppercase text-black/70">
-                        ⚡ Click to Toggle
-                      </span>
+                  )}
+                </div>
+
+                {/* Reflection — active card only */}
+                {isActive && (
+                  <div
+                    className="w-full overflow-hidden pointer-events-none relative"
+                    style={{
+                      height: reflectionH,
+                      transform: "scaleY(-1) perspective(800px) rotateX(2deg)",
+                      maskImage: "linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.08) 40%, transparent 80%)",
+                      WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.08) 40%, transparent 80%)",
+                      opacity: 0.35,
+                      filter: "blur(3px) saturate(0.7)",
+                    }}
+                  >
+                    {slide.toggle ? (
+                      <Image
+                        src={toggleOn ? slide.imgB : slide.imgA}
+                        alt=""
+                        fill
+                        sizes="(max-width: 768px) 320px, 480px"
+                        className="object-cover object-top"
+                        draggable={false}
+                      />
+                    ) : (
+                      <Image
+                        src={slide.img}
+                        alt=""
+                        fill
+                        sizes="(max-width: 768px) 320px, 480px"
+                        className={slide.contain ? "object-contain object-center" : "object-cover object-top"}
+                        draggable={false}
+                      />
                     )}
-                  </>
-                ) : slide.contain ? (
-                  <Image
-                    src={slide.img}
-                    alt={slide.name}
-                    fill
-                    sizes="(max-width: 768px) 320px, 480px"
-                    className="object-contain object-center"
-                    draggable={false}
-                  />
-                ) : (
-                  <Image
-                    src={slide.img}
-                    alt={slide.name}
-                    fill
-                    sizes="(max-width: 768px) 320px, 480px"
-                    className="object-cover object-top"
-                    draggable={false}
-                  />
+                  </div>
                 )}
               </div>
             );
@@ -314,28 +340,38 @@ export default function WebsiteShowcase() {
           </button>
         </div>
 
-        {/* Info panel */}
+        {/* Info panel — fade transition on slide change */}
         <div className="text-center mt-10 min-h-[160px]">
-          <p className="text-[10px] tracking-[0.22em] uppercase text-primary mb-2">
-            {activeSlide.feature}
-          </p>
-          <h3 className="text-xl md:text-[28px] font-bold tracking-tight text-black mb-2.5">
-            {activeSlide.name}
-          </h3>
-          <p className="text-[13px] font-light text-black/50 max-w-[440px] mx-auto leading-relaxed mb-3">
-            {activeSlide.desc}
-          </p>
-          {activeSlide.url && (
-            <a
-              href={activeSlide.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-black/50 text-[12.5px] border border-black/10 rounded-full px-4 py-1.5 transition-all duration-200 hover:text-primary hover:border-primary/30 hover:bg-accent/30"
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
             >
-              View live demo
-              <ExternalLink className="w-[11px] h-[11px]" />
-            </a>
-          )}
+              <p className="text-[10px] tracking-[0.22em] uppercase text-primary mb-2">
+                {activeSlide.feature}
+              </p>
+              <h3 className="text-xl md:text-[28px] font-bold tracking-tight text-black mb-2.5">
+                {activeSlide.name}
+              </h3>
+              <p className="text-[13px] font-light text-black/50 max-w-[440px] mx-auto leading-relaxed mb-3">
+                {activeSlide.desc}
+              </p>
+              {activeSlide.url && (
+                <a
+                  href={activeSlide.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-black/50 text-[12.5px] border border-black/10 rounded-full px-4 py-1.5 transition-all duration-200 hover:text-primary hover:border-primary/30 hover:bg-accent/30"
+                >
+                  View live demo
+                  <ExternalLink className="w-[11px] h-[11px]" />
+                </a>
+              )}
+            </motion.div>
+          </AnimatePresence>
         </div>
 
         {/* Dots */}

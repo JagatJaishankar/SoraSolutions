@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
+import Image from "next/image";
 import ElectricBorder from "@/components/ui/ElectricBorder";
 import AboutWordFlip from "./AboutWordFlip";
 
@@ -44,11 +45,12 @@ export default function AboutHero() {
                 </span>
               </div>
               {/* Photo */}
-              <img
+              <Image
                 src="/images/team/joel-hero.jpg"
                 alt="Joel Willis — Founder of Sora Solutions"
-                className="w-full h-full object-cover object-top relative z-10"
-                loading="lazy"
+                fill
+                sizes="(max-width: 768px) 320px, 380px"
+                className="object-cover object-top relative z-10"
               />
             </div>
           </ElectricBorder>

@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import ServicesDropdown from "./ServicesDropdown";
 import MobileDrawer from "./MobileDrawer";
@@ -55,7 +56,7 @@ export default function Navbar() {
             {/* Left pill — Logo */}
             <div className={`pointer-events-auto bg-white/70 backdrop-blur-2xl border border-white/20 rounded-full px-5 h-12 flex items-center transition-shadow duration-300 ${scrolled ? "shadow-lg" : ""}`}>
               <Link href="/" className="flex items-center">
-                <img src="/images/sora-logo.png" alt="Sora Solutions" className="h-9 w-auto object-contain" />
+                <Image src="/images/sora-logo.png" alt="Sora Solutions" width={160} height={36} className="h-9 w-auto object-contain" />
               </Link>
             </div>
 
@@ -144,7 +145,7 @@ export default function Navbar() {
               href="/"
               className={`pointer-events-auto bg-white/70 backdrop-blur-2xl border border-white/20 rounded-full px-5 h-12 flex items-center transition-shadow duration-300 ${scrolled ? "shadow-lg" : ""}`}
             >
-              <img src="/images/sora-logo.png" alt="Sora Solutions" className="h-9 w-auto object-contain" />
+              <Image src="/images/sora-logo.png" alt="Sora Solutions" width={160} height={36} className="h-9 w-auto object-contain" />
             </Link>
 
             {/* Right pill — Hamburger */}

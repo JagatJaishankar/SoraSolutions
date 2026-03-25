@@ -9,11 +9,20 @@ export default function FlipCard({
   backCopy,
   backFooter,
   className = "",
+  frontBg = "bg-white/80",
+  frontBorder = "border-white/20",
+  frontTextColor = "text-black",
+  frontDescColor = "text-black/60",
+  frontHintColor = "text-black/40",
+  backBg = "bg-white/80",
+  backBorder = "border-white/20",
+  backTextColor = "text-black/70",
+  iconBg = "bg-gradient-to-br from-primary to-secondary",
+  iconColor = "text-white",
 }) {
   const [tapped, setTapped] = useState(false);
 
-  const handleClick = useCallback((e) => {
-    // Only toggle on mobile (< 768px) — desktop uses CSS hover
+  const handleClick = useCallback(() => {
     if (window.matchMedia("(max-width: 767px)").matches) {
       setTapped((prev) => !prev);
     }
@@ -30,27 +39,27 @@ export default function FlipCard({
         }`}
       >
         {/* Front Face */}
-        <div className="absolute inset-0 [backface-visibility:hidden] bg-white/80 backdrop-blur-xl border border-white/20 rounded-2xl p-8 flex flex-col items-center justify-center text-center">
-          <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center mb-5">
-            <Icon className="w-7 h-7 text-white" strokeWidth={1.5} />
+        <div className={`absolute inset-0 [backface-visibility:hidden] ${frontBg} backdrop-blur-xl border ${frontBorder} rounded-2xl p-8 flex flex-col items-center justify-center text-center`}>
+          <div className={`w-14 h-14 rounded-xl ${iconBg} flex items-center justify-center mb-5`}>
+            <Icon className={`w-7 h-7 ${iconColor}`} strokeWidth={1.5} />
           </div>
-          <h3 className="text-xl font-extrabold tracking-tight text-black mb-3">
+          <h3 className={`text-xl font-extrabold tracking-tight ${frontTextColor} mb-3`}>
             {title}
           </h3>
-          <p className="text-base font-light tracking-wide text-black/60 leading-relaxed">
+          <p className={`text-base font-light tracking-wide ${frontDescColor} leading-relaxed`}>
             {frontTeaser}
           </p>
-          <p className="mt-5 text-sm font-medium text-black/40 hidden md:block">
+          <p className={`mt-5 text-sm font-medium ${frontHintColor} hidden md:block`}>
             Hover to read more
           </p>
-          <p className="mt-5 text-sm font-medium text-black/40 md:hidden">
+          <p className={`mt-5 text-sm font-medium ${frontHintColor} md:hidden`}>
             Tap to read more
           </p>
         </div>
 
         {/* Back Face */}
-        <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-white/80 backdrop-blur-xl border border-white/20 rounded-2xl p-8 flex flex-col items-center justify-center text-center">
-          <p className="text-base font-light tracking-wide text-black/70 leading-relaxed mb-6">
+        <div className={`absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] ${backBg} backdrop-blur-xl border ${backBorder} rounded-2xl p-8 flex flex-col items-center justify-center text-center`}>
+          <p className={`text-base font-light tracking-wide ${backTextColor} leading-relaxed mb-6`}>
             {backCopy}
           </p>
           <p className="text-sm font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">

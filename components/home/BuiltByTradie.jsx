@@ -51,7 +51,7 @@ export default function BuiltByTradie() {
                 </span>
                 .&rdquo;
               </p>
-              <cite className="block mt-3 text-sm font-medium text-black/50 not-italic">
+              <cite className="block mt-4 text-sm font-medium text-black/50 not-italic">
                 — Joel Willis, Founder
               </cite>
             </motion.blockquote>
@@ -78,6 +78,7 @@ export default function BuiltByTradie() {
               <ProfileCard
                 name="Joel Willis"
                 title="Founder, Sora Solutions"
+                avatarUrl="/images/team/joel-hero.jpg"
                 contactText="Read Full Story →"
                 onContactClick={() => {
                   window.location.href = "/about";

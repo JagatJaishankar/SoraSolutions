@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 function tooClose(a, b) {
   const dx = a.x - b.x;
@@ -43,10 +44,12 @@ export default function FloatingLogos() {
   return (
     <div className="fixed top-0 left-0 w-full h-full z-[2] pointer-events-none overflow-hidden">
       {logos.map((logo, i) => (
-        <img
+        <Image
           key={i}
           src="/images/purple-s.svg"
           alt=""
+          width={Math.round(logo.size)}
+          height={Math.round(logo.size)}
           className="absolute"
           style={{
             left: `${logo.x}%`,

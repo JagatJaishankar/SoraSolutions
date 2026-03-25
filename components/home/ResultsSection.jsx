@@ -44,7 +44,7 @@ function ResultCard({ result, index, sectionInView }) {
       animate={sectionInView ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
       transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
     >
-      <GlassCard className="p-8 overflow-hidden" hover>
+      <GlassCard className="p-8 overflow-hidden !bg-white" hover>
         {/* Gradient top border */}
         <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-primary to-secondary" />
 
@@ -74,7 +74,7 @@ export default function ResultsSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-[100px]">
+    <section className="py-[100px] bg-[#090b3c]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <motion.div
@@ -83,10 +83,10 @@ export default function ResultsSection() {
           animate={isInView ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <h2 className="text-4xl font-extrabold tracking-tight text-black">
+          <h2 className="text-4xl font-extrabold tracking-tight text-white">
             What Happens When the System Kicks In
           </h2>
-          <p className="mt-4 text-lg font-light tracking-wide text-black/60 max-w-2xl mx-auto">
+          <p className="mt-4 text-lg font-light tracking-wide text-white/60 max-w-2xl mx-auto">
             Real results from real trade businesses using Sora.
           </p>
         </motion.div>

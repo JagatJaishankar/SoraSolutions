@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Instagram, Facebook, Linkedin } from "lucide-react";
+import Image from "next/image";
 
 const services = [
   { label: "Websites", href: "/services" },
@@ -65,7 +66,7 @@ export default function Footer() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
             {/* Column 1 — Brand */}
             <div>
-              <img src="/images/sora-logo.png" alt="Sora Solutions" className="h-10 w-auto object-contain brightness-0 invert" loading="lazy" />
+              <Image src="/images/sora-logo.png" alt="Sora Solutions" width={180} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
               <p className="text-sm text-white/50 mt-2">
                 Marketing, AI & Growth Systems for Trades
               </p>

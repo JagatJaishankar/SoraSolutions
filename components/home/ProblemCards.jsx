@@ -2,48 +2,67 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { PhoneOff, DollarSign, CalendarCheck } from "lucide-react";
+import { PhoneOff, TrendingDown, Trophy } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import FlipCard from "@/components/ui/FlipCard";
 
-const cards = [
+const PROBLEMS = [
   {
     icon: PhoneOff,
     title: "Leads Going Cold",
     frontTeaser:
-      "You're missing calls on the job and losing potential customers every day.",
+      "Enquiries come in but nobody follows up fast enough. By the time you call back, they have already found someone else.",
     backCopy:
       "You're out on a job, the phone rings — but you can't answer. By the time you call back, they've already booked someone else. Every missed call is money walking out the door.",
     backFooter: "Sora fills this gap \u2192",
+    frontBg: "bg-[#f5f3ff]",
+    frontBorder: "border-[#d9d0fb]",
+    backBg: "bg-[#f5f3ff]",
+    backBorder: "border-[#d9d0fb]",
+    iconBg: "bg-[#d9d0fb]",
+    iconColor: "text-[#9740fe]",
   },
   {
-    icon: DollarSign,
-    title: "Quoting Takes Forever",
+    icon: TrendingDown,
+    title: "Wasted Marketing Spend",
     frontTeaser:
-      "Hours spent writing quotes at night instead of spending time with family.",
+      "You have tried ads, maybe even paid an agency. Got a report full of impressions but cannot tell if it brought in a single job.",
     backCopy:
-      "You finish a 10-hour day on site, then sit down at the kitchen table to write up quotes until midnight. Half of them never even get a reply. It's exhausting and unsustainable.",
+      "You've spent thousands on ads and SEO. The agency sends a report full of numbers you don't understand. But the phone isn't ringing any more than before.",
     backFooter: "Sora fills this gap \u2192",
+    frontBg: "bg-[#d9d0fb]",
+    frontBorder: "border-[#9740fe]/20",
+    backBg: "bg-[#d9d0fb]",
+    backBorder: "border-[#9740fe]/20",
+    iconBg: "bg-[#9740fe]/20",
+    iconColor: "text-[#222872]",
   },
   {
-    icon: CalendarCheck,
-    title: "Scheduling Chaos",
+    icon: Trophy,
+    title: "Competitors Booked Out",
     frontTeaser:
-      "Double-bookings, no-shows, and constant back-and-forth with customers.",
+      "Meanwhile, some of your competitors are booked out months ahead. Not because they are better. Because they have the systems.",
     backCopy:
-      "Your calendar is a mess of scribbled notes and text messages. Customers don't confirm, jobs overlap, and you're driving across town between sites that should have been grouped together.",
+      "They're not more skilled than you. They just have better marketing, faster follow-up, and systems that capture every lead. That's the only difference.",
     backFooter: "Sora fills this gap \u2192",
+    frontBg: "bg-[#090b3c]",
+    frontBorder: "border-white/10",
+    frontTextColor: "text-white",
+    frontDescColor: "text-white/60",
+    frontHintColor: "text-white/40",
+    backBg: "bg-[#090b3c]",
+    backBorder: "border-white/10",
+    backTextColor: "text-white/70",
+    iconBg: "bg-white/10",
+    iconColor: "text-[#d9d0fb]",
   },
 ];
 
-// Unstack offsets for desktop: left, center, right
-const unstackTargets = [
-  { x: "-110%", rotate: 0 },
-  { x: "0%", rotate: 0 },
-  { x: "110%", rotate: 0 },
+const entranceVariants = [
+  { initial: { x: 40, y: 20, rotate: 3, opacity: 0 }, delay: 0 },
+  { initial: { y: 30, opacity: 0 }, delay: 0.15 },
+  { initial: { x: -40, y: 20, rotate: -3, opacity: 0 }, delay: 0.3 },
 ];
-
-const stackedRotations = [-4, 0, 4];
 
 export default function ProblemCards() {
   const ref = useRef(null);
@@ -52,74 +71,53 @@ export default function ProblemCards() {
   return (
     <section className="py-[100px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <SectionHeading
-        heading="Sound Familiar?"
-        subheading="These are the problems we hear from tradies every single day. If any of this hits home, you're not alone — and there's a fix."
-      />
+        <SectionHeading
+          heading="Sound Familiar?"
+          subheading="These are the problems we hear from tradies every single day. If any of this hits home, you're not alone — and there's a fix."
+        />
 
-      {/* Mobile: stagger fade-up grid */}
-      <div ref={ref} className="mt-16 grid grid-cols-1 gap-6 lg:hidden">
-        {cards.map((card, i) => (
-          <motion.div
-            key={card.title}
-            initial={{ y: 30, opacity: 0 }}
-            animate={isInView ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
-            transition={{
-              duration: 0.6,
-              ease: "easeOut",
-              delay: i * 0.1,
-            }}
-          >
-            <FlipCard {...card} />
-          </motion.div>
-        ))}
-      </div>
+        <div
+          ref={ref}
+          className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8"
+        >
+          {PROBLEMS.map((problem, index) => {
+            const variant = entranceVariants[index];
 
-      {/* Desktop: unstack animation */}
-      <DesktopUnstack />
+            return (
+              <motion.div
+                key={problem.title}
+                initial={variant.initial}
+                whileInView={{ x: 0, y: 0, rotate: 0, opacity: 1 }}
+                transition={{
+                  delay: variant.delay,
+                  type: "spring",
+                  damping: 20,
+                  stiffness: 200,
+                }}
+                viewport={{ once: true, margin: "-80px" }}
+              >
+                <FlipCard
+                  icon={problem.icon}
+                  title={problem.title}
+                  frontTeaser={problem.frontTeaser}
+                  backCopy={problem.backCopy}
+                  backFooter={problem.backFooter}
+                  frontBg={problem.frontBg}
+                  frontBorder={problem.frontBorder}
+                  frontTextColor={problem.frontTextColor}
+                  frontDescColor={problem.frontDescColor}
+                  frontHintColor={problem.frontHintColor}
+                  backBg={problem.backBg}
+                  backBorder={problem.backBorder}
+                  backTextColor={problem.backTextColor}
+                  iconBg={problem.iconBg}
+                  iconColor={problem.iconColor}
+                />
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </section>
-  );
-}
-
-function DesktopUnstack() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  return (
-    <div
-      ref={ref}
-      className="mt-16 hidden lg:block relative"
-    >
-      <div className="grid grid-cols-3 gap-6">
-        {cards.map((card, i) => (
-          <motion.div
-            key={card.title}
-            initial={{
-              x: `${-unstackTargets[i].x === "0%" ? "0%" : i === 0 ? "110%" : i === 2 ? "-110%" : "0%"}`,
-              rotate: stackedRotations[i],
-              opacity: 0,
-            }}
-            animate={
-              isInView
-                ? { x: "0%", rotate: 0, opacity: 1 }
-                : {
-                    x: i === 0 ? "110%" : i === 2 ? "-110%" : "0%",
-                    rotate: stackedRotations[i],
-                    opacity: 0,
-                  }
-            }
-            transition={{
-              type: "spring",
-              stiffness: 200,
-              damping: 25,
-              delay: i * 0.15,
-            }}
-          >
-            <FlipCard {...card} />
-          </motion.div>
-        ))}
-      </div>
-    </div>
   );
 }

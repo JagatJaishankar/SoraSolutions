@@ -1,18 +1,20 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Play } from "lucide-react";
 import Badge from "@/components/ui/Badge";
 import WordFlip from "./WordFlip";
 import TradeRotator from "./TradeRotator";
-import HeroForm from "./HeroForm";
+import OrbRevealLayer from "@/components/effects/OrbRevealLayer";
 
 export default function HeroSection() {
   return (
-    <section className="min-h-[calc(100vh-72px)] flex items-center px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto py-12 lg:py-0 w-full">
+    <section className="relative min-h-[calc(100vh-72px)] flex items-center px-4 sm:px-6 lg:px-8">
+      <OrbRevealLayer />
+      <div className="relative z-[5] max-w-7xl mx-auto py-12 lg:py-0 w-full">
         <div className="flex flex-col lg:flex-row items-center gap-10 xl:gap-16">
-          {/* Left column — ~60% */}
-          <div className="w-full lg:w-[58%] flex flex-col gap-4">
+          {/* Left column — ~58% */}
+          <div className="w-full lg:w-[52%] flex flex-col gap-4">
             {/* Badge */}
             <motion.div
               initial={{ y: 20, opacity: 0 }}
@@ -65,16 +67,32 @@ export default function HeroSection() {
             <motion.div
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.5, delay: 1, ease: "easeOut" }}
+              transition={{ duration: 0.5, delay: 0.9, ease: "easeOut" }}
             >
               <TradeRotator />
             </motion.div>
           </div>
 
-          {/* Right column — ~40% */}
-          <div className="w-full lg:w-[42%]">
-            <HeroForm />
-          </div>
+          {/* Right column — video placeholder (taller) */}
+          <motion.div
+            className="w-full lg:w-[48%]"
+            initial={{ x: 60, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+          >
+            <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden cursor-pointer group border border-white/10">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#090b3c] to-[#222872]" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+              <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
+                <div className="w-20 h-20 rounded-full bg-white/90 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <Play className="w-8 h-8 text-black ml-1" fill="currentColor" />
+                </div>
+                <span className="text-white/50 text-sm mt-4">
+                  Watch the 2-min explainer
+                </span>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

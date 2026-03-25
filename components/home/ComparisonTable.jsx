@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
+import { X, Check } from "lucide-react";
 
 const rows = [
   { label: "Understands your trade", agency: "Generic. Treats you like any client.", sora: "Built by a tradie who's been on the tools." },
@@ -14,9 +15,9 @@ const rows = [
 
 function AgencyPanel() {
   return (
-    <div className="bg-black/[0.02] border border-dashed border-black/10 rounded-2xl p-8 md:p-10">
+    <div className="bg-[#f5f3ff] border border-dashed border-black/10 rounded-2xl p-8 md:p-10 h-full">
       <div className="mb-6">
-        <span className="bg-black/10 text-black/60 text-sm font-bold px-4 py-2 rounded-full">
+        <span className="bg-black/10 text-black/40 text-sm font-bold px-4 py-2 rounded-full">
           Most Agencies
         </span>
       </div>
@@ -29,8 +30,8 @@ function AgencyPanel() {
             <div className="text-xs font-bold text-primary uppercase tracking-widest mb-2">
               {row.label}
             </div>
-            <div className="text-lg font-light text-black/50 flex items-start">
-              <span className="text-black/30 mr-3 flex-shrink-0 w-5 h-5 mt-0.5">&#10060;</span>
+            <div className="text-lg font-light text-black/40 flex items-start">
+              <X className="text-black/20 mr-3 flex-shrink-0 w-5 h-5 mt-0.5" />
               {row.agency}
             </div>
           </div>
@@ -42,13 +43,13 @@ function AgencyPanel() {
 
 function SoraPanel({ revealSora }) {
   return (
-    <div className="relative">
-      {/* Subtle green glow behind the panel */}
-      <div className="absolute inset-0 bg-primary/5 blur-3xl rounded-full scale-90 -z-10" />
+    <div className="relative -translate-y-1">
+      {/* Glow shadow */}
+      <div className="absolute inset-0 shadow-[0_10px_40px_rgba(151,64,254,0.15)] rounded-2xl pointer-events-none" />
 
       {/* Gradient border wrapper */}
       <div className="rounded-2xl bg-gradient-to-br from-primary to-secondary p-[1.5px] h-full">
-        <div className="bg-white/70 backdrop-blur-xl rounded-2xl p-8 md:p-10 h-full">
+        <div className="bg-[#f5f3ff] backdrop-blur-xl rounded-[calc(1rem-1.5px)] p-8 md:p-10 h-full">
           <div className="mb-6">
             <span className="bg-accent text-primary text-sm font-bold px-4 py-2 rounded-full">
               With Sora
@@ -58,18 +59,18 @@ function SoraPanel({ revealSora }) {
             {rows.map((row, i) => (
               <motion.div
                 key={row.label}
-                className={`py-5 cursor-default hover:bg-accent/50 hover:scale-[1.01] transition-all duration-200 rounded-lg ${
+                className={`py-5 cursor-default hover:bg-accent/30 rounded-lg transition-colors duration-200 ${
                   i < rows.length - 1 ? "border-b border-black/5" : ""
                 }`}
                 initial={{ opacity: 0, x: 20 }}
-                animate={revealSora ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
+                animate={revealSora ? { opacity: 1, x: 0 } : {}}
                 transition={{ delay: i * 0.15, duration: 0.5, ease: "easeOut" }}
               >
                 <div className="text-xs font-bold text-primary uppercase tracking-widest mb-2">
                   {row.label}
                 </div>
                 <div className="text-lg font-medium text-black flex items-start">
-                  <span className="text-primary mr-3 flex-shrink-0 w-5 h-5 mt-0.5">&#9989;</span>
+                  <Check className="text-[#9740fe] mr-3 flex-shrink-0 w-5 h-5 mt-0.5" />
                   {row.sora}
                 </div>
               </motion.div>
@@ -110,7 +111,7 @@ export default function ComparisonTable() {
           </p>
         </div>
 
-        {/* Two-panel split — items-stretch for equal height */}
+        {/* Two-panel split */}
         <motion.div
           ref={ref}
           className="flex flex-col md:flex-row items-stretch gap-6"

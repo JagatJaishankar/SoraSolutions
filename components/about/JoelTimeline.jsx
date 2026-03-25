@@ -8,6 +8,7 @@ import {
   useInView,
 } from "framer-motion";
 import { Hammer, Award, PhoneMissed, Lightbulb, Zap } from "lucide-react";
+import Image from "next/image";
 import ElectricBorder from "@/components/ui/ElectricBorder";
 
 const ICONS = { Hammer, Award, PhoneMissed, Lightbulb, Zap };
@@ -225,14 +226,12 @@ export default function JoelTimeline() {
             <div className="flex items-center justify-center gap-3 mt-6">
               <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 bg-[#9740fe] text-white text-sm font-bold flex items-center justify-center relative">
                 <span>JW</span>
-                <img
+                <Image
                   src="/images/team/joel-circle.jpg"
                   alt="Joel Willis"
-                  className="w-full h-full object-cover absolute inset-0 scale-150"
-                  loading="lazy"
-                  onError={(e) => {
-                    e.currentTarget.style.display = "none";
-                  }}
+                  fill
+                  sizes="48px"
+                  className="object-cover absolute inset-0 scale-150"
                 />
               </div>
 

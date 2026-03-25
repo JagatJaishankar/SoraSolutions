@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Phone, Clock, Zap } from "lucide-react";
+import Image from "next/image";
 import ElectricBorder from "@/components/ui/ElectricBorder";
 
 export default function PhoneSection() {
@@ -75,14 +76,12 @@ export default function PhoneSection() {
               {/* Avatar */}
               <div className="w-12 h-12 rounded-full mx-auto mt-4 overflow-hidden bg-[#9740fe] text-white text-sm font-bold flex items-center justify-center relative">
                 <span>JW</span>
-                <img
+                <Image
                   src="/images/team/joel-circle.jpg"
                   alt="Joel Willis"
-                  className="w-full h-full object-cover absolute inset-0 scale-150"
-                  loading="lazy"
-                  onError={(e) => {
-                    e.currentTarget.style.display = "none";
-                  }}
+                  fill
+                  sizes="48px"
+                  className="object-cover absolute inset-0 scale-150"
                 />
               </div>
 

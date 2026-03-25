@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
@@ -63,7 +64,7 @@ export default function MobileDrawer({ isOpen, onClose, pathname }) {
           {/* Header */}
           <div className="flex items-center justify-between px-4 pt-4 pb-2">
             <Link href="/" onClick={onClose} className="bg-white/70 backdrop-blur-2xl border border-white/20 rounded-full px-5 h-12 flex items-center">
-              <img src="/images/sora-logo.png" alt="Sora Solutions" className="h-9 w-auto object-contain" loading="lazy" />
+              <Image src="/images/sora-logo.png" alt="Sora Solutions" width={160} height={36} className="h-9 w-auto object-contain" />
             </Link>
             <button
               type="button"

@@ -9,43 +9,95 @@ const stats = [
     target: 78,
     suffix: "%",
     description: "of local mobile searches result in a purchase within 24 hours",
+    bg: "bg-white/80 border border-black/5",
+    text: "text-black",
+    descColor: "text-black/60",
+    ring: "#9740fe",
   },
   {
     target: 60,
     suffix: " sec",
     description: "average response time with Sora's AI",
+    bg: "bg-[#f5f3ff] border border-[#d9d0fb]/50",
+    text: "text-black",
+    descColor: "text-black/60",
+    ring: "#9740fe",
   },
   {
     target: 46,
     suffix: "%",
     description: "of all Google searches are looking for local businesses",
+    bg: "bg-[#d9d0fb]",
+    text: "text-black",
+    descColor: "text-black/70",
+    ring: "#9740fe",
   },
   {
     target: 391,
     suffix: "%",
     description: "more conversions when you respond within 1 minute",
+    bg: "bg-[#090b3c]",
+    text: "text-white",
+    descColor: "text-white/60",
+    ring: "#d9d0fb",
   },
 ];
 
-function StatBlock({ stat, index }) {
+function ProgressRing({ progress, color, size = 48 }) {
+  const radius = (size - 6) / 2;
+  const circumference = 2 * Math.PI * radius;
+  const offset = circumference * (1 - progress);
+
+  return (
+    <svg width={size} height={size} className="mx-auto mb-4">
+      <circle
+        cx={size / 2}
+        cy={size / 2}
+        r={radius}
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={3}
+        className="text-black/5"
+      />
+      <motion.circle
+        cx={size / 2}
+        cy={size / 2}
+        r={radius}
+        fill="none"
+        stroke={color}
+        strokeWidth={3}
+        strokeLinecap="round"
+        strokeDasharray={circumference}
+        initial={{ strokeDashoffset: circumference }}
+        animate={{ strokeDashoffset: offset }}
+        transition={{ duration: 2, ease: "easeOut" }}
+        style={{ transformOrigin: "center", transform: "rotate(-90deg)" }}
+      />
+    </svg>
+  );
+}
+
+function StatCard({ stat, index }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const count = useCountUp(stat.target, 2000, isInView);
   const delay = index * 0.2;
+  const progress = isInView ? Math.min(stat.target / 400, 1) : 0;
 
   return (
     <motion.div
       ref={ref}
-      className="flex flex-col items-center text-center"
+      className={`${stat.bg} rounded-2xl p-6 text-center`}
       initial={{ y: 30, opacity: 0 }}
       animate={isInView ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
       transition={{ duration: 0.6, ease: "easeOut", delay }}
     >
-      <div className="text-5xl md:text-6xl font-black text-black pb-2 border-b-[3px] border-transparent bg-gradient-to-r from-primary to-secondary bg-[length:100%_3px] bg-[position:0_100%] bg-no-repeat">
+      <ProgressRing progress={progress} color={stat.ring} />
+      <div className={`text-4xl md:text-5xl font-black ${stat.text}`}>
         {count}
         {stat.suffix}
       </div>
-      <p className="mt-3 text-sm font-light tracking-wide text-black/60 max-w-[200px]">
+      <p className={`mt-2 text-sm font-light tracking-wide ${stat.descColor}`}>
         {stat.description}
       </p>
     </motion.div>
@@ -69,9 +121,9 @@ export default function StatsSection() {
           The Numbers
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
           {stats.map((stat, i) => (
-            <StatBlock key={stat.target} stat={stat} index={i} />
+            <StatCard key={stat.target} stat={stat} index={i} />
           ))}
         </div>
       </div>
