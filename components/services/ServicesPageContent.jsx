@@ -83,10 +83,71 @@ export default function ServicesPageContent() {
         afterContent="Top 3 on Google Maps. Ranking for local keywords. Organic leads flowing daily."
       />
 
-      {/* 03 — Google Ads */}
+      {/* 03 — Pipeline & Follow-Up */}
+      <ServiceSection
+        id="crm"
+        number="03"
+        icon={Database}
+        title="Pipeline & Follow-Up"
+        subtitle="Every lead tracked. Every follow-up automated — nothing falls through the cracks."
+        description={
+          "One place for every lead, every message, every follow-up. Automated sequences fire within 60 seconds of a new enquiry. Nothing slips through the cracks. Ever.\n\nYour phone isn\u2019t a CRM. Right now your leads are scattered across voicemail, text messages, Facebook DMs, emails, and that notebook in your ute."
+        }
+        inclusions={[
+          "Unified inbox (SMS, email, Facebook, Instagram, Google, WhatsApp)",
+          "Visual pipeline",
+          "60-second automated follow-up",
+          "Missed call text-back",
+          "Booking automation",
+          "Mobile app",
+          "Review automation",
+          "Reporting dashboard",
+        ]}
+        leadTimeBadge="Instant impact"
+        ctaText="Get Started with Pipeline & Follow-Up"
+        reversed={false}
+        tinted={false}
+        beforeContent="Leads scattered across voicemail, texts, emails. Follow-ups forgotten."
+        afterContent="Every lead in one place. 60-second auto follow-up. Nothing slips."
+      />
+
+      <ServiceDivider
+        topText="PIPELINE & FOLLOW-UP  EVERY LEAD TRACKED  NOTHING FALLS THROUGH"
+        bottomText="AI OPERATING SYSTEM  CUSTOM AGENTS  FULL AI SYSTEM"
+      />
+
+      {/* 04 — AI Operating System */}
+      <ServiceSection
+        id="ai"
+        number="04"
+        icon={Brain}
+        title=""
+        titleOverride={<AIHeading />}
+        subtitle="AI operating systems for trade businesses."
+        description={
+          "This isn\u2019t a chatbot bolted onto your website. This is a full AI operating system \u2014 custom agents across every department of your business, from lead capture to project management to review generation.\n\nSora deploys custom AI agents tailored to your specific workflows. The kind of systems that make your business run like it has a full admin team \u2014 without the payroll."
+        }
+        inclusions={[
+          "Custom AI agents across business pillars",
+          "AI receptionist (voice AI)",
+          "Intelligent lead qualification",
+          "Automated review generation",
+          "Smart follow-up sequences",
+          "Workflow automation",
+          "CRM intelligence and reporting",
+        ]}
+        leadTimeBadge="Instant impact"
+        ctaText="Get Started with AI"
+        reversed={true}
+        tinted={true}
+        beforeContent="Manual admin. Missed calls. Slow responses. Losing jobs to faster competitors."
+        afterContent="AI handles calls, qualifies leads, books jobs, requests reviews. 24/7. No payroll."
+      />
+
+      {/* 05 — Google Ads */}
       <ServiceSection
         id="google-ads"
-        number="03"
+        number="05"
         icon={Target}
         title="Google Ads"
         subtitle="Stop wasting money on ads that don't convert."
@@ -114,10 +175,10 @@ export default function ServicesPageContent() {
         bottomText="SOCIAL ADS  REACH HOMEOWNERS  FILL YOUR PIPELINE"
       />
 
-      {/* 04 — Social Ads */}
+      {/* 06 — Facebook & Instagram Ads */}
       <ServiceSection
         id="social-ads"
-        number="04"
+        number="06"
         icon={Megaphone}
         title="Facebook & Instagram Ads"
         subtitle="Reach homeowners before they start searching."
@@ -137,67 +198,6 @@ export default function ServicesPageContent() {
         tinted={true}
         beforeContent="No social presence. Quiet months. Hoping the phone rings."
         afterContent="Pipeline full from social. Homeowners seeing your work before they even search."
-      />
-
-      {/* 05 — CRM & Automation */}
-      <ServiceSection
-        id="crm"
-        number="05"
-        icon={Database}
-        title="CRM & Automation"
-        subtitle="Every lead. Every follow-up. Every job. One place."
-        description={
-          "One place for every lead, every message, every follow-up. Automated sequences fire within 60 seconds of a new enquiry. Nothing slips through the cracks. Ever.\n\nYour phone isn\u2019t a CRM. Right now your leads are scattered across voicemail, text messages, Facebook DMs, emails, and that notebook in your ute."
-        }
-        inclusions={[
-          "Unified inbox (SMS, email, Facebook, Instagram, Google, WhatsApp)",
-          "Visual pipeline",
-          "60-second automated follow-up",
-          "Missed call text-back",
-          "Booking automation",
-          "Mobile app",
-          "Review automation",
-          "Reporting dashboard",
-        ]}
-        leadTimeBadge="Instant impact"
-        ctaText="Get Started with CRM"
-        reversed={false}
-        tinted={false}
-        beforeContent="Leads scattered across voicemail, texts, emails. Follow-ups forgotten."
-        afterContent="Every lead in one place. 60-second auto follow-up. Nothing slips."
-      />
-
-      <ServiceDivider
-        topText="CRM & AUTOMATION  EVERY LEAD TRACKED  60-SECOND FOLLOW-UP"
-        bottomText="AI & INTELLIGENCE  CUSTOM AGENTS  AI OPERATING SYSTEMS"
-      />
-
-      {/* 06 — AI & Automation Intelligence */}
-      <ServiceSection
-        id="ai"
-        number="06"
-        icon={Brain}
-        title=""
-        titleOverride={<AIHeading />}
-        subtitle="AI operating systems for trade businesses."
-        description={
-          "This isn\u2019t a chatbot bolted onto your website. This is a full AI operating system \u2014 custom agents across every department of your business, from lead capture to project management to review generation.\n\nSora deploys custom AI agents tailored to your specific workflows. The kind of systems that make your business run like it has a full admin team \u2014 without the payroll."
-        }
-        inclusions={[
-          "Custom AI agents across business pillars",
-          "AI receptionist (voice AI)",
-          "Intelligent lead qualification",
-          "Automated review generation",
-          "Smart follow-up sequences",
-          "Workflow automation",
-          "CRM intelligence and reporting",
-        ]}
-        leadTimeBadge="Instant impact"
-        ctaText="Get Started with AI"
-        reversed={true}
-        tinted={true}
-        beforeContent="Manual admin. Missed calls. Slow responses. Losing jobs to faster competitors."
-        afterContent="AI handles calls, qualifies leads, books jobs, requests reviews. 24/7. No payroll."
       />
 
       <ROICalculator />

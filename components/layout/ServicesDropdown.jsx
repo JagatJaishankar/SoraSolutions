@@ -47,15 +47,15 @@ const COLUMNS = [
     items: [
       {
         emoji: "⚙️",
-        title: "CRM & Automation",
-        subtitle: "Every lead tracked, every follow-up automated",
+        title: "Pipeline & Follow-Up",
+        subtitle: "Every lead tracked. Every follow-up automated — nothing falls through the cracks.",
         badge: "Instant impact",
         href: "/services#crm",
       },
       {
         emoji: "🤖",
-        title: "AI Tools",
-        subtitle: "Chatbots, voice AI, and smart automation",
+        title: "AI Operating System",
+        subtitle: "Not a chatbot. A full operating system for your business.",
         badge: "Instant impact",
         href: "/services#ai-tools",
       },
@@ -72,36 +72,42 @@ export default function ServicesDropdown() {
       transition={{ duration: 0.2, ease: "easeOut" }}
       className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[720px] bg-white border border-black/5 rounded-2xl shadow-xl p-6 z-50"
     >
-      <div className="grid grid-cols-3 gap-6">
+      {/* Column headings */}
+      <div className="grid grid-cols-3 gap-6 mb-3">
         {COLUMNS.map((col) => (
-          <div key={col.heading}>
-            <p className="text-xs font-semibold tracking-widest uppercase text-black/40 mb-3">
-              {col.heading}
-            </p>
-            <div className="flex flex-col gap-2">
-              {col.items.map((item) => (
-                <Link
-                  key={item.title}
-                  href={item.href}
-                  className="group flex flex-col gap-1 rounded-xl p-3 transition-all duration-200 hover:bg-accent/30 hover:-translate-y-1"
-                >
-                  <div className="flex items-center gap-2">
-                    <span className="text-base">{item.emoji}</span>
-                    <span className="font-semibold text-sm text-black">
-                      {item.title}
-                    </span>
-                  </div>
-                  <p className="text-sm text-black/60 leading-snug">
-                    {item.subtitle}
-                  </p>
-                  <span className="mt-1 inline-block self-start text-xs font-medium text-primary bg-primary/10 rounded-full px-2 py-0.5">
-                    {item.badge}
-                  </span>
-                </Link>
-              ))}
-            </div>
-          </div>
+          <p key={col.heading} className="text-xs font-semibold tracking-widest uppercase text-black/40">
+            {col.heading}
+          </p>
         ))}
+      </div>
+
+      {/* Items grid — each row shares equal height across all columns */}
+      <div className="grid grid-cols-3 gap-x-6 gap-y-2">
+        {[0, 1].map((row) =>
+          COLUMNS.map((col) => {
+            const item = col.items[row];
+            return (
+              <Link
+                key={item.title}
+                href={item.href}
+                className="group flex flex-col gap-1 rounded-xl p-3 h-full transition-all duration-200 hover:bg-accent/30 hover:-translate-y-1"
+              >
+                <div className="flex items-center gap-2">
+                  <span className="text-base">{item.emoji}</span>
+                  <span className="font-semibold text-sm text-black">
+                    {item.title}
+                  </span>
+                </div>
+                <p className="text-sm text-black/60 leading-snug flex-grow">
+                  {item.subtitle}
+                </p>
+                <span className="mt-1 inline-block self-start text-xs font-medium text-primary bg-primary/10 rounded-full px-2 py-0.5">
+                  {item.badge}
+                </span>
+              </Link>
+            );
+          })
+        )}
       </div>
     </motion.div>
   );

@@ -10,8 +10,8 @@ const services = [
   { label: "SEO", href: "/services" },
   { label: "Google Ads", href: "/services" },
   { label: "Facebook & Instagram Ads", href: "/services" },
-  { label: "CRM & Automation", href: "/services" },
-  { label: "AI Tools", href: "/services" },
+  { label: "Pipeline & Follow-Up", href: "/services" },
+  { label: "AI Operating System", href: "/services" },
 ];
 
 const company = [

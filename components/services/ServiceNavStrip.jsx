@@ -6,10 +6,10 @@ import { motion, AnimatePresence } from "framer-motion";
 const TABS = [
   { id: "websites", label: "Websites" },
   { id: "seo", label: "SEO" },
+  { id: "crm", label: "Pipeline & Follow-Up" },
+  { id: "ai", label: "AI Operating System" },
   { id: "google-ads", label: "Google Ads" },
   { id: "social-ads", label: "Social Ads" },
-  { id: "crm", label: "CRM & Automation" },
-  { id: "ai", label: "AI & Intelligence" },
 ];
 
 export default function ServiceNavStrip() {

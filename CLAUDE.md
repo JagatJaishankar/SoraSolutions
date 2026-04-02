@@ -1,12 +1,61 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
 # SORA SOLUTIONS — Project Context
+
+## Development Commands
+
+```bash
+npm run dev      # Start dev server (localhost:3000)
+npm run build    # Production build
+npm run start    # Start production server
+npm run lint     # ESLint (eslint.config.mjs, Next.js config)
+```
+
+No test framework is configured.
 
 ## Project Overview
 - **Client:** Joel Willis — ex-carpenter, founder of Sora Solutions
 - **Business:** Trade automation agency for Australian tradies (plumbers, electricians, builders, roofers, landscapers, painters, concreters, HVAC)
-- **Stack:** Next.js 15 (App Router, JavaScript, NO src/ directory) + Tailwind CSS v4 + Framer Motion
+- **Stack:** Next.js 16 (App Router, JavaScript, NO src/ directory) + Tailwind CSS v4 + Framer Motion + React 19
+- **React Compiler:** Enabled via `babel-plugin-react-compiler` in next.config.mjs (`reactCompiler: true`)
+- **Path alias:** `@/` maps to project root (e.g. `@/components/ui/GlassCard`)
 - **Design Reference:** Softriver.co aesthetic — premium, clean, trust-heavy
 - **Theme:** Vibrant, light, glassmorphism, tech-forward but human
-- **Pages:** Home, Services, About, Resources, Contact (5 pages only — no /results page)
+- **Pages:** Home, Services, About, Resources, Contact + Blog (with dynamic `[slug]` routes)
+
+## Architecture
+
+### Directory structure
+```
+app/                     # Next.js App Router pages
+  layout.js              # Root layout — fonts, global backgrounds, Navbar, Footer
+  page.js                # Home page
+  blog/[slug]/           # Dynamic blog post pages
+  resources/page.js      # Resources page
+  about/ contact/ services/
+components/
+  home/                  # One component per homepage section
+  layout/                # Navbar, Footer, MobileDrawer, StickyBottomCTA, ExitIntentPopup, ServicesDropdown
+  ui/                    # Reusable UI primitives (GlassCard, PrimaryButton, SectionHeading, TiltCard, etc.)
+  effects/               # Visual effects (GradientBackground, GridOverlay, FloatingLogos, OrbRevealLayer)
+hooks/                   # useCountUp.js, useExitIntent.js
+lib/                     # faqData.js (static data)
+public/                  # Static assets (images, blog/)
+```
+
+### Root layout layers (bottom to top, all fixed/behind content)
+1. `GradientBackground` — animated blobs (z-0)
+2. `GridOverlay` — subtle grid (replaces PatternOverlay which is commented out)
+3. `FloatingLogos` — floating trade brand logos
+4. Content wrapper `div.relative.z-10` — Navbar + page + Footer + StickyBottomCTA + ExitIntentPopup
+
+### Additional libraries in use
+- `gsap` + `@gsap/react` — supplementary animations alongside Framer Motion
+- `three` + `@react-three/fiber` + `@react-three/drei` + `@react-three/rapier` — 3D effects
+- `lucide-react` — icons
+- `clsx` — conditional class merging
 
 ## Critical Rules
 - **NO inline style tags** — all styling must be Tailwind classes or globals.css. The ONLY exception is CSS custom properties needed for dynamic values (cursor position for tilt effects, Framer Motion style props)
@@ -84,10 +133,10 @@ Exception: #F59E0B for star ratings in reviews section ONLY.
 - Counter: 0 to target, ease-out cubic, ~2s, viewport triggered
 
 ## Site-Wide Background (layout.js)
-- GradientBackground: fixed z-0 animated gradient blobs (purple + indigo brand colours), wrapped in opacity-50 div
-- PatternOverlay: fixed z-[2] repeating Sora S pattern (/images/sora-pattern.png) at 10% opacity
-- GridOverlay: commented out (replaced by PatternOverlay)
-- All pointer-events-none, render behind all content
+- GradientBackground: fixed z-0 animated gradient blobs (purple + indigo brand colours)
+- GridOverlay: active — subtle grid pattern (PatternOverlay is currently commented out)
+- FloatingLogos: floating trade brand logos layer
+- All pointer-events-none, render behind all content (z-10 content wrapper sits above)
 
 ## Logo
 - Logo image: /images/sora-logo.png (transparent PNG with purple S icon + "SoraSolutions" wordmark)

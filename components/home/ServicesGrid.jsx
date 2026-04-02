@@ -2,49 +2,39 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import {
-  Globe,
-  Search,
-  Target,
-  Brain,
-  Database,
-  Megaphone,
-} from "lucide-react";
+import { Globe, Target, Brain, Database } from "lucide-react";
 import TiltCard from "@/components/ui/TiltCard";
 
 const SERVICES = [
   {
-    title: "Websites",
-    subtitle:
-      "Not a digital brochure \u2014 a conversion engine. Custom-designed for your trade, optimised for Google, and built to turn visitors into booked jobs.",
+    title: "Websites & SEO",
+    description: "Custom trade websites + local SEO + Google Business Profile. A website that ranks and converts — not just a digital brochure.",
     icon: Globe,
-    badge: "Leads in 2-4 weeks",
+    badge: "Get found + convert",
     href: "/services#websites",
     span: "md:col-span-7",
     wide: true,
   },
   {
-    title: "SEO",
-    subtitle:
-      "Be the first name they find. Rank higher in Google Search and Maps so the right customers find you first.",
-    icon: Search,
-    badge: "Leads in 2-3 months",
-    href: "/services#seo",
+    title: "Pipeline & Follow-Up",
+    description: "GoHighLevel setup, automated follow-ups, missed call text-back, booking systems, pipeline management. Every lead tracked. Every follow-up automated.",
+    icon: Database,
+    badge: "Instant impact",
+    href: "/services#crm",
     span: "md:col-span-5",
+    lilac: true,
   },
   {
-    title: "Google Ads",
-    subtitle:
-      "Stop wasting money on ads that don\u2019t convert. We build campaigns that bring in real enquiries \u2014 not just clicks.",
+    title: "Marketing Campaigns",
+    description: "Google Ads, Meta Ads, review generation, past client reactivation offers, loyalty/reward systems. Targeted campaigns that bring the right customers to your door.",
     icon: Target,
     badge: "Leads in 48 hours",
     href: "/services#google-ads",
     span: "md:col-span-5",
   },
   {
-    title: "AI & Automation Intelligence",
-    subtitle:
-      "AI operating systems for trade businesses. Not chatbots \u2014 custom agents across every department.",
+    title: "AI & Automation",
+    description: "Intelligent systems for follow-ups, bookings, missed calls, quoting reminders. Smart systems that handle the stuff you don't have time for.",
     icon: Brain,
     badge: "Instant impact",
     href: "/services#ai",
@@ -52,96 +42,116 @@ const SERVICES = [
     wide: true,
     dark: true,
   },
-  {
-    title: "CRM & Automation",
-    subtitle:
-      "Every lead. Every follow-up. Every job. One place. Automated sequences fire within 60 seconds.",
-    icon: Database,
-    badge: "Instant impact",
-    href: "/services#crm",
-    span: "md:col-span-7",
-    wide: true,
-    lilac: true,
-  },
-  {
-    title: "Facebook & Instagram Ads",
-    subtitle:
-      "Reach homeowners before they start searching. Fill your pipeline even in quiet months.",
-    icon: Megaphone,
-    badge: "Leads in 1-2 weeks",
-    href: "/services#social-ads",
-    span: "md:col-span-5",
-  },
 ];
 
-function WebsiteIllustration() {
+function WebsiteSEOIllustration() {
   return (
-    <div className="bg-[#090b3c] rounded-xl p-4 h-full flex flex-col justify-center gap-2">
-      <div className="flex items-center gap-1.5 mb-2">
-        <div className="w-2 h-2 rounded-full bg-white/20" />
-        <div className="w-2 h-2 rounded-full bg-white/15" />
-        <div className="w-2 h-2 rounded-full bg-white/10" />
-        <div className="flex-1 h-3 bg-white/5 rounded ml-2 max-w-[80px]" />
+    <div className="h-full flex flex-col gap-3 p-4 justify-center">
+      {/* Browser / website mockup */}
+      <div className="bg-[#090b3c] rounded-xl p-3">
+        <div className="flex items-center gap-1.5 mb-2.5">
+          <div className="w-2 h-2 rounded-full bg-white/20" />
+          <div className="w-2 h-2 rounded-full bg-white/15" />
+          <div className="w-2 h-2 rounded-full bg-white/10" />
+          <div className="flex-1 h-2.5 bg-white/5 rounded ml-2" />
+        </div>
+        <div className="h-1.5 bg-white/15 rounded-full w-3/4 mb-1.5" />
+        <div className="h-1.5 bg-white/10 rounded-full w-full mb-1.5" />
+        <div className="h-1.5 bg-white/10 rounded-full w-2/3 mb-3" />
+        <div className="flex gap-2">
+          <div className="h-7 bg-[#9740fe]/40 rounded-lg flex-1 flex items-center justify-center">
+            <div className="h-1.5 bg-white/40 rounded-full w-2/3" />
+          </div>
+          <div className="h-7 bg-white/5 rounded-lg w-16" />
+        </div>
       </div>
-      <div className="h-2 bg-white/10 rounded-full w-3/4" />
-      <div className="h-2 bg-white/10 rounded-full w-full" />
-      <div className="h-2 bg-white/10 rounded-full w-1/2" />
-      <div className="flex gap-2 mt-2">
-        <div className="h-6 bg-[#9740fe]/30 rounded flex-1" />
-        <div className="h-6 bg-white/5 rounded flex-1" />
-      </div>
-      <div className="flex gap-1 mt-1">
-        {[...Array(5)].map((_, i) => (
-          <div key={i} className="w-2 h-2 rounded-full bg-[#F59E0B]/40" />
+
+      {/* Google Maps 3-pack */}
+      <div className="bg-white/70 rounded-xl p-3">
+        <div className="text-[7px] font-semibold tracking-widest uppercase text-black/30 mb-2">
+          Google Maps
+        </div>
+        {[
+          { name: "Your Business", stars: true },
+          { name: "Competitor A", stars: false },
+          { name: "Competitor B", stars: false },
+        ].map((item, i) => (
+          <div
+            key={i}
+            className={`flex items-center gap-2 rounded-lg px-2 py-1.5 mb-1 ${
+              i === 0 ? "bg-[#9740fe]/10" : ""
+            }`}
+          >
+            <div
+              className={`w-4 h-4 rounded-full flex-shrink-0 flex items-center justify-center text-[8px] font-bold ${
+                i === 0
+                  ? "bg-[#9740fe] text-white"
+                  : "bg-black/10 text-black/30"
+              }`}
+            >
+              {i + 1}
+            </div>
+            <span
+              className={`text-[9px] font-medium flex-1 truncate ${
+                i === 0 ? "text-[#9740fe]" : "text-black/30"
+              }`}
+            >
+              {item.name}
+            </span>
+            {item.stars && (
+              <div className="flex gap-0.5">
+                {[...Array(5)].map((_, j) => (
+                  <div
+                    key={j}
+                    className="w-1.5 h-1.5 rounded-full bg-[#F59E0B]/70"
+                  />
+                ))}
+              </div>
+            )}
+          </div>
         ))}
       </div>
     </div>
   );
 }
 
-function AIIllustration() {
+function AIAutomationIllustration() {
   return (
     <div className="h-full flex items-center justify-center">
-      <svg width="140" height="100" viewBox="0 0 140 100" className="opacity-60">
-        <circle cx="25" cy="25" r="5" fill="#9740fe" opacity="0.6" />
-        <circle cx="70" cy="12" r="4" fill="#9740fe" opacity="0.4" />
-        <circle cx="115" cy="35" r="6" fill="#9740fe" opacity="0.5">
-          <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite" />
-        </circle>
-        <circle cx="45" cy="60" r="4" fill="#9740fe" opacity="0.4" />
-        <circle cx="95" cy="70" r="5" fill="#9740fe" opacity="0.6" />
-        <circle cx="60" cy="88" r="3" fill="#9740fe" opacity="0.3" />
-        <line x1="25" y1="25" x2="70" y2="12" stroke="#9740fe" strokeWidth="0.8" opacity="0.3" />
-        <line x1="70" y1="12" x2="115" y2="35" stroke="#9740fe" strokeWidth="0.8" opacity="0.3" />
-        <line x1="25" y1="25" x2="45" y2="60" stroke="#9740fe" strokeWidth="0.8" opacity="0.3" />
-        <line x1="45" y1="60" x2="95" y2="70" stroke="#9740fe" strokeWidth="0.8" opacity="0.3" />
-        <line x1="115" y1="35" x2="95" y2="70" stroke="#9740fe" strokeWidth="0.8" opacity="0.3" />
-        <line x1="45" y1="60" x2="60" y2="88" stroke="#9740fe" strokeWidth="0.8" opacity="0.3" />
-      </svg>
-    </div>
-  );
-}
+      <svg width="180" height="150" viewBox="0 0 180 150" className="opacity-75">
+        {/* Dashed connection lines */}
+        <line x1="90" y1="75" x2="28" y2="30" stroke="#9740fe" strokeWidth="1" opacity="0.35" strokeDasharray="4 3" />
+        <line x1="90" y1="75" x2="152" y2="30" stroke="#9740fe" strokeWidth="1" opacity="0.35" strokeDasharray="4 3" />
+        <line x1="90" y1="75" x2="28" y2="118" stroke="#9740fe" strokeWidth="1" opacity="0.35" strokeDasharray="4 3" />
+        <line x1="90" y1="75" x2="152" y2="118" stroke="#9740fe" strokeWidth="1" opacity="0.35" strokeDasharray="4 3" />
 
-function CRMIllustration() {
-  return (
-    <div className="h-full flex flex-col justify-center gap-3 p-4">
-      <div className="flex gap-2 items-end h-16">
-        <div className="flex-1 bg-[#9740fe]/20 rounded-t" style={{ height: "40%" }} />
-        <div className="flex-1 bg-[#9740fe]/20 rounded-t" style={{ height: "70%" }} />
-        <div className="flex-1 bg-[#9740fe]/20 rounded-t" style={{ height: "55%" }} />
-        <div className="flex-1 bg-[#9740fe]/20 rounded-t" style={{ height: "90%" }} />
-        <div className="flex-1 bg-[#9740fe]/20 rounded-t" style={{ height: "65%" }} />
-      </div>
-      <div className="flex gap-2">
-        <div className="flex-1 bg-white/40 rounded-lg p-2 text-center">
-          <div className="text-sm font-bold text-[#9740fe]">127</div>
-          <div className="text-[8px] text-black/40">Leads</div>
-        </div>
-        <div className="flex-1 bg-white/40 rounded-lg p-2 text-center">
-          <div className="text-sm font-bold text-[#9740fe]">89%</div>
-          <div className="text-[8px] text-black/40">Response</div>
-        </div>
-      </div>
+        {/* Central pulsing node */}
+        <circle cx="90" cy="75" r="16" fill="#9740fe" opacity="0.12" />
+        <circle cx="90" cy="75" r="9" fill="#9740fe" opacity="0.55">
+          <animate attributeName="r" values="9;12;9" dur="2.2s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.55;0.85;0.55" dur="2.2s" repeatCount="indefinite" />
+        </circle>
+
+        {/* Top-left — Follow-up */}
+        <rect x="8" y="10" width="40" height="40" rx="10" fill="#9740fe" opacity="0.12" />
+        <circle cx="28" cy="30" r="5" fill="#9740fe" opacity="0.55" />
+        <text x="28" y="58" textAnchor="middle" fill="#9740fe" opacity="0.55" fontSize="7.5" fontFamily="sans-serif">Follow-up</text>
+
+        {/* Top-right — Booking */}
+        <rect x="132" y="10" width="40" height="40" rx="10" fill="#9740fe" opacity="0.12" />
+        <circle cx="152" cy="30" r="5" fill="#9740fe" opacity="0.55" />
+        <text x="152" y="58" textAnchor="middle" fill="#9740fe" opacity="0.55" fontSize="7.5" fontFamily="sans-serif">Booking</text>
+
+        {/* Bottom-left — Missed Call */}
+        <rect x="8" y="98" width="40" height="40" rx="10" fill="#9740fe" opacity="0.12" />
+        <circle cx="28" cy="118" r="5" fill="#9740fe" opacity="0.55" />
+        <text x="28" y="146" textAnchor="middle" fill="#9740fe" opacity="0.55" fontSize="7.5" fontFamily="sans-serif">Missed Call</text>
+
+        {/* Bottom-right — Quoting */}
+        <rect x="132" y="98" width="40" height="40" rx="10" fill="#9740fe" opacity="0.12" />
+        <circle cx="152" cy="118" r="5" fill="#9740fe" opacity="0.55" />
+        <text x="152" y="146" textAnchor="middle" fill="#9740fe" opacity="0.55" fontSize="7.5" fontFamily="sans-serif">Quoting</text>
+      </svg>
     </div>
   );
 }
@@ -155,7 +165,7 @@ function ServiceCardContent({ service }) {
     ? "bg-[#d9d0fb]"
     : "";
   const textColor = service.dark ? "text-white" : "text-black";
-  const subtitleColor = service.dark
+  const taglineColor = service.dark
     ? "text-white/60"
     : service.lilac
     ? "text-black/70"
@@ -175,38 +185,46 @@ function ServiceCardContent({ service }) {
   const linkColor = service.dark ? "text-[#d9d0fb]" : "text-[#9740fe]";
 
   const Illustration =
-    service.title === "Websites"
-      ? WebsiteIllustration
-      : service.title === "AI & Automation Intelligence"
-      ? AIIllustration
-      : service.title === "CRM & Automation"
-      ? CRMIllustration
+    service.title === "Websites & SEO"
+      ? WebsiteSEOIllustration
+      : service.title === "AI & Automation"
+      ? AIAutomationIllustration
       : null;
+
+  const textSide = (
+    <div className="flex-1 p-6 md:p-10 flex flex-col">
+      <div
+        className={`w-14 h-14 rounded-2xl ${iconBg} flex items-center justify-center mb-4`}
+      >
+        <Icon className={iconColor} size={28} />
+      </div>
+      <h3 className={`text-2xl font-bold tracking-tight ${textColor} mb-3`}>
+        {service.title}
+      </h3>
+      <p
+        className={`text-sm font-light tracking-wide ${taglineColor} mb-4 leading-relaxed flex-grow`}
+      >
+        {service.description}
+      </p>
+      <div className="flex items-center justify-between mt-auto">
+        <span
+          className={`${badgeBg} ${badgeText} text-xs font-semibold px-3 py-1.5 rounded-full`}
+        >
+          {service.badge}
+        </span>
+        <span className={`${linkColor} text-sm font-medium hover:underline`}>
+          Learn more &rarr;
+        </span>
+      </div>
+    </div>
+  );
 
   if (service.wide && Illustration) {
     return (
-      <div className={`flex flex-col md:flex-row h-full ${bgClass} rounded-2xl overflow-hidden`}>
-        {/* Text side */}
-        <div className="flex-1 p-6 md:p-10 flex flex-col">
-          <div className={`w-14 h-14 rounded-2xl ${iconBg} flex items-center justify-center mb-4`}>
-            <Icon className={iconColor} size={28} />
-          </div>
-          <h3 className={`text-xl font-bold tracking-tight ${textColor} mb-2`}>
-            {service.title}
-          </h3>
-          <p className={`text-sm font-light tracking-wide ${subtitleColor} mb-4 leading-relaxed flex-grow`}>
-            {service.subtitle}
-          </p>
-          <div className="flex items-center justify-between mt-auto">
-            <span className={`${badgeBg} ${badgeText} text-xs font-semibold px-3 py-1.5 rounded-full`}>
-              {service.badge}
-            </span>
-            <span className={`${linkColor} text-sm font-medium hover:underline`}>
-              Learn more &rarr;
-            </span>
-          </div>
-        </div>
-        {/* Illustration side */}
+      <div
+        className={`flex flex-col md:flex-row h-full ${bgClass} rounded-2xl overflow-hidden`}
+      >
+        {textSide}
         <div className="flex-1 hidden md:block min-h-[200px]">
           <Illustration />
         </div>
@@ -216,17 +234,23 @@ function ServiceCardContent({ service }) {
 
   return (
     <div className={`flex flex-col h-full p-6 md:p-10 ${bgClass} rounded-2xl`}>
-      <div className={`w-14 h-14 rounded-2xl ${iconBg} flex items-center justify-center mb-4`}>
+      <div
+        className={`w-14 h-14 rounded-2xl ${iconBg} flex items-center justify-center mb-4`}
+      >
         <Icon className={iconColor} size={28} />
       </div>
-      <h3 className={`text-xl font-bold tracking-tight ${textColor} mb-2`}>
+      <h3 className={`text-2xl font-bold tracking-tight ${textColor} mb-3`}>
         {service.title}
       </h3>
-      <p className={`text-sm font-light tracking-wide ${subtitleColor} mb-4 leading-relaxed flex-grow`}>
-        {service.subtitle}
+      <p
+        className={`text-sm font-light tracking-wide ${taglineColor} mb-4 leading-relaxed flex-grow`}
+      >
+        {service.description}
       </p>
       <div className="flex items-center justify-between mt-auto">
-        <span className={`${badgeBg} ${badgeText} text-xs font-semibold px-3 py-1.5 rounded-full`}>
+        <span
+          className={`${badgeBg} ${badgeText} text-xs font-semibold px-3 py-1.5 rounded-full`}
+        >
           {service.badge}
         </span>
         <span className={`${linkColor} text-sm font-medium hover:underline`}>

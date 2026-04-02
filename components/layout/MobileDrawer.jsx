@@ -32,8 +32,8 @@ const SERVICE_COLUMNS = [
   {
     heading: "Keep and Scale",
     items: [
-      { emoji: "⚙️", title: "CRM & Automation", subtitle: "Every lead tracked, every follow-up automated", badge: "Instant impact", href: "/services#crm" },
-      { emoji: "🤖", title: "AI Tools", subtitle: "Chatbots, voice AI, and smart automation", badge: "Instant impact", href: "/services#ai-tools" },
+      { emoji: "⚙️", title: "Pipeline & Follow-Up", subtitle: "Every lead tracked. Every follow-up automated — nothing falls through the cracks.", badge: "Instant impact", href: "/services#crm" },
+      { emoji: "🤖", title: "AI Operating System", subtitle: "Not a chatbot. A full operating system for your business.", badge: "Instant impact", href: "/services#ai-tools" },
     ],
   },
 ];
