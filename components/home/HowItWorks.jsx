@@ -11,24 +11,21 @@ const steps = [
     number: "01",
     title: "Get Found",
     icon: Radar,
-    description:
-      "We put your business where customers are already looking. A website that ranks. SEO that puts you on the map. Ads that target the right people at the right time. You stop being invisible.",
-    pills: ["Websites", "SEO", "Google Ads", "Facebook Ads"],
+    description: "We put your business where customers are already searching.",
+    pills: ["Websites", "SEO", "Google Ads", "Social Ads"],
   },
   {
     number: "02",
     title: "Convert & Capture",
     icon: Zap,
-    description:
-      "Every visitor, every caller, every enquiry goes into your system. AI captures their details, qualifies the lead, and follows up instantly — before your competitor even checks their voicemail. Nothing gets lost.",
-    pills: ["CRM", "AI Chatbot", "AI Receptionist", "Lead Capture"],
+    description: "Every enquiry goes into your system and gets followed up instantly.",
+    pills: ["CRM", "AI Follow-up", "Lead Capture", "Missed Call Text-back"],
   },
   {
     number: "03",
     title: "Grow & Dominate",
     icon: TrendingUp,
-    description:
-      "As the data builds, we optimise everything. More of what works, less of what doesn't. Automated review requests build your reputation. Your pipeline gets predictable. You go from chasing work to choosing work.",
+    description: "We optimise what's working and build your reputation on autopilot.",
     pills: ["Review Automation", "Analytics", "Ongoing Strategy"],
   },
 ];
@@ -63,32 +60,25 @@ function StepCard({ step, index }) {
         animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
       >
-        <GlassCard className="p-6 md:p-8 lg:p-10" hover={false}>
-          <div className="flex flex-col md:flex-row md:gap-8">
-            {/* Left: icon + title */}
-            <div className="flex-shrink-0 md:w-[30%]">
-              <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center mb-3">
-                <Icon className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-2xl font-bold text-black mb-3 md:mb-0">{step.title}</h3>
+        <GlassCard className="p-6 md:p-8" hover={false}>
+          <div className="flex items-center gap-4 mb-3">
+            <div className="w-11 h-11 rounded-xl bg-accent flex items-center justify-center flex-shrink-0">
+              <Icon className="w-5 h-5 text-primary" />
             </div>
-
-            {/* Right: description + pills */}
-            <div className="md:w-[70%]">
-              <p className="text-base font-light tracking-wide text-black/60 leading-relaxed mb-4">
-                {step.description}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {step.pills.map((pill) => (
-                  <span
-                    key={pill}
-                    className="bg-accent text-primary text-xs font-semibold rounded-full px-3 py-1"
-                  >
-                    {pill}
-                  </span>
-                ))}
-              </div>
-            </div>
+            <h3 className="text-2xl font-bold text-black">{step.title}</h3>
+          </div>
+          <p className="text-base font-normal tracking-wide text-black/60 leading-relaxed mb-4">
+            {step.description}
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {step.pills.map((pill) => (
+              <span
+                key={pill}
+                className="bg-accent text-primary text-xs font-semibold rounded-full px-3 py-1"
+              >
+                {pill}
+              </span>
+            ))}
           </div>
         </GlassCard>
       </motion.div>
@@ -106,7 +96,7 @@ export default function HowItWorks() {
 
   return (
     <section ref={sectionRef} className="py-[100px]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <div className="text-center mb-16 md:mb-24">
           <h2 className="text-4xl font-extrabold tracking-tight text-black">

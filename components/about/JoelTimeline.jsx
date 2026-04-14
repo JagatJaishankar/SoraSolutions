@@ -21,6 +21,8 @@ const CHAPTERS = [
     text: "I left school and picked up a hammer. Spent 6 years as a carpenter \u2014 residential, commercial, renovations, new builds. Loved every minute of it.",
     icon: "Hammer",
     side: "left",
+    image: "/images/joel/jeol-in-contruction-site.png",
+    imageAlt: "Joel Willis on a construction site",
   },
   {
     number: "02",
@@ -45,6 +47,8 @@ const CHAPTERS = [
     text: "After 4 years running the company, I moved into tunnelling \u2014 great money, steady work, and time to think about what I\u2019d do next. That\u2019s when I discovered digital marketing, AI, and business automation. And I saw a massive gap.",
     icon: "Lightbulb",
     side: "right",
+    image: "/images/joel/joel-working-on-computer.png",
+    imageAlt: "Joel Willis working on his computer, learning digital marketing",
   },
   {
     number: "05",
@@ -92,6 +96,19 @@ function ChapterCard({ chapter }) {
       <p className="text-base font-light tracking-wide text-black/60 leading-relaxed relative z-10">
         {chapter.text}
       </p>
+
+      {/* Photo — only on chapters that have one */}
+      {chapter.image && (
+        <div className="relative w-full h-48 rounded-xl overflow-hidden mt-5 z-10">
+          <Image
+            src={chapter.image}
+            alt={chapter.imageAlt}
+            fill
+            sizes="(max-width: 768px) 90vw, 45vw"
+            className="object-cover object-center"
+          />
+        </div>
+      )}
     </>
   );
 

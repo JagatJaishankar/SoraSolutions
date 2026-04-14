@@ -2,16 +2,16 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { PhoneOff, TrendingDown, Trophy } from "lucide-react";
+import { PhoneOff, Filter, BarChart2 } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import FlipCard from "@/components/ui/FlipCard";
 
 const PROBLEMS = [
   {
     icon: PhoneOff,
-    title: "Leads Going Cold",
+    title: "Time Wasters & Missed Calls",
     frontTeaser:
-      "Enquiries come in but nobody follows up fast enough. By the time you call back, they have already found someone else.",
+      "Enquiries come in but they're tyre-kickers, or you miss the call and they've moved on by the time you ring back.",
     backCopy:
       "You're out on a job, the phone rings — but you can't answer. By the time you call back, they've already booked someone else. Every missed call is money walking out the door.",
     backFooter: "Sora fills this gap \u2192",
@@ -23,12 +23,12 @@ const PROBLEMS = [
     iconColor: "text-[#9740fe]",
   },
   {
-    icon: TrendingDown,
-    title: "Wasted Marketing Spend",
+    icon: Filter,
+    title: "Wrong Type of Jobs",
     frontTeaser:
-      "You have tried ads, maybe even paid an agency. Got a report full of impressions but cannot tell if it brought in a single job.",
+      "You're getting leads, but they're the wrong ones. Price shoppers, out-of-area, jobs that aren't worth quoting on.",
     backCopy:
-      "You've spent thousands on ads and SEO. The agency sends a report full of numbers you don't understand. But the phone isn't ringing any more than before.",
+      "Not all leads are equal. When your marketing isn't targeted, you waste hours quoting jobs you'd never win — or ones that aren't worth winning. Volume isn't the goal. The right jobs are.",
     backFooter: "Sora fills this gap \u2192",
     frontBg: "bg-[#d9d0fb]",
     frontBorder: "border-[#9740fe]/20",
@@ -38,12 +38,12 @@ const PROBLEMS = [
     iconColor: "text-[#222872]",
   },
   {
-    icon: Trophy,
-    title: "Competitors Booked Out",
+    icon: BarChart2,
+    title: "Quiet Then Slammed",
     frontTeaser:
-      "Meanwhile, some of your competitors are booked out months ahead. Not because they are better. Because they have the systems.",
+      "One month you're scrambling for work, the next you can't keep up. No consistency, no way to plan ahead.",
     backCopy:
-      "They're not more skilled than you. They just have better marketing, faster follow-up, and systems that capture every lead. That's the only difference.",
+      "The feast-or-famine cycle burns you out and makes it impossible to grow. Without a steady pipeline, you can't hire, can't plan, and can't scale — you're just reacting.",
     backFooter: "Sora fills this gap \u2192",
     frontBg: "bg-[#090b3c]",
     frontBorder: "border-white/10",

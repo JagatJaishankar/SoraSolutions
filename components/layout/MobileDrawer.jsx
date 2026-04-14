@@ -179,7 +179,7 @@ export default function MobileDrawer({ isOpen, onClose, pathname }) {
                 +61 409 422 868
               </a>
               <Link
-                href="/contact"
+                href="/#contact"
                 onClick={onClose}
                 className="block text-center bg-primary text-white font-semibold text-sm px-6 py-3 rounded-full"
               >

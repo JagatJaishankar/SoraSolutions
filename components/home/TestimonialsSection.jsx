@@ -214,7 +214,7 @@ export default function TestimonialsSection() {
     "w-[calc(100vw-4rem)] sm:w-[calc(50vw-3.5rem)] lg:w-[calc(33.333vw-3.5rem)] xl:w-[380px]";
 
   return (
-    <section ref={sectionRef} className="py-[100px] bg-bluewhite section-shadow overflow-hidden">
+    <section ref={sectionRef} className="py-[100px] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -223,10 +223,9 @@ export default function TestimonialsSection() {
           animate={isInView ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          {/* Eyebrow */}
-          <p className="text-xs tracking-widest uppercase text-black/40 mb-6">
+          <h2 className="text-4xl font-extrabold tracking-tight text-black mb-8">
             What Our Clients Say
-          </p>
+          </h2>
 
           {/* Rating display */}
           <div className="flex items-center justify-center gap-3 mb-4">

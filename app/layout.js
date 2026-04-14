@@ -91,6 +91,31 @@ export const metadata = {
   title: "Sora Solutions — Marketing, AI & Growth Systems for Trades",
   description:
     "Trade automation agency helping Australian tradies get more jobs, leads, and growth with AI-powered marketing systems.",
+  openGraph: {
+    title: "Sora Solutions — Marketing, AI & Growth Systems for Trades",
+    description:
+      "Trade automation agency helping Australian tradies get more jobs, leads, and growth with AI-powered marketing systems.",
+    url: "https://sora-solutions.vercel.app/",
+    siteName: "Sora Solutions",
+    // og:image — update this path once the image asset is ready
+    images: [
+      {
+        url: "https://sora-solutions.vercel.app/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Sora Solutions — Marketing, AI & Growth Systems for Trades",
+      },
+    ],
+    locale: "en_AU",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sora Solutions — Marketing, AI & Growth Systems for Trades",
+    description:
+      "Trade automation agency helping Australian tradies get more jobs, leads, and growth with AI-powered marketing systems.",
+    images: ["https://sora-solutions.vercel.app/images/og-image.jpg"],
+  },
 };
 
 const fontVars = [

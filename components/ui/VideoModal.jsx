@@ -4,7 +4,7 @@ import { useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 
-export default function VideoModal({ isOpen, onClose, title }) {
+export default function VideoModal({ isOpen, onClose, title, videoUrl }) {
   const handleKeyDown = useCallback(
     (e) => {
       if (e.key === "Escape") onClose();
@@ -57,17 +57,29 @@ export default function VideoModal({ isOpen, onClose, title }) {
               <X className="w-6 h-6" />
             </button>
 
-            {/* Placeholder content */}
-            <div className="aspect-video flex flex-col items-center justify-center bg-gradient-to-br from-primary/20 to-secondary/20">
-              <p className="text-white/50 text-lg font-light">
-                Video coming soon
-              </p>
-              {title && (
-                <p className="text-white/30 text-sm font-light mt-2">
-                  {title}
+            {/* Video content — swap in videoUrl when ready */}
+            {videoUrl ? (
+              <div className="aspect-video">
+                <iframe
+                  src={videoUrl}
+                  className="w-full h-full"
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  allowFullScreen
+                  title={title ?? "Video"}
+                />
+              </div>
+            ) : (
+              <div className="aspect-video flex flex-col items-center justify-center bg-gradient-to-br from-[#090b3c] to-[#222872]">
+                <p className="text-white/50 text-lg font-light">
+                  Video coming soon
                 </p>
-              )}
-            </div>
+                {title && (
+                  <p className="text-white/30 text-sm font-light mt-2">
+                    {title}
+                  </p>
+                )}
+              </div>
+            )}
           </motion.div>
         </motion.div>
       )}

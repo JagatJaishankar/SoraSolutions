@@ -1,9 +1,14 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { Globe, Target, Brain, Database } from "lucide-react";
+import { Globe, Target, Brain, Database, Play } from "lucide-react";
 import TiltCard from "@/components/ui/TiltCard";
+import VideoModal from "@/components/ui/VideoModal";
+
+// To activate the video: pass the embed URL (e.g. Vimeo/YouTube) to VIDEO_URL below.
+// VideoModal will render an iframe when a URL is present; shows "coming soon" when null.
+const WEBSITES_VIDEO_URL = null; // e.g. "https://player.vimeo.com/video/XXXXXXX?autoplay=1"
 
 const SERVICES = [
   {
@@ -156,6 +161,53 @@ function AIAutomationIllustration() {
   );
 }
 
+function WebsiteSEOCard({ service, textSide }) {
+  const [videoOpen, setVideoOpen] = useState(false);
+
+  return (
+    <>
+      <div className="flex flex-col md:flex-row h-full rounded-2xl overflow-hidden">
+        {textSide}
+
+        {/* Right panel: illustration + video slot stacked */}
+        <div className="flex-1 hidden md:flex md:flex-col min-h-[200px]">
+          {/* Existing feature illustration */}
+          <div className="flex-1">
+            <WebsiteSEOIllustration />
+          </div>
+
+          {/* Video slot — click to open modal */}
+          <button
+            type="button"
+            onClick={() => setVideoOpen(true)}
+            className="w-full flex items-center gap-3 px-5 py-4 border-t border-[#d9d0fb]/60 bg-[#f5f3ff]/70 hover:bg-[#d9d0fb]/40 transition-colors duration-200 group cursor-pointer"
+          >
+            <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[#9740fe] flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform duration-200">
+              <Play className="w-3.5 h-3.5 text-white ml-0.5" fill="currentColor" />
+            </span>
+            <span className="text-left">
+              <span className="block text-[11px] font-semibold text-[#9740fe] tracking-wide">
+                Watch how it works
+              </span>
+              <span className="block text-[10px] text-black/40 font-light">
+                2-min explainer · coming soon
+              </span>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      {/* Video modal — swap WEBSITES_VIDEO_URL when the video is ready */}
+      <VideoModal
+        isOpen={videoOpen}
+        onClose={() => setVideoOpen(false)}
+        title="How Sora Websites Work"
+        videoUrl={WEBSITES_VIDEO_URL}
+      />
+    </>
+  );
+}
+
 function ServiceCardContent({ service }) {
   const Icon = service.icon;
 
@@ -219,6 +271,10 @@ function ServiceCardContent({ service }) {
     </div>
   );
 
+  if (service.title === "Websites & SEO") {
+    return <WebsiteSEOCard service={service} textSide={textSide} />;
+  }
+
   if (service.wide && Illustration) {
     return (
       <div
@@ -266,7 +322,7 @@ export default function ServicesGrid() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="py-[100px] px-4 sm:px-6 lg:px-8 bg-bluewhite section-shadow">
+    <section className="py-[100px] px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <motion.div
           className="text-center mb-16"

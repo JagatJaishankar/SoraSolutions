@@ -130,7 +130,7 @@ export default function Navbar() {
               </a>
               <span className="text-black/20">|</span>
               <Link
-                href="/contact"
+                href="/#contact"
                 className="bg-primary text-white font-bold text-sm px-5 py-2.5 rounded-full shadow-sm transition-transform duration-200 hover:scale-[1.02]"
               >
                 Book a Free Strategy Call

@@ -36,26 +36,14 @@ export default function GuaranteeSection() {
               </motion.h2>
 
               {/* Body */}
-              <motion.div
-                className="mt-6 text-base font-light tracking-wide text-black/60 max-w-2xl mx-auto leading-relaxed"
+              <motion.p
+                className="mt-6 text-lg font-light tracking-wide text-black/60 max-w-xl mx-auto leading-relaxed"
                 initial={{ y: 20, opacity: 0 }}
                 animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
               >
-                <p>
-                  No lock-in contracts. No hidden fees. No 12-month commitments.
-                  Every Sora engagement is month-to-month. If we&apos;re not
-                  delivering results, you walk away — no questions asked, no
-                  penalties, no drama.
-                </p>
-                <p className="mt-4">
-                  We&apos;re confident in what we build because we&apos;ve
-                  designed the system from the ground up for trade businesses.
-                  But you don&apos;t have to take our word for it. Start with a
-                  free strategy call, see exactly what we&apos;d do, and decide
-                  if it&apos;s right for you.
-                </p>
-              </motion.div>
+                No lock-in contracts. No hidden fees. Month-to-month. If we don&apos;t deliver, you walk away.
+              </motion.p>
 
               {/* CTA */}
               <motion.div

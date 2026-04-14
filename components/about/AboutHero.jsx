@@ -46,11 +46,12 @@ export default function AboutHero() {
               </div>
               {/* Photo */}
               <Image
-                src="/images/team/joel-hero.jpg"
+                src="/images/joel/about-hero-image.png"
                 alt="Joel Willis — Founder of Sora Solutions"
                 fill
                 sizes="(max-width: 768px) 320px, 380px"
-                className="object-cover object-top relative z-10"
+                className="object-cover relative z-10"
+                style={{ objectPosition: "10% top" }}
               />
             </div>
           </ElectricBorder>

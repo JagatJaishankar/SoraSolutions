@@ -8,6 +8,7 @@ const stats = [
   {
     target: 78,
     suffix: "%",
+    progress: 0.78,
     description: "of local mobile searches result in a purchase within 24 hours",
     bg: "bg-white/80 border border-black/5",
     text: "text-black",
@@ -17,6 +18,7 @@ const stats = [
   {
     target: 60,
     suffix: " sec",
+    progress: 1.0,
     description: "average response time with Sora's AI",
     bg: "bg-[#f5f3ff] border border-[#d9d0fb]/50",
     text: "text-black",
@@ -26,6 +28,7 @@ const stats = [
   {
     target: 46,
     suffix: "%",
+    progress: 0.46,
     description: "of all Google searches are looking for local businesses",
     bg: "bg-[#d9d0fb]",
     text: "text-black",
@@ -35,6 +38,7 @@ const stats = [
   {
     target: 391,
     suffix: "%",
+    progress: 1.0,
     description: "more conversions when you respond within 1 minute",
     bg: "bg-[#090b3c]",
     text: "text-white",
@@ -82,7 +86,7 @@ function StatCard({ stat, index }) {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const count = useCountUp(stat.target, 2000, isInView);
   const delay = index * 0.2;
-  const progress = isInView ? Math.min(stat.target / 400, 1) : 0;
+  const progress = isInView ? stat.progress : 0;
 
   return (
     <motion.div
@@ -111,7 +115,7 @@ export default function StatsSection() {
   return (
     <motion.section
       ref={sectionRef}
-      className="py-[100px]"
+      className="py-[100px] bg-[#f5f3ff] section-shadow"
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : { opacity: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}

@@ -148,42 +148,9 @@ export default function WebsiteShowcase() {
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, ease: "easeOut" }}
-      className="relative py-[100px] overflow-x-hidden"
+      className="relative pt-4 pb-[100px] overflow-x-hidden"
     >
       <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-14">
-          <div className="flex items-center justify-center gap-4 mb-5">
-            <span
-              className="block w-8 h-px"
-              style={{
-                background: "linear-gradient(to right, transparent, var(--color-primary))",
-              }}
-            />
-            <span className="text-[10px] font-medium tracking-[0.25em] uppercase text-primary">
-              What&apos;s Inside Every Site
-            </span>
-            <span
-              className="block w-8 h-px"
-              style={{
-                background: "linear-gradient(to left, transparent, var(--color-primary))",
-              }}
-            />
-          </div>
-
-          <h2 className="text-4xl font-extrabold tracking-tight text-black">
-            Built to{" "}
-            <span className="underline decoration-primary decoration-4 underline-offset-4">
-              Win Work
-            </span>
-          </h2>
-
-          <p className="text-base font-light tracking-wide text-black/60 max-w-xl mx-auto mt-4">
-            Every feature engineered to turn visitors into booked jobs — from
-            first impression to follow-up.
-          </p>
-        </div>
-
         {/* Carousel */}
         <div
           className="relative mx-auto overflow-hidden"

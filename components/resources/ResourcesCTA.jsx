@@ -26,7 +26,7 @@ export default function ResourcesCTA() {
           whileTap={{ scale: 0.97 }}
         >
           <Link
-            href="/contact"
+            href="/#contact"
             className="inline-block bg-[#9740fe] text-white font-semibold px-10 py-4 rounded-xl hover:shadow-[0_10px_30px_rgba(151,64,254,0.3)] transition-shadow"
           >
             Book a Free Strategy Call &rarr;

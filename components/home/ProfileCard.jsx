@@ -348,7 +348,7 @@ export default function ProfileCard({
             transition: "transform 1s ease",
             transform: "translateZ(0) rotateX(0deg) rotateY(0deg)",
             background:
-              "linear-gradient(145deg, var(--color-bluewhite) 0%, var(--color-accent) 50%, var(--color-bluewhite) 100%)",
+              "linear-gradient(145deg, var(--color-deep) 0%, var(--color-secondary) 100%)",
           }}
           onMouseEnter={(e) => {
             if (isMobile) return;
@@ -372,41 +372,40 @@ export default function ProfileCard({
           <div
             className="absolute inset-0"
             style={{
-              backgroundImage:
-                "linear-gradient(145deg, color-mix(in srgb, var(--color-accent) 15%, transparent) 0%, color-mix(in srgb, var(--color-primary) 8%, transparent) 100%)",
               borderRadius: "1rem",
               display: "grid",
               gridArea: "1 / -1",
             }}
           >
-            {/* Avatar area — circular centered */}
-            <div
-              className="absolute inset-0 flex items-center justify-center"
-              style={{
-                transform: isMobile ? "none" : "translateZ(2px)",
-                pointerEvents: "none",
-              }}
-            >
-              {avatarUrl ? (
-                <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-white/30 shadow-lg relative">
-                  <Image
-                    className="object-cover"
-                    src={avatarUrl}
-                    alt={`${name} avatar`}
-                    fill
-                    sizes="160px"
-                  />
-                </div>
-              ) : (
+            {/* Full-bleed photo */}
+            {avatarUrl && (
+              <div
+                className="absolute inset-0"
+                style={{
+                  transform: isMobile ? "none" : "translateZ(2px)",
+                  pointerEvents: "none",
+                  borderRadius: "1rem",
+                  overflow: "hidden",
+                }}
+              >
+                <Image
+                  className="object-cover"
+                  style={{ objectPosition: "15% center" }}
+                  src={avatarUrl}
+                  alt={`${name} avatar`}
+                  fill
+                  sizes="320px"
+                />
+                {/* Gradient overlays for text readability */}
                 <div
-                  className="w-32 h-32 rounded-full"
+                  className="absolute inset-0"
                   style={{
                     background:
-                      "linear-gradient(135deg, color-mix(in srgb, var(--color-primary) 20%, transparent), color-mix(in srgb, var(--color-secondary) 20%, transparent), color-mix(in srgb, var(--color-accent) 20%, transparent))",
+                      "linear-gradient(to bottom, rgba(9,11,60,0.55) 0%, rgba(9,11,60,0) 45%, rgba(9,11,60,0) 52%, rgba(9,11,60,0.72) 100%)",
                   }}
                 />
-              )}
-            </div>
+              </div>
+            )}
 
             {/* Name + title at top */}
             <div
@@ -420,29 +419,11 @@ export default function ProfileCard({
                 pointerEvents: "none",
               }}
             >
-              <div className="w-full absolute flex flex-col top-8">
-                <h3
-                  className="font-bold text-2xl md:text-3xl"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(to bottom, var(--color-black), color-mix(in srgb, var(--color-black) 33%, transparent))",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                    WebkitBackgroundClip: "text",
-                  }}
-                >
+              <div className="w-full absolute flex flex-col top-7 px-5">
+                <h3 className="font-bold text-2xl md:text-3xl text-white drop-shadow-md">
                   {name}
                 </h3>
-                <p
-                  className="text-sm font-semibold -mt-1"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(to bottom, color-mix(in srgb, var(--color-black) 80%, transparent), color-mix(in srgb, var(--color-black) 47%, transparent))",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                    WebkitBackgroundClip: "text",
-                  }}
-                >
+                <p className="text-sm font-semibold -mt-0.5 text-white/70">
                   {title}
                 </p>
               </div>
@@ -454,12 +435,12 @@ export default function ProfileCard({
               style={{ borderRadius: "0.75rem" }}
             >
               <button
-                className="w-full py-3 px-4 text-sm font-bold text-black/70 cursor-pointer transition-all duration-200 hover:-translate-y-px"
+                className="w-full py-3 px-4 text-sm font-bold text-white cursor-pointer transition-all duration-200 hover:-translate-y-px"
                 style={{
-                  background: "rgba(255, 255, 255, 0.5)",
+                  background: "rgba(151, 64, 254, 0.55)",
                   backdropFilter: "blur(20px)",
                   WebkitBackdropFilter: "blur(20px)",
-                  border: "1px solid rgba(0, 0, 0, 0.08)",
+                  border: "1px solid rgba(217, 208, 251, 0.3)",
                   borderRadius: "0.75rem",
                 }}
                 onClick={onContactClick}

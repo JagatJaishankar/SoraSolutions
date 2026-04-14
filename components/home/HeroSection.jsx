@@ -4,13 +4,11 @@ import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 import Badge from "@/components/ui/Badge";
 import WordFlip from "./WordFlip";
-import TradeRotator from "./TradeRotator";
-import OrbRevealLayer from "@/components/effects/OrbRevealLayer";
+import TradeFade from "./TradeFade";
 
 export default function HeroSection() {
   return (
     <section className="relative min-h-[calc(100vh-72px)] flex items-center px-4 sm:px-6 lg:px-8">
-      <OrbRevealLayer />
       <div className="relative z-[5] max-w-7xl mx-auto py-12 lg:py-0 w-full">
         <div className="flex flex-col lg:flex-row items-center gap-10 xl:gap-16">
           {/* Left column — ~58% */}
@@ -32,7 +30,7 @@ export default function HeroSection() {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.4, delay: 0.3, ease: "easeOut" }}
               >
-                Your Trade.
+                Your Business.
               </motion.span>
               <motion.span
                 className="block"
@@ -69,7 +67,7 @@ export default function HeroSection() {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.9, ease: "easeOut" }}
             >
-              <TradeRotator />
+              <TradeFade />
             </motion.div>
           </div>
 

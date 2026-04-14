@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const WORDS = [
-  { word: "Jobs.", fontVar: "var(--font-maven-pro)", fontWeight: 800 },
+  { word: "Growth.", fontVar: "var(--font-maven-pro)", fontWeight: 800 },
   { word: "Leads.", fontVar: "var(--font-oswald)", fontWeight: 700 },
   { word: "Reviews.", fontVar: "var(--font-playfair)", fontWeight: 700 },
   { word: "Time.", fontVar: "var(--font-space-mono)", fontWeight: 700 },
@@ -12,7 +12,7 @@ const WORDS = [
   { word: "Bookings.", fontVar: "var(--font-raleway)", fontWeight: 700 },
   { word: "Profit.", fontVar: "var(--font-black-han)", fontWeight: 400 },
   { word: "Freedom.", fontVar: "var(--font-caveat)", fontWeight: 700 },
-  { word: "Growth.", fontVar: "var(--font-barlow)", fontWeight: 800 },
+  { word: "Jobs.", fontVar: "var(--font-barlow)", fontWeight: 800 },
   { word: "Scale.", fontVar: "var(--font-barlow)", fontWeight: 600 },
 ];
 

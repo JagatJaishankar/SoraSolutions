@@ -5,7 +5,7 @@ import { motion, useInView } from "framer-motion";
 import { X, Check } from "lucide-react";
 
 const rows = [
-  { label: "Understands your trade", agency: "Generic. Treats you like any client.", sora: "Built by a tradie who's been on the tools." },
+  { label: "Understands your trade", agency: "Generic. Treats you like any client.", sora: "Founded by a licensed builder with 10 years in construction." },
   { label: "Communication", agency: "Monthly report you don't understand.", sora: "Direct access. Plain English. Real answers." },
   { label: "Setup time", agency: "4-8 weeks.", sora: "Leads in 2-4 weeks." },
   { label: "Contracts", agency: "12-month lock-in.", sora: "Month-to-month. Leave anytime." },

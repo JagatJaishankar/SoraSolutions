@@ -135,7 +135,7 @@ export default function ServiceSection({
           {ctaText && (
             <motion.div className="mt-8">
               <Link
-                href="/contact"
+                href="/#contact"
                 className="block w-full sm:inline-block sm:w-auto text-center bg-primary text-white font-semibold px-6 py-3 rounded-xl transition-transform duration-200 hover:scale-[1.02] active:scale-[0.97]"
               >
                 {ctaText}

@@ -32,17 +32,27 @@ No test framework is configured.
 app/                     # Next.js App Router pages
   layout.js              # Root layout — fonts, global backgrounds, Navbar, Footer
   page.js                # Home page
-  blog/[slug]/           # Dynamic blog post pages
-  resources/page.js      # Resources page
-  about/ contact/ services/
+  blog/[slug]/           # Dynamic blog post pages (statically generated)
+  about/ contact/ services/ resources/
 components/
   home/                  # One component per homepage section
   layout/                # Navbar, Footer, MobileDrawer, StickyBottomCTA, ExitIntentPopup, ServicesDropdown
-  ui/                    # Reusable UI primitives (GlassCard, PrimaryButton, SectionHeading, TiltCard, etc.)
-  effects/               # Visual effects (GradientBackground, GridOverlay, FloatingLogos, OrbRevealLayer)
+  ui/                    # Reusable UI primitives (GlassCard, PrimaryButton, SectionHeading, TiltCard, SectionWrapper, etc.)
+  effects/               # Visual effects (GradientBackground, GridOverlay, FloatingLogos)
+  about/                 # Page-specific components for About page
+  contact/               # Page-specific components for Contact page
+  services/              # Page-specific components for Services page
+  resources/             # Page-specific components for Resources page
+  blog/                  # ArticleLayout component
 hooks/                   # useCountUp.js, useExitIntent.js
-lib/                     # faqData.js (static data)
-public/                  # Static assets (images, blog/)
+lib/
+  blogData.js            # Blog article registry (slugs, metadata, file paths, categories)
+  parseBlogHTML.js       # Parses raw HTML blog files — strips nav/footer, scopes CSS to .blog-content
+  faqData.js             # Static FAQ data
+public/
+  blog/                  # Raw HTML blog articles (01-*.html … 27-*.html)
+  carousel/              # Website carousel screenshots
+  images/                # Logos, team photos, brand assets
 ```
 
 ### Root layout layers (bottom to top, all fixed/behind content)
@@ -50,6 +60,12 @@ public/                  # Static assets (images, blog/)
 2. `GridOverlay` — subtle grid (replaces PatternOverlay which is commented out)
 3. `FloatingLogos` — floating trade brand logos
 4. Content wrapper `div.relative.z-10` — Navbar + page + Footer + StickyBottomCTA + ExitIntentPopup
+
+### Blog system
+Blog posts are static HTML files stored in `public/blog/`. Each article must be registered in `lib/blogData.js` with its `slug`, `file` path, metadata, `category`, `type` (`pillar` | `cluster`), and `readTime`. At build time, `app/blog/[slug]/page.js` calls `generateStaticParams()` from `blogData.js` and renders via `ArticleLayout`. `parseBlogHTML.js` extracts the article body (strips nav/footer), scopes the article's own CSS to `.blog-content` using CSS `@scope`, and passes JSON-LD structured data through. **Adding a blog post = create the HTML file + add the entry to `blogData.js`.**
+
+### SectionWrapper
+`components/ui/SectionWrapper.jsx` is the standard wrapper for all page sections. It provides the fade-up entrance animation, `max-w-7xl` container, `py-[100px]` padding, and `useInView` trigger out of the box. Prefer it over manually duplicating this pattern in new sections.
 
 ### Additional libraries in use
 - `gsap` + `@gsap/react` — supplementary animations alongside Framer Motion
@@ -91,6 +107,7 @@ Exception: #F59E0B for star ratings in reviews section ONLY.
 - Button text: font-bold or font-semibold (heavier than body)
 - WordFlip base word ("Jobs."): Maven Pro (matches heading font)
 - WordFlip spin fonts: Oswald, Playfair Display, Space Mono, Bebas Neue, Raleway, Black Han Sans, Caveat, Barlow
+- Roboto Flex (--font-roboto-flex) — variable weight font, loaded in layout for use in effects/UI
 
 ### Spacing
 - Section padding: py-[100px] unless noted otherwise
@@ -120,8 +137,9 @@ Exception: #F59E0B for star ratings in reviews section ONLY.
 
 ### Section Background Rhythm
 - Alternating sections use bg-[#f5f3ff] (Blue White) for visual rhythm:
-  - ProblemCards, ComparisonTable, WhatYouGet, StatsSection, TestimonialsSection, FAQSection
+  - ProblemCards, ComparisonTable, BuiltByTradie, StatsSection, FoundingMemberBlock, FAQSection
 - Remaining sections stay on white/transparent base
+- WhatYouGet is commented out in page.js (hidden, not deleted)
 
 ## Animation Defaults (Framer Motion)
 - Fade up: from y:30 opacity:0 → y:0 opacity:1, duration 0.6s, easeOut
@@ -148,3 +166,38 @@ Exception: #F59E0B for star ratings in reviews section ONLY.
 - "Get Free Audit" lives inside mobile hamburger drawer only
 - All hover → tap on mobile
 - Exit intent: desktop only, once per session
+
+## Homepage Section Order (page.js)
+Current rendered order:
+1. HeroSection
+2. TrustBarSection
+3. ProblemCards
+4. ServicesGrid + WebsiteShowcase (shared bg-[#f5f3ff] wrapper)
+5. VideoSection
+6. ComparisonTable
+7. HowItWorks
+8. BuiltByTradie
+9. TestimonialsSection
+10. StatsSection
+11. GuaranteeSection
+12. FoundingMemberBlock (id="contact" — houses the Growth Audit form + founding member CTA)
+13. FAQSection
+14. FinalCTA
+
+Commented out: AuditFormSection (form merged into FoundingMemberBlock), WhatYouGet
+
+## CTA Links
+- All "Book a Free Strategy Call" buttons across the entire site link to `/#contact` (scrolls to FoundingMemberBlock on the homepage)
+- Nav "Contact" menu links still point to `/contact` (the dedicated contact page)
+- The Growth Audit form (HeroForm) lives inside FoundingMemberBlock — not in a separate AuditFormSection
+
+## SEO
+- JSON-LD FAQPage schema injected in page.js — auto-generated from faqData.js
+- openGraph + twitter card metadata in layout.js
+- og:image path: `/images/og-image.jpg` (1200x630) — file to be added to public/images/ when ready
+- Canonical URL set in page.js metadata: `https://sora-solutions.vercel.app/`
+
+## Founding Member Block
+- TOTAL_SPOTS = 5, SPOTS_TAKEN = 3, SPOTS_REMAINING = 2 (update SPOTS_TAKEN when a new member joins)
+- Progress bar animates to 60% fill on scroll into view
+- Footer email pending Joel confirmation: currently `hello@sorasolution.com` (may be missing "s" — sorasolutions)

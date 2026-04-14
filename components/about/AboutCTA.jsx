@@ -27,7 +27,7 @@ export default function AboutCTA() {
             className="inline-block w-full sm:w-auto"
           >
             <Link
-              href="/contact"
+              href="/#contact"
               className="block bg-[#9740fe] text-white font-semibold px-10 py-4 rounded-xl text-center"
             >
               Book a Free Strategy Call &rarr;

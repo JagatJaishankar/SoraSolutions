@@ -236,6 +236,7 @@ const LogoLoop = memo(function LogoLoop({
           width={item.width ?? 120}
           height={logoHeight}
           draggable={false}
+          unoptimized={item.unoptimized ?? false}
         />
       </li>
     ),
