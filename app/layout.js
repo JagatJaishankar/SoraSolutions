@@ -24,13 +24,13 @@ import ExitIntentPopup from "@/components/layout/ExitIntentPopup";
 const mavenPro = Maven_Pro({
   variable: "--font-maven-pro",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["700", "800"],
 });
 
 const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "600", "700"],
 });
 
 const oswald = Oswald({

@@ -85,6 +85,7 @@ export default function HeroSection() {
                 fill
                 className="object-contain object-[center_55%]"
                 priority
+                quality={80}
               />
             </div>
           </motion.div>

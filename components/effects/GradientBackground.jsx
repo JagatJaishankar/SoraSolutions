@@ -19,12 +19,17 @@ export const GradientBackground = () => {
       curX += (tgX - curX) / 20;
       curY += (tgY - curY) / 20;
       interBubble.style.transform = `translate(${Math.round(curX)}px, ${Math.round(curY)}px)`;
-      animId = requestAnimationFrame(move);
+      if (Math.abs(tgX - curX) > 0.5 || Math.abs(tgY - curY) > 0.5) {
+        animId = requestAnimationFrame(move);
+      } else {
+        animId = null;
+      }
     };
 
     const handleMouseMove = (e) => {
       tgX = e.clientX;
       tgY = e.clientY;
+      if (!animId) animId = requestAnimationFrame(move);
     };
 
     window.addEventListener("mousemove", handleMouseMove);

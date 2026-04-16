@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic";
 import faqData from "@/lib/faqData";
 
 export const metadata = {
@@ -8,21 +9,20 @@ export const metadata = {
 
 import HeroSection from "@/components/home/HeroSection";
 import TrustBarSection from "@/components/home/TrustBarSection";
-// import AuditFormSection from "@/components/home/AuditFormSection";
 import ProblemCards from "@/components/home/ProblemCards";
 import ServicesGrid from "@/components/home/ServicesGrid";
 import WebsiteShowcase from "@/components/home/WebsiteShowcase";
-import VideoSection from "@/components/home/VideoSection";
-import ComparisonTable from "@/components/home/ComparisonTable";
-import HowItWorks from "@/components/home/HowItWorks";
-import WhatYouGet from "@/components/home/WhatYouGet";
-import BuiltByTradie from "@/components/home/BuiltByTradie";
-import TestimonialsSection from "@/components/home/TestimonialsSection";
-import StatsSection from "@/components/home/StatsSection";
-import GuaranteeSection from "@/components/home/GuaranteeSection";
-import FoundingMemberBlock from "@/components/home/FoundingMemberBlock";
-import FAQSection from "@/components/home/FAQSection";
-import FinalCTA from "@/components/home/FinalCTA";
+
+const WhatYouGet = dynamic(() => import("@/components/home/WhatYouGet"));
+const ComparisonTable = dynamic(() => import("@/components/home/ComparisonTable"));
+const HowItWorks = dynamic(() => import("@/components/home/HowItWorks"));
+const BuiltByTradie = dynamic(() => import("@/components/home/BuiltByTradie"));
+const TestimonialsSection = dynamic(() => import("@/components/home/TestimonialsSection"));
+const StatsSection = dynamic(() => import("@/components/home/StatsSection"));
+const GuaranteeSection = dynamic(() => import("@/components/home/GuaranteeSection"));
+const FoundingMemberBlock = dynamic(() => import("@/components/home/FoundingMemberBlock"));
+const FAQSection = dynamic(() => import("@/components/home/FAQSection"));
+const FinalCTA = dynamic(() => import("@/components/home/FinalCTA"));
 
 const faqSchema = {
   "@context": "https://schema.org",
