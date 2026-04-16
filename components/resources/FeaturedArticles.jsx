@@ -12,7 +12,7 @@ export default function FeaturedArticles() {
   const pillars = getPillarArticles();
 
   return (
-    <section className="py-[100px] bg-[#f5f3ff] shadow-[inset_0_8px_16px_-8px_rgba(0,0,0,0.06),inset_0_-8px_16px_-8px_rgba(0,0,0,0.06)]">
+    <section className="py-[100px] bg-[#faf9ff] shadow-[inset_0_8px_16px_-8px_rgba(0,0,0,0.06),inset_0_-8px_16px_-8px_rgba(0,0,0,0.06)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-extrabold tracking-tight text-black">

@@ -45,7 +45,7 @@ export default function ServiceSection({
       );
     }
     return (
-      <div className="aspect-[4/3] bg-[#f5f3ff] rounded-2xl flex items-center justify-center border border-black/5">
+      <div className="aspect-[4/3] bg-[#faf9ff] rounded-2xl flex items-center justify-center border border-black/5">
         <span className="text-black/20 text-sm font-medium">
           {title} Visual — Coming Soon
         </span>
@@ -58,7 +58,7 @@ export default function ServiceSection({
       id={id}
       className={`section-contain py-[60px] sm:py-[100px] px-4 sm:px-6 lg:px-8 scroll-mt-[140px] ${
         tinted
-          ? "bg-[#f5f3ff] shadow-[inset_0_8px_16px_-8px_rgba(0,0,0,0.06),inset_0_-8px_16px_-8px_rgba(0,0,0,0.06)]"
+          ? "bg-[#faf9ff] shadow-[inset_0_8px_16px_-8px_rgba(0,0,0,0.06),inset_0_-8px_16px_-8px_rgba(0,0,0,0.06)]"
           : ""
       }`}
     >

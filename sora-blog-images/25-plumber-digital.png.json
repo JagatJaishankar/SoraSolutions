@@ -1,0 +1,13 @@
+{
+  "model": "gemini-3.1-flash-image-preview",
+  "size": "1K",
+  "aspect_ratio": "16:9",
+  "output": "/Users/joelwillis/Library/CloudStorage/Dropbox/sora-workspace/outputs/sora-blog-images/25-plumber-digital.png",
+  "bytes": 819208,
+  "elapsed_seconds": 21.99,
+  "estimated_cost_usd": 0.067,
+  "brand_context": null,
+  "reference_image_count": 0,
+  "accompanying_text": null,
+  "prompt_chars": 223
+}

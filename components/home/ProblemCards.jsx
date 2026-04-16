@@ -15,9 +15,9 @@ const PROBLEMS = [
     backCopy:
       "You're out on a job, the phone rings — but you can't answer. By the time you call back, they've already booked someone else. Every missed call is money walking out the door.",
     backFooter: "Sora fills this gap \u2192",
-    frontBg: "bg-[#f5f3ff]",
+    frontBg: "bg-[#faf9ff]",
     frontBorder: "border-[#d9d0fb]",
-    backBg: "bg-[#f5f3ff]",
+    backBg: "bg-[#faf9ff]",
     backBorder: "border-[#d9d0fb]",
     iconBg: "bg-[#d9d0fb]",
     iconColor: "text-[#9740fe]",

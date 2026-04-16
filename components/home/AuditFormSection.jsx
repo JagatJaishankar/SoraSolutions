@@ -13,7 +13,7 @@ export default function AuditFormSection() {
     <section
       id="free-audit"
       ref={ref}
-      className="py-[100px] px-4 sm:px-6 lg:px-8 bg-[#f5f3ff] shadow-[inset_0_8px_16px_-8px_rgba(0,0,0,0.06),inset_0_-8px_16px_-8px_rgba(0,0,0,0.06)]"
+      className="py-[100px] px-4 sm:px-6 lg:px-8 bg-[#faf9ff] shadow-[inset_0_8px_16px_-8px_rgba(0,0,0,0.06),inset_0_-8px_16px_-8px_rgba(0,0,0,0.06)]"
     >
       <div className="max-w-7xl mx-auto lg:flex lg:items-center lg:gap-16">
         {/* Left column — text */}

@@ -17,6 +17,9 @@ export async function generateMetadata({ params }) {
       title: meta.title,
       description: meta.description,
       type: "article",
+      ...(meta.image && {
+        images: [{ url: meta.image, width: 960, height: 420 }],
+      }),
     },
   };
 }
@@ -26,7 +29,7 @@ export default async function BlogArticlePage({ params }) {
   const meta = getArticleBySlug(slug);
   if (!meta) return <div>Article not found</div>;
 
-  const parsed = parseBlogFile(meta.file);
+  const parsed = parseBlogFile(meta.file, meta.image ?? null);
 
   return (
     <ArticleLayout meta={meta} parsed={parsed} />

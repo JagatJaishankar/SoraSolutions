@@ -37,7 +37,7 @@ export default function BeforeAfterSection() {
   return (
     <section
       ref={sectionRef}
-      className="py-[100px] bg-[#f5f3ff] shadow-[inset_0_8px_16px_-8px_rgba(0,0,0,0.06),inset_0_-8px_16px_-8px_rgba(0,0,0,0.06)]"
+      className="py-[100px] bg-[#faf9ff] shadow-[inset_0_8px_16px_-8px_rgba(0,0,0,0.06),inset_0_-8px_16px_-8px_rgba(0,0,0,0.06)]"
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.h2
@@ -72,7 +72,7 @@ export default function BeforeAfterSection() {
           onPointerLeave={handlePointerUp}
         >
           {/* Before layer */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#f5f3ff] to-[#d9d0fb] flex items-center justify-center">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#faf9ff] to-[#d9d0fb] flex items-center justify-center">
             <span className="text-black/30 text-sm md:text-base font-medium text-center px-8">
               Before — No website, poor Google presence
             </span>

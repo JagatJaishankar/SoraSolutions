@@ -109,7 +109,7 @@ export default function ServiceNavStrip() {
                 className={`flex-shrink-0 text-sm font-medium px-4 py-2 rounded-full whitespace-nowrap transition-all duration-300 cursor-pointer ${
                   activeId === tab.id
                     ? "bg-primary text-white shadow-md"
-                    : "text-black/50 hover:text-black hover:bg-[#f5f3ff]"
+                    : "text-black/50 hover:text-black hover:bg-[#faf9ff]"
                 }`}
               >
                 {tab.label}

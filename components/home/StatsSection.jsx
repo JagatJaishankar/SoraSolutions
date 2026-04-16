@@ -2,108 +2,79 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import Image from "next/image";
 import useCountUp from "@/hooks/useCountUp";
 
 const stats = [
   {
-    target: 78,
-    suffix: "%",
-    progress: 0.78,
-    description: "of local mobile searches result in a purchase within 24 hours",
-    bg: "bg-white/80 border border-black/5",
-    text: "text-black",
-    descColor: "text-black/60",
-    ring: "#9740fe",
-  },
-  {
-    target: 60,
-    suffix: " sec",
-    progress: 1.0,
-    description: "average response time with Sora's AI",
-    bg: "bg-[#f5f3ff] border border-[#d9d0fb]/50",
-    text: "text-black",
-    descColor: "text-black/60",
-    ring: "#9740fe",
-  },
-  {
-    target: 46,
-    suffix: "%",
-    progress: 0.46,
-    description: "of all Google searches are looking for local businesses",
-    bg: "bg-[#d9d0fb]",
-    text: "text-black",
-    descColor: "text-black/70",
-    ring: "#9740fe",
-  },
-  {
+    prefix: "",
     target: 391,
     suffix: "%",
-    progress: 1.0,
-    description: "more conversions when you respond within 1 minute",
-    bg: "bg-[#090b3c]",
-    text: "text-white",
-    descColor: "text-white/60",
-    ring: "#d9d0fb",
+    description: "faster response than the industry average",
+    image: "/images/home-page/01-rocket.png",
+    numColor: "text-[#4169E1]",
+  },
+  {
+    prefix: "",
+    target: 14,
+    suffix: " days",
+    description: "to full system setup and going live",
+    image: "/images/home-page/01-calendar.png",
+    numColor: "text-[#F59E0B]",
+  },
+  {
+    prefix: "",
+    target: 60,
+    suffix: " sec",
+    description: "missed call follow-up, automatically",
+    image: "/images/home-page/01-clock.png",
+    numColor: "text-[#22C55E]",
+  },
+  {
+    prefix: "$",
+    target: 47,
+    suffix: "k",
+    description: "average first-year revenue added",
+    image: "/images/home-page/01-money.png",
+    numColor: "text-[#EF4444]",
   },
 ];
 
-function ProgressRing({ progress, color, size = 48 }) {
-  const radius = (size - 6) / 2;
-  const circumference = 2 * Math.PI * radius;
-  const offset = circumference * (1 - progress);
-
-  return (
-    <svg width={size} height={size} className="mx-auto mb-4">
-      <circle
-        cx={size / 2}
-        cy={size / 2}
-        r={radius}
-        fill="none"
-        stroke="currentColor"
-        strokeWidth={3}
-        className="text-black/5"
-      />
-      <motion.circle
-        cx={size / 2}
-        cy={size / 2}
-        r={radius}
-        fill="none"
-        stroke={color}
-        strokeWidth={3}
-        strokeLinecap="round"
-        strokeDasharray={circumference}
-        initial={{ strokeDashoffset: circumference }}
-        animate={{ strokeDashoffset: offset }}
-        transition={{ duration: 2, ease: "easeOut" }}
-        style={{ transformOrigin: "center", transform: "rotate(-90deg)" }}
-      />
-    </svg>
-  );
-}
-
 function StatCard({ stat, index }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
   const count = useCountUp(stat.target, 2000, isInView);
-  const delay = index * 0.2;
-  const progress = isInView ? stat.progress : 0;
 
   return (
     <motion.div
       ref={ref}
-      className={`${stat.bg} rounded-2xl p-6 text-center`}
+      className="bg-[#f0eeff] rounded-2xl p-5 flex flex-col items-center gap-4 text-center"
       initial={{ y: 30, opacity: 0 }}
       animate={isInView ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut", delay }}
+      transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
     >
-      <ProgressRing progress={progress} color={stat.ring} />
-      <div className={`text-4xl md:text-5xl font-black ${stat.text}`}>
-        {count}
-        {stat.suffix}
+      {/* Number box — white pill */}
+      <div className="w-full bg-white rounded-xl px-4 py-3">
+        <div className={`text-5xl font-black tracking-tight ${stat.numColor}`}>
+          {stat.prefix}{count}{stat.suffix}
+        </div>
       </div>
-      <p className={`mt-2 text-sm font-light tracking-wide ${stat.descColor}`}>
+
+      {/* Description */}
+      <p className="text-base font-light tracking-wide text-black/80 leading-relaxed">
         {stat.description}
       </p>
+
+      {/* Illustration */}
+      <div className="flex items-end justify-center">
+        <Image
+          src={stat.image}
+          alt={stat.description}
+          width={144}
+          height={120}
+          className="h-auto object-contain"
+        />
+      </div>
     </motion.div>
   );
 }
@@ -115,7 +86,7 @@ export default function StatsSection() {
   return (
     <motion.section
       ref={sectionRef}
-      className="py-[100px] bg-[#f5f3ff] section-shadow"
+      className="py-[100px] bg-[#faf9ff] section-shadow"
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : { opacity: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
@@ -127,7 +98,7 @@ export default function StatsSection() {
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
           {stats.map((stat, i) => (
-            <StatCard key={stat.target} stat={stat} index={i} />
+            <StatCard key={i} stat={stat} index={i} />
           ))}
         </div>
       </div>

@@ -5,7 +5,7 @@ import { Phone } from "lucide-react";
 
 export default function ContactClosingCTA() {
   return (
-    <section className="py-[80px] px-4 bg-[#f5f3ff] shadow-[inset_0_8px_16px_-8px_rgba(0,0,0,0.06),inset_0_-8px_16px_-8px_rgba(0,0,0,0.06)]">
+    <section className="py-[80px] px-4 bg-[#faf9ff] shadow-[inset_0_8px_16px_-8px_rgba(0,0,0,0.06),inset_0_-8px_16px_-8px_rgba(0,0,0,0.06)]">
       <motion.div
         className="text-center"
         initial={{ y: 20, opacity: 0 }}

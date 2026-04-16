@@ -61,7 +61,7 @@ export default function ContactForm() {
   };
 
   return (
-    <section className="py-[100px] px-4 sm:px-6 lg:px-8 bg-[#f5f3ff] shadow-[inset_0_8px_16px_-8px_rgba(0,0,0,0.06),inset_0_-8px_16px_-8px_rgba(0,0,0,0.06)]">
+    <section className="py-[100px] px-4 sm:px-6 lg:px-8 bg-[#faf9ff] shadow-[inset_0_8px_16px_-8px_rgba(0,0,0,0.06),inset_0_-8px_16px_-8px_rgba(0,0,0,0.06)]">
       <h2 className="text-4xl font-extrabold tracking-tight text-black text-center">
         Or Send Us a Message
       </h2>

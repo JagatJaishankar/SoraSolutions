@@ -67,9 +67,15 @@ Blog posts are static HTML files stored in `public/blog/`. Each article must be 
 ### SectionWrapper
 `components/ui/SectionWrapper.jsx` is the standard wrapper for all page sections. It provides the fade-up entrance animation, `max-w-7xl` container, `py-[100px]` padding, and `useInView` trigger out of the box. Prefer it over manually duplicating this pattern in new sections.
 
+### Blog source vs integrated
+- `blog/` at project root — all 27 source HTML files from Joel (not served directly)
+- `public/blog/` — integrated articles actually served by the Next.js blog system
+- As of April 2026, only 3 of 27 articles have been integrated into `public/blog/`; the rest still need to be copied/processed
+
 ### Additional libraries in use
 - `gsap` + `@gsap/react` — supplementary animations alongside Framer Motion
 - `three` + `@react-three/fiber` + `@react-three/drei` + `@react-three/rapier` — 3D effects
+- `meshline` — used with React Three Fiber for line/trail rendering
 - `lucide-react` — icons
 - `clsx` — conditional class merging
 
@@ -96,7 +102,9 @@ Blog posts are static HTML files stored in `public/blog/`. Each article must be 
 - --color-bluewhite: #f5f3ff (Blue White — alternating section backgrounds)
 
 NO OTHER COLOURS ALLOWED. No orange, no blue (#2362fd), no green, no red, no amber.
-Exception: #F59E0B for star ratings in reviews section ONLY.
+Exception: #F59E0B for star ratings in reviews section ONLY — also registered as `--color-star` in globals.css `@theme`.
+
+The `@theme` block also defines internal animation/gradient variables (`--color1`–`--color5`, `--color-interactive`, `--color-bg1/2`, `--circle-size`, `--blending`) used by GradientBackground — do not repurpose these.
 
 ### Typography
 - Display/Headings: Maven Pro (--font-maven-pro) — font-extrabold or font-black
@@ -115,11 +123,18 @@ Exception: #F59E0B for star ratings in reviews section ONLY.
 - Card border-radius: rounded-2xl
 - Card gaps: gap-6 md:gap-8
 
+### CSS Utility Classes (globals.css)
+- `.glass` — `bg-white/80 backdrop-blur-xl border border-white/20 rounded-2xl` (standard glassmorphism card)
+- `.glass-light` — `bg-white/60 backdrop-blur-lg border border-black/10 rounded-full` (pill variant)
+- `.section-shadow` — subtle top+bottom shadow with gradient hairlines for section separation
+- `.gradient-border-wrapper` — `background: linear-gradient(135deg, primary, secondary)` for gradient border effect
+
 ### Glassmorphism
 - Background: bg-white/80 (increased for readability over pattern background)
 - Blur: backdrop-blur-xl
 - Border: border border-white/20
 - Gradient border: 1.5px padding wrapper with linear-gradient(135deg, #9740fe, #222872)
+- Prefer the `.glass` utility class for cards; `.gradient-border-wrapper` for gradient-bordered containers
 
 ### Gradient Text
 - Purple to indigo: background linear-gradient(135deg, #9740fe, #222872)

@@ -66,7 +66,7 @@ export default function BeforeAfterSlider({ beforeContent, afterContent }) {
         onTouchEnd={handleTouchEnd}
       >
         {/* Before layer */}
-        <div className="absolute inset-0 bg-[#f5f3ff] flex items-center justify-center p-4 sm:p-6">
+        <div className="absolute inset-0 bg-[#faf9ff] flex items-center justify-center p-4 sm:p-6">
           <span className="text-black/40 text-xs sm:text-sm font-medium text-center">
             {beforeContent}
           </span>

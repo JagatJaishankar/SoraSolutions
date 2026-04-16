@@ -48,14 +48,14 @@ export default function Home() {
       <TrustBarSection />
       {/* <AuditFormSection /> */}
       <ProblemCards />
-      <div className="bg-[#f5f3ff] section-shadow">
+      <div className="bg-[#faf9ff] section-shadow">
         <ServicesGrid />
         <WebsiteShowcase />
       </div>
-      <VideoSection />
+      {/* <VideoSection /> */}
+      <WhatYouGet />
       <ComparisonTable />
       <HowItWorks />
-      {/* <WhatYouGet /> */}
       <BuiltByTradie />
       <TestimonialsSection />
       <StatsSection />

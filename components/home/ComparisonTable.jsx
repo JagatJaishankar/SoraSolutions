@@ -15,7 +15,7 @@ const rows = [
 
 function AgencyPanel() {
   return (
-    <div className="bg-[#f5f3ff] border border-dashed border-black/10 rounded-2xl p-8 md:p-10 h-full">
+    <div className="bg-[#faf9ff] border border-dashed border-black/10 rounded-2xl p-8 md:p-10 h-full">
       <div className="mb-6">
         <span className="bg-black/10 text-black/40 text-sm font-bold px-4 py-2 rounded-full">
           Most Agencies
@@ -49,7 +49,7 @@ function SoraPanel({ revealSora }) {
 
       {/* Gradient border wrapper */}
       <div className="rounded-2xl bg-gradient-to-br from-primary to-secondary p-[1.5px] h-full">
-        <div className="bg-[#f5f3ff] backdrop-blur-xl rounded-[calc(1rem-1.5px)] p-8 md:p-10 h-full">
+        <div className="bg-[#faf9ff] backdrop-blur-xl rounded-[calc(1rem-1.5px)] p-8 md:p-10 h-full">
           <div className="mb-6">
             <span className="bg-accent text-primary text-sm font-bold px-4 py-2 rounded-full">
               With Sora

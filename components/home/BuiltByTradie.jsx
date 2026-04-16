@@ -10,7 +10,7 @@ export default function BuiltByTradie() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-[100px] bg-[#f5f3ff] section-shadow">
+    <section className="py-[100px] bg-[#faf9ff] section-shadow">
       <div
         ref={ref}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"

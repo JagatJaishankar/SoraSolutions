@@ -1,14 +1,10 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Globe, Target, Brain, Database, Play } from "lucide-react";
+import { Globe, Target, Brain, Database } from "lucide-react";
+import Image from "next/image";
 import TiltCard from "@/components/ui/TiltCard";
-import VideoModal from "@/components/ui/VideoModal";
-
-// To activate the video: pass the embed URL (e.g. Vimeo/YouTube) to VIDEO_URL below.
-// VideoModal will render an iframe when a URL is present; shows "coming soon" when null.
-const WEBSITES_VIDEO_URL = null; // e.g. "https://player.vimeo.com/video/XXXXXXX?autoplay=1"
 
 const SERVICES = [
   {
@@ -49,162 +45,21 @@ const SERVICES = [
   },
 ];
 
-function WebsiteSEOIllustration() {
-  return (
-    <div className="h-full flex flex-col gap-3 p-4 justify-center">
-      {/* Browser / website mockup */}
-      <div className="bg-[#090b3c] rounded-xl p-3">
-        <div className="flex items-center gap-1.5 mb-2.5">
-          <div className="w-2 h-2 rounded-full bg-white/20" />
-          <div className="w-2 h-2 rounded-full bg-white/15" />
-          <div className="w-2 h-2 rounded-full bg-white/10" />
-          <div className="flex-1 h-2.5 bg-white/5 rounded ml-2" />
-        </div>
-        <div className="h-1.5 bg-white/15 rounded-full w-3/4 mb-1.5" />
-        <div className="h-1.5 bg-white/10 rounded-full w-full mb-1.5" />
-        <div className="h-1.5 bg-white/10 rounded-full w-2/3 mb-3" />
-        <div className="flex gap-2">
-          <div className="h-7 bg-[#9740fe]/40 rounded-lg flex-1 flex items-center justify-center">
-            <div className="h-1.5 bg-white/40 rounded-full w-2/3" />
-          </div>
-          <div className="h-7 bg-white/5 rounded-lg w-16" />
-        </div>
-      </div>
 
-      {/* Google Maps 3-pack */}
-      <div className="bg-white/70 rounded-xl p-3">
-        <div className="text-[7px] font-semibold tracking-widest uppercase text-black/30 mb-2">
-          Google Maps
-        </div>
-        {[
-          { name: "Your Business", stars: true },
-          { name: "Competitor A", stars: false },
-          { name: "Competitor B", stars: false },
-        ].map((item, i) => (
-          <div
-            key={i}
-            className={`flex items-center gap-2 rounded-lg px-2 py-1.5 mb-1 ${
-              i === 0 ? "bg-[#9740fe]/10" : ""
-            }`}
-          >
-            <div
-              className={`w-4 h-4 rounded-full flex-shrink-0 flex items-center justify-center text-[8px] font-bold ${
-                i === 0
-                  ? "bg-[#9740fe] text-white"
-                  : "bg-black/10 text-black/30"
-              }`}
-            >
-              {i + 1}
-            </div>
-            <span
-              className={`text-[9px] font-medium flex-1 truncate ${
-                i === 0 ? "text-[#9740fe]" : "text-black/30"
-              }`}
-            >
-              {item.name}
-            </span>
-            {item.stars && (
-              <div className="flex gap-0.5">
-                {[...Array(5)].map((_, j) => (
-                  <div
-                    key={j}
-                    className="w-1.5 h-1.5 rounded-full bg-[#F59E0B]/70"
-                  />
-                ))}
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function AIAutomationIllustration() {
-  return (
-    <div className="h-full flex items-center justify-center">
-      <svg width="180" height="150" viewBox="0 0 180 150" className="opacity-75">
-        {/* Dashed connection lines */}
-        <line x1="90" y1="75" x2="28" y2="30" stroke="#9740fe" strokeWidth="1" opacity="0.35" strokeDasharray="4 3" />
-        <line x1="90" y1="75" x2="152" y2="30" stroke="#9740fe" strokeWidth="1" opacity="0.35" strokeDasharray="4 3" />
-        <line x1="90" y1="75" x2="28" y2="118" stroke="#9740fe" strokeWidth="1" opacity="0.35" strokeDasharray="4 3" />
-        <line x1="90" y1="75" x2="152" y2="118" stroke="#9740fe" strokeWidth="1" opacity="0.35" strokeDasharray="4 3" />
-
-        {/* Central pulsing node */}
-        <circle cx="90" cy="75" r="16" fill="#9740fe" opacity="0.12" />
-        <circle cx="90" cy="75" r="9" fill="#9740fe" opacity="0.55">
-          <animate attributeName="r" values="9;12;9" dur="2.2s" repeatCount="indefinite" />
-          <animate attributeName="opacity" values="0.55;0.85;0.55" dur="2.2s" repeatCount="indefinite" />
-        </circle>
-
-        {/* Top-left — Follow-up */}
-        <rect x="8" y="10" width="40" height="40" rx="10" fill="#9740fe" opacity="0.12" />
-        <circle cx="28" cy="30" r="5" fill="#9740fe" opacity="0.55" />
-        <text x="28" y="58" textAnchor="middle" fill="#9740fe" opacity="0.55" fontSize="7.5" fontFamily="sans-serif">Follow-up</text>
-
-        {/* Top-right — Booking */}
-        <rect x="132" y="10" width="40" height="40" rx="10" fill="#9740fe" opacity="0.12" />
-        <circle cx="152" cy="30" r="5" fill="#9740fe" opacity="0.55" />
-        <text x="152" y="58" textAnchor="middle" fill="#9740fe" opacity="0.55" fontSize="7.5" fontFamily="sans-serif">Booking</text>
-
-        {/* Bottom-left — Missed Call */}
-        <rect x="8" y="98" width="40" height="40" rx="10" fill="#9740fe" opacity="0.12" />
-        <circle cx="28" cy="118" r="5" fill="#9740fe" opacity="0.55" />
-        <text x="28" y="146" textAnchor="middle" fill="#9740fe" opacity="0.55" fontSize="7.5" fontFamily="sans-serif">Missed Call</text>
-
-        {/* Bottom-right — Quoting */}
-        <rect x="132" y="98" width="40" height="40" rx="10" fill="#9740fe" opacity="0.12" />
-        <circle cx="152" cy="118" r="5" fill="#9740fe" opacity="0.55" />
-        <text x="152" y="146" textAnchor="middle" fill="#9740fe" opacity="0.55" fontSize="7.5" fontFamily="sans-serif">Quoting</text>
-      </svg>
-    </div>
-  );
-}
 
 function WebsiteSEOCard({ service, textSide }) {
-  const [videoOpen, setVideoOpen] = useState(false);
-
   return (
-    <>
-      <div className="flex flex-col md:flex-row h-full rounded-2xl overflow-hidden">
-        {textSide}
-
-        {/* Right panel: illustration + video slot stacked */}
-        <div className="flex-1 hidden md:flex md:flex-col min-h-[200px]">
-          {/* Existing feature illustration */}
-          <div className="flex-1">
-            <WebsiteSEOIllustration />
-          </div>
-
-          {/* Video slot — click to open modal */}
-          <button
-            type="button"
-            onClick={() => setVideoOpen(true)}
-            className="w-full flex items-center gap-3 px-5 py-4 border-t border-[#d9d0fb]/60 bg-[#f5f3ff]/70 hover:bg-[#d9d0fb]/40 transition-colors duration-200 group cursor-pointer"
-          >
-            <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[#9740fe] flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform duration-200">
-              <Play className="w-3.5 h-3.5 text-white ml-0.5" fill="currentColor" />
-            </span>
-            <span className="text-left">
-              <span className="block text-[11px] font-semibold text-[#9740fe] tracking-wide">
-                Watch how it works
-              </span>
-              <span className="block text-[10px] text-black/40 font-light">
-                2-min explainer · coming soon
-              </span>
-            </span>
-          </button>
-        </div>
+    <div className="flex flex-col md:flex-row h-full rounded-2xl overflow-hidden">
+      {textSide}
+      <div className="flex-1 hidden md:block relative overflow-hidden">
+        <Image
+          src="/images/home-page/website-and-seo.png"
+          alt="Websites & SEO"
+          fill
+          className="object-contain object-[right_55%]"
+        />
       </div>
-
-      {/* Video modal — swap WEBSITES_VIDEO_URL when the video is ready */}
-      <VideoModal
-        isOpen={videoOpen}
-        onClose={() => setVideoOpen(false)}
-        title="How Sora Websites Work"
-        videoUrl={WEBSITES_VIDEO_URL}
-      />
-    </>
+    </div>
   );
 }
 
@@ -236,12 +91,6 @@ function ServiceCardContent({ service }) {
   const badgeText = service.dark ? "text-[#d9d0fb]" : "text-[#9740fe]";
   const linkColor = service.dark ? "text-[#d9d0fb]" : "text-[#9740fe]";
 
-  const Illustration =
-    service.title === "Websites & SEO"
-      ? WebsiteSEOIllustration
-      : service.title === "AI & Automation"
-      ? AIAutomationIllustration
-      : null;
 
   const textSide = (
     <div className="flex-1 p-6 md:p-10 flex flex-col">
@@ -275,14 +124,19 @@ function ServiceCardContent({ service }) {
     return <WebsiteSEOCard service={service} textSide={textSide} />;
   }
 
-  if (service.wide && Illustration) {
+  if (service.title === "AI & Automation") {
     return (
       <div
         className={`flex flex-col md:flex-row h-full ${bgClass} rounded-2xl overflow-hidden`}
       >
         {textSide}
-        <div className="flex-1 hidden md:block min-h-[200px]">
-          <Illustration />
+        <div className="flex-1 hidden md:block relative overflow-hidden">
+          <Image
+            src="/images/home-page/ai-service.png"
+            alt="AI & Automation"
+            fill
+            className="object-contain object-[right_55%]"
+          />
         </div>
       </div>
     );

@@ -1,4 +1,3 @@
-
 // Override CSS variables defined in the article's embedded <style> block.
 // This block renders AFTER the article's styles so it wins the cascade.
 // CSS custom properties defined on .blog-content take priority over :root
@@ -54,6 +53,20 @@ const BRAND_OVERRIDES = `
     top: auto !important;
     z-index: auto !important;
     height: auto !important;
+  }
+
+  /* Article image — constrained to content column width, site-standard border radius */
+  .blog-content .hero-img {
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    margin-top: 40px !important;
+    margin-bottom: 40px !important;
+    max-width: 100% !important;
+  }
+  .blog-content .hero-img img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 `;
 
