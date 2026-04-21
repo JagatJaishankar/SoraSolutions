@@ -157,33 +157,18 @@ export default function TestimonialsSection() {
     return () => observer.disconnect();
   }, [updateDimensions]);
 
+  const rafIdRef = useRef(null);
+
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        isScrollVisibleRef.current = entry.isIntersecting;
-      },
-      { threshold: 0 }
-    );
-    observer.observe(container);
-    return () => observer.disconnect();
-  }, []);
 
-  useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
 
-    let rafId = null;
     let lastTs = null;
 
     const tick = (timestamp) => {
-      if (!isScrollVisibleRef.current) {
-        lastTs = null;
-        rafId = requestAnimationFrame(tick);
-        return;
-      }
-
       if (lastTs === null) lastTs = timestamp;
       const dt = Math.max(0, timestamp - lastTs) / 1000;
       lastTs = timestamp;
@@ -191,22 +176,42 @@ export default function TestimonialsSection() {
       const sw = seqWidth;
       const target = isHoveredRef.current ? 0 : SCROLL_SPEED;
       const easingFactor = 1 - Math.exp(-dt / SMOOTH_TAU);
-      velocityRef.current +=
-        (target - velocityRef.current) * easingFactor;
+      velocityRef.current += (target - velocityRef.current) * easingFactor;
 
       if (sw > 0) {
         offsetRef.current =
-          (((offsetRef.current + velocityRef.current * dt) % sw) + sw) %
-          sw;
+          (((offsetRef.current + velocityRef.current * dt) % sw) + sw) % sw;
         track.style.transform = `translate3d(${-offsetRef.current}px, 0, 0)`;
       }
 
-      rafId = requestAnimationFrame(tick);
+      rafIdRef.current = requestAnimationFrame(tick);
     };
 
-    rafId = requestAnimationFrame(tick);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isScrollVisibleRef.current = entry.isIntersecting;
+        if (entry.isIntersecting) {
+          if (rafIdRef.current === null) {
+            lastTs = null;
+            rafIdRef.current = requestAnimationFrame(tick);
+          }
+        } else {
+          if (rafIdRef.current !== null) {
+            cancelAnimationFrame(rafIdRef.current);
+            rafIdRef.current = null;
+          }
+        }
+      },
+      { threshold: 0 }
+    );
+    observer.observe(container);
+
     return () => {
-      if (rafId !== null) cancelAnimationFrame(rafId);
+      observer.disconnect();
+      if (rafIdRef.current !== null) {
+        cancelAnimationFrame(rafIdRef.current);
+        rafIdRef.current = null;
+      }
     };
   }, [seqWidth]);
 

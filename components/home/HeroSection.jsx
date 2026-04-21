@@ -80,7 +80,7 @@ export default function HeroSection() {
           >
             <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden">
               <Image
-                src="/images/home-page/hero-image.png"
+                src="/images/home-page/hero-image.webp"
                 alt="Sora Solutions"
                 fill
                 className="object-contain object-[center_55%]"

@@ -53,7 +53,7 @@ function WebsiteSEOCard({ service, textSide }) {
       {textSide}
       <div className="flex-1 hidden md:block relative overflow-hidden">
         <Image
-          src="/images/home-page/website-and-seo.png"
+          src="/images/home-page/website-and-seo.webp"
           alt="Websites & SEO"
           fill
           className="object-contain object-[right_55%]"
@@ -132,7 +132,7 @@ function ServiceCardContent({ service }) {
         {textSide}
         <div className="flex-1 hidden md:block relative overflow-hidden">
           <Image
-            src="/images/home-page/ai-service.png"
+            src="/images/home-page/ai-service.webp"
             alt="AI & Automation"
             fill
             className="object-contain object-[right_55%]"

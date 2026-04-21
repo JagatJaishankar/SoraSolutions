@@ -75,6 +75,8 @@ export default function BeforeAfterSlider({ beforeContent, afterContent, beforeI
               fill
               className="object-cover object-top"
               sizes="(max-width: 768px) 100vw, 45vw"
+              quality={80}
+              loading="lazy"
             />
           ) : (
             <span className="text-black/40 text-xs sm:text-sm font-medium text-center">
@@ -95,6 +97,8 @@ export default function BeforeAfterSlider({ beforeContent, afterContent, beforeI
               fill
               className="object-cover object-top"
               sizes="(max-width: 768px) 100vw, 45vw"
+              quality={80}
+              loading="lazy"
             />
           ) : (
             <span className="text-primary text-xs sm:text-sm font-medium text-center">

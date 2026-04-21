@@ -8,19 +8,19 @@ const dashboards = [
   {
     title: "Booking Calendar",
     rotate: "-6deg",
-    image: "/images/home-page/00-automation-flow.png",
+    image: "/images/home-page/00-automation-flow.webp",
     defaultZ: "z-10",
   },
   {
     title: "Marketing Dashboard",
     rotate: "3deg",
-    image: "/images/home-page/00-revenue-reporting-chart.png",
+    image: "/images/home-page/00-revenue-reporting-chart.webp",
     defaultZ: "z-20",
   },
   {
     title: "Lead Pipeline",
     rotate: "-3deg",
-    image: "/images/home-page/00-pipeline-board.png",
+    image: "/images/home-page/00-pipeline-board.webp",
     defaultZ: "z-10",
   },
 ];

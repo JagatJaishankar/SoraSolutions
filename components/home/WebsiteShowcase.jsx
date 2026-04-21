@@ -10,42 +10,42 @@ const SLIDES = [
     feature: "First Impressions",
     name: "Instant Authority & Trust",
     desc: "Stunning hero sections with lead forms, star ratings, trust badges, and a clear offer above the fold \u2014 designed to convert from the first second.",
-    img: "/carousel/waterproofing-hero.png",
+    img: "/carousel/waterproofing-hero.webp",
     url: "https://waterproofing-demo.vercel.app",
   },
   {
     feature: "Mobile Optimised",
     name: "Looks Perfect on Every Device",
     desc: "Every site is built mobile-first. Fast load, thumb-friendly CTAs, responsive layouts \u2014 your clients book from their phones, so your site has to perform there.",
-    img: "/carousel/mobile-optimised.png",
+    img: "/carousel/mobile-optimised.webp",
     contain: true,
   },
   {
     feature: "Smart Lead Qualification",
     name: "Multi-Step Forms That Filter & Qualify",
     desc: "Job type selectors, photo uploads, timeline pickers \u2014 every enquiry arrives with the detail you need to quote confidently and weed out time-wasters.",
-    img: "/carousel/smart-form.png",
+    img: "/carousel/smart-form.webp",
     contain: true,
   },
   {
     feature: "Work Portfolio",
     name: "Craft That Sells Itself",
     desc: "Photo galleries showcasing real projects \u2014 so your workmanship does the selling for you.",
-    img: "/carousel/plumbing-collage.png",
+    img: "/carousel/plumbing-collage.webp",
   },
   {
     feature: "Service Targeting",
     name: "\u201CWhich Best Describes You?\u201D",
     desc: "Segment residential, commercial, and strata clients on one page \u2014 each card speaks directly to their situation and drives its own conversion.",
-    img: "/carousel/painters-services.png",
+    img: "/carousel/painters-services.webp",
     url: "https://painter-deploy.vercel.app",
   },
   {
     feature: "Interactive Elements",
     name: "Websites That Actually Do Things",
     desc: "Click the lightbulb \u2014 it toggles on and off. Scroll animations, interactive maps, live price calculators. Not just pretty \u2014 engaging.",
-    imgA: "/carousel/electrical-lights.png",
-    imgB: "/carousel/electrical-lights-on.png",
+    imgA: "/carousel/electrical-lights.webp",
+    imgB: "/carousel/electrical-lights-on.webp",
     toggle: true,
     url: "https://electrical-demo-pearl.vercel.app",
   },
@@ -53,13 +53,13 @@ const SLIDES = [
     feature: "Service Area Coverage",
     name: "Show Where You Work",
     desc: "Interactive maps with suburb grids \u2014 clients instantly know you cover their area. Builds local trust and pre-qualifies location before they even enquire.",
-    img: "/carousel/service-areas.png",
+    img: "/carousel/service-areas.webp",
   },
   {
     feature: "Business Process",
     name: "You Run This \u2014 They Just Show Up",
     desc: "Clear step-by-step process sections set expectations, establish authority, and reduce friction. Clients arrive prepared and confident.",
-    img: "/carousel/roofing-process.png",
+    img: "/carousel/roofing-process.webp",
     url: "https://roofing-deploy.vercel.app",
   },
 ];
@@ -210,6 +210,7 @@ export default function WebsiteShowcase() {
                         alt={slide.name}
                         fill
                         sizes="(max-width: 768px) 320px, 480px"
+                        loading={isActive ? "eager" : "lazy"}
                         className={`object-cover object-top transition-opacity duration-[900ms] ease ${
                           toggleOn ? "opacity-0" : "opacity-100"
                         }`}
@@ -220,6 +221,7 @@ export default function WebsiteShowcase() {
                         alt={`${slide.name} - on`}
                         fill
                         sizes="(max-width: 768px) 320px, 480px"
+                        loading={isActive ? "eager" : "lazy"}
                         className={`object-cover object-top transition-opacity duration-[900ms] ease ${
                           toggleOn ? "opacity-100" : "opacity-0"
                         }`}
@@ -237,6 +239,7 @@ export default function WebsiteShowcase() {
                       alt={slide.name}
                       fill
                       sizes="(max-width: 768px) 320px, 480px"
+                      loading={isActive ? "eager" : "lazy"}
                       className="object-contain object-center"
                       draggable={false}
                     />
@@ -246,6 +249,7 @@ export default function WebsiteShowcase() {
                       alt={slide.name}
                       fill
                       sizes="(max-width: 768px) 320px, 480px"
+                      loading={isActive ? "eager" : "lazy"}
                       className="object-cover object-top"
                       draggable={false}
                     />

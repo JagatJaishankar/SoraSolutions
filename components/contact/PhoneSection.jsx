@@ -77,7 +77,7 @@ export default function PhoneSection() {
               <div className="w-12 h-12 rounded-full mx-auto mt-4 overflow-hidden bg-[#9740fe] text-white text-sm font-bold flex items-center justify-center relative">
                 <span>JW</span>
                 <Image
-                  src="/images/team/joel-circle.jpg"
+                  src="/images/team/joel-circle.webp"
                   alt="Joel Willis"
                   fill
                   sizes="48px"

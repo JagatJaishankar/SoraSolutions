@@ -45,12 +45,12 @@ export default function VideoSection() {
         >
           <div className="relative w-full aspect-video rounded-2xl overflow-hidden">
             <Image
-              src="/images/home-page/thumbnial.png"
+              src="/images/home-page/thumbnail.webp"
               alt="How Sora Works"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 80vw"
-              quality={90}
+              quality={80}
             />
             <span className="absolute top-4 right-4 bg-black/50 backdrop-blur-sm border border-white/10 text-white text-[11px] font-semibold tracking-widest uppercase px-3 py-1.5 rounded-full">
               Video coming soon

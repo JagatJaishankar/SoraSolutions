@@ -32,7 +32,7 @@ export const GradientBackground = () => {
       if (!animId) animId = requestAnimationFrame(move);
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
     animId = requestAnimationFrame(move);
 
     return () => {

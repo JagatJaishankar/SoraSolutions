@@ -15,12 +15,11 @@ import ElectricBorder from "@/components/ui/ElectricBorder";
 const ICONS = { Hammer, Award, PhoneMissed, Lightbulb, Zap };
 
 const TUNNELING_PHOTOS = [
-  "/images/about/tunneling-carasol/WhatsApp Image 2026-04-15 at 21.56.59.jpeg",
-  "/images/about/tunneling-carasol/WhatsApp Image 2026-04-15 at 21.56.59 (1).jpeg",
-  "/images/about/tunneling-carasol/WhatsApp Image 2026-04-15 at 21.56.59 (2).jpeg",
-  "/images/about/tunneling-carasol/WhatsApp Image 2026-04-15 at 21.57.02.jpeg",
-  "/images/about/tunneling-carasol/WhatsApp Image 2026-04-15 at 21.57.02 (1).jpeg",
-  "/images/about/tunneling-carasol/WhatsApp Image 2026-04-15 at 21.57.02 (2).jpeg",
+  "/images/about/tunneling-carasol/WhatsApp Image 2026-04-15 at 21.56.59 (1).webp",
+  "/images/about/tunneling-carasol/WhatsApp Image 2026-04-15 at 21.56.59 (2).webp",
+  "/images/about/tunneling-carasol/WhatsApp Image 2026-04-15 at 21.57.02.webp",
+  "/images/about/tunneling-carasol/WhatsApp Image 2026-04-15 at 21.57.02 (1).webp",
+  "/images/about/tunneling-carasol/WhatsApp Image 2026-04-15 at 21.57.02 (2).webp",
 ];
 
 const CHAPTERS = [
@@ -31,7 +30,7 @@ const CHAPTERS = [
     text: "I left school and picked up a hammer. Spent 6 years as a carpenter — residential, commercial, renovations, new builds. Loved every minute of it.",
     icon: "Hammer",
     side: "left",
-    image: "/images/about/starting my apprenticeship in 2015..jpg",
+    image: "/images/about/starting my apprenticeship in 2015..webp",
     imageAlt: "Joel Willis starting his carpentry apprenticeship in 2015",
   },
   {
@@ -41,7 +40,7 @@ const CHAPTERS = [
     text: "Got my builder's licence and started my own building company. The business went well. We were busy, the work was solid, and we built a good reputation.",
     icon: "Award",
     side: "right",
-    image: "/images/about/Photo of me with my building company.jpeg",
+    image: "/images/about/Photo of me with my building company.webp",
     imageAlt: "Joel Willis with his building company",
   },
   {
@@ -120,7 +119,7 @@ function TunnelingCarousel({ photos }) {
             fill
             sizes="(max-width: 768px) 90vw, 45vw"
             className="object-cover object-center"
-            quality={85}
+            quality={80}
           />
         </motion.div>
       </AnimatePresence>
@@ -212,7 +211,7 @@ function ChapterCard({ chapter }) {
             fill
             sizes="(max-width: 768px) 90vw, 45vw"
             className="object-cover object-center"
-            quality={85}
+            quality={80}
           />
         </div>
       )}
@@ -351,7 +350,7 @@ export default function JoelTimeline() {
               <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 bg-[#9740fe] text-white text-sm font-bold flex items-center justify-center relative">
                 <span>JW</span>
                 <Image
-                  src="/images/team/joel-circle.jpg"
+                  src="/images/team/joel-circle.webp"
                   alt="Joel Willis"
                   fill
                   sizes="48px"

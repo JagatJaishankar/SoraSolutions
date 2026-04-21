@@ -5,25 +5,25 @@ import LogoLoop from "@/components/ui/LogoLoop";
 
 // Row 1 — platform & tool integrations (filenames prefixed with 0-)
 const platformLogos = [
-  { src: "/images/trust-logos/0-google.png",    alt: "Google",    title: "Google"    },
-  { src: "/images/trust-logos/0-stripe.png",    alt: "Stripe",    title: "Stripe"    },
-  { src: "/images/trust-logos/0-xero.png",      alt: "Xero",      title: "Xero"      },
-  { src: "/images/trust-logos/0-myob.png",      alt: "MYOB",      title: "MYOB"      },
-  { src: "/images/trust-logos/0-afterpay.png",  alt: "Afterpay",  title: "Afterpay"  },
-  { src: "/images/trust-logos/0-zip.png",       alt: "Zip",       title: "Zip"       },
-  { src: "/images/trust-logos/0-servicem8.png", alt: "ServiceM8", title: "ServiceM8" },
-  { src: "/images/trust-logos/0-tradify.png",   alt: "Tradify",   title: "Tradify"   },
-  { src: "/images/trust-logos/0-simpro.png",    alt: "simPRO",    title: "simPRO"    },
+  { src: "/images/trust-logos/0-google.webp",    alt: "Google",    title: "Google"    },
+  { src: "/images/trust-logos/0-stripe.webp",    alt: "Stripe",    title: "Stripe"    },
+  { src: "/images/trust-logos/0-xero.webp",      alt: "Xero",      title: "Xero"      },
+  { src: "/images/trust-logos/0-myob.webp",      alt: "MYOB",      title: "MYOB"      },
+  { src: "/images/trust-logos/0-afterpay.png",   alt: "Afterpay",  title: "Afterpay"  },
+  { src: "/images/trust-logos/0-zip.webp",       alt: "Zip",       title: "Zip"       },
+  { src: "/images/trust-logos/0-servicem8.webp", alt: "ServiceM8", title: "ServiceM8" },
+  { src: "/images/trust-logos/0-tradify.png",    alt: "Tradify",   title: "Tradify"   },
+  { src: "/images/trust-logos/0-simpro.webp",    alt: "simPRO",    title: "simPRO"    },
 ];
 
 // Row 2 — industry associations & channels (no 0- prefix)
 const industryLogos = [
-  { src: "/images/trust-logos/airtasker.png",                    alt: "Airtasker",                    title: "Airtasker"                    },
-  { src: "/images/trust-logos/facebook.png",                     alt: "Facebook",                     title: "Facebook"                     },
-  { src: "/images/trust-logos/hipages.png",                      alt: "hipages",                      title: "hipages"                      },
+  { src: "/images/trust-logos/airtasker.webp",                    alt: "Airtasker",                    title: "Airtasker"                    },
+  { src: "/images/trust-logos/facebook.webp",                    alt: "Facebook",                     title: "Facebook"                     },
+  { src: "/images/trust-logos/hipages.webp",                     alt: "hipages",                      title: "hipages"                      },
   { src: "/images/trust-logos/master-builders-australia.png",    alt: "Master Builders Australia",    title: "Master Builders Australia"    },
-  { src: "/images/trust-logos/master-electricians-australia.png",alt: "Master Electricians Australia",title: "Master Electricians Australia"},
-  { src: "/images/trust-logos/master-plumbers-australia.png",    alt: "Master Plumbers Australia",    title: "Master Plumbers Australia"    },
+  { src: "/images/trust-logos/master-electricians-australia.webp",alt: "Master Electricians Australia",title: "Master Electricians Australia"},
+  { src: "/images/trust-logos/master-plumbers-australia.webp",   alt: "Master Plumbers Australia",    title: "Master Plumbers Australia"    },
   { src: "/images/trust-logos/hia.svg",                          alt: "HIA",                          title: "HIA",  unoptimized: true      },
   { src: "/images/trust-logos/qbcc.svg",                         alt: "QBCC",                         title: "QBCC", unoptimized: true      },
 ];

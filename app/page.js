@@ -11,7 +11,7 @@ import HeroSection from "@/components/home/HeroSection";
 import TrustBarSection from "@/components/home/TrustBarSection";
 import ProblemCards from "@/components/home/ProblemCards";
 import ServicesGrid from "@/components/home/ServicesGrid";
-import WebsiteShowcase from "@/components/home/WebsiteShowcase";
+const WebsiteShowcase = dynamic(() => import("@/components/home/WebsiteShowcase"));
 
 const VideoSection = dynamic(() => import("@/components/home/VideoSection"));
 const WhatYouGet = dynamic(() => import("@/components/home/WhatYouGet"));

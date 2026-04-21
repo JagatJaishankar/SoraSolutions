@@ -50,8 +50,8 @@ export default function ServicesPageContent() {
         tinted={false}
         beforeContent="No website or an outdated template. Visitors leave. No leads captured."
         afterContent="Sora-built site with AI chat, trust signals, and conversion-optimised design. Leads captured 24/7."
-        beforeImage="/images/services/Websites-Before.png"
-        afterImage="/images/services/after/Websites-After.png"
+        beforeImage="/images/services/Websites-Before.webp"
+        afterImage="/images/services/after/Websites-After.webp"
       />
 
       <ServiceDivider
@@ -83,8 +83,8 @@ export default function ServicesPageContent() {
         tinted={true}
         beforeContent="Invisible on Google. Page 4+. Competitors getting all the clicks."
         afterContent="Top 3 on Google Maps. Ranking for local keywords. Organic leads flowing daily."
-        beforeImage="/images/services/SEO-Before.png"
-        afterImage="/images/services/after/SEO-After.png"
+        beforeImage="/images/services/SEO-Before.webp"
+        afterImage="/images/services/after/SEO-After.webp"
       />
 
       {/* 03 — Pipeline & Follow-Up */}
@@ -113,8 +113,8 @@ export default function ServicesPageContent() {
         tinted={false}
         beforeContent="Leads scattered across voicemail, texts, emails. Follow-ups forgotten."
         afterContent="Every lead in one place. 60-second auto follow-up. Nothing slips."
-        beforeImage="/images/services/Pipeline & Follow-Up-Before.png"
-        afterImage="/images/services/after/Pipeline & Follow-Up-After.png"
+        beforeImage="/images/services/Pipeline & Follow-Up-Before.webp"
+        afterImage="/images/services/after/Pipeline & Follow-Up-After.webp"
       />
 
       <ServiceDivider
@@ -148,8 +148,8 @@ export default function ServicesPageContent() {
         tinted={true}
         beforeContent="Manual admin. Missed calls. Slow responses. Losing jobs to faster competitors."
         afterContent="AI handles calls, qualifies leads, books jobs, requests reviews. 24/7. No payroll."
-        beforeImage="/images/services/AI & Automation Intelligence-Before.png"
-        afterImage="/images/services/after/AI & Automation Intelligence-After.png"
+        beforeImage="/images/services/AI & Automation Intelligence-Before.webp"
+        afterImage="/images/services/after/AI & Automation Intelligence-After.webp"
       />
 
       {/* 05 — Google Ads */}
@@ -206,8 +206,8 @@ export default function ServicesPageContent() {
         tinted={true}
         beforeContent="No social presence. Quiet months. Hoping the phone rings."
         afterContent="Pipeline full from social. Homeowners seeing your work before they even search."
-        beforeImage="/images/services/Facebook & Instagram Ads-Before.png"
-        afterImage="/images/services/after/Facebook & Instagram Ads-After.png"
+        beforeImage="/images/services/Facebook & Instagram Ads-Before.webp"
+        afterImage="/images/services/after/Facebook & Instagram Ads-After.webp"
       />
 
       <ROICalculator />

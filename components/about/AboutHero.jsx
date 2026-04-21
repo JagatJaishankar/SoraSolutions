@@ -46,11 +46,12 @@ export default function AboutHero() {
               </div>
               {/* Photo */}
               <Image
-                src="/images/joel/about-hero-image.png"
+                src="/images/joel/about-hero-image.webp"
                 alt="Joel Willis — Founder of Sora Solutions"
                 fill
                 sizes="(max-width: 768px) 640px, 760px"
-                quality={90}
+                quality={80}
+                priority
                 className="object-cover relative z-10"
                 style={{ objectPosition: "10% top" }}
               />

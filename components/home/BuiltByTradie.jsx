@@ -27,7 +27,7 @@ export default function BuiltByTradie() {
               <ProfileCard
                 name="Joel Willis"
                 title="Founder, Sora Solutions"
-                avatarUrl="/images/joel/joel-with-whiteboard.png"
+                avatarUrl="/images/joel/joel-with-whiteboard.webp"
                 contactText="Read Full Story →"
                 onContactClick={() => {
                   window.location.href = "/about";

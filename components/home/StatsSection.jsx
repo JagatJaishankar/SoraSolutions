@@ -11,7 +11,7 @@ const stats = [
     target: 391,
     suffix: "%",
     description: "faster response than the industry average",
-    image: "/images/home-page/01-rocket.png",
+    image: "/images/home-page/01-rocket.webp",
     numColor: "text-[#4169E1]",
   },
   {
@@ -19,7 +19,7 @@ const stats = [
     target: 14,
     suffix: " days",
     description: "to full system setup and going live",
-    image: "/images/home-page/01-calendar.png",
+    image: "/images/home-page/01-calendar.webp",
     numColor: "text-[#F59E0B]",
   },
   {
@@ -27,7 +27,7 @@ const stats = [
     target: 60,
     suffix: " sec",
     description: "missed call follow-up, automatically",
-    image: "/images/home-page/01-clock.png",
+    image: "/images/home-page/01-clock.webp",
     numColor: "text-[#22C55E]",
   },
   {
@@ -35,7 +35,7 @@ const stats = [
     target: 47,
     suffix: "k",
     description: "average first-year revenue added",
-    image: "/images/home-page/01-money.png",
+    image: "/images/home-page/01-money.webp",
     numColor: "text-[#EF4444]",
   },
 ];

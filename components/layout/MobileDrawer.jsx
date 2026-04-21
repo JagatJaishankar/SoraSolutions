@@ -64,7 +64,7 @@ export default function MobileDrawer({ isOpen, onClose, pathname }) {
           {/* Header */}
           <div className="flex items-center justify-between px-4 pt-4 pb-2">
             <Link href="/" onClick={onClose} className="bg-white/70 backdrop-blur-2xl border border-white/20 rounded-full px-5 h-12 flex items-center">
-              <Image src="/images/sora-logo.png" alt="Sora Solutions" width={160} height={36} className="h-9 w-auto object-contain" />
+              <Image src="/images/sora-logo.webp" alt="Sora Solutions" width={160} height={36} className="h-9 w-auto object-contain" />
             </Link>
             <button
               type="button"
