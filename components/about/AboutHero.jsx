@@ -49,7 +49,8 @@ export default function AboutHero() {
                 src="/images/joel/about-hero-image.png"
                 alt="Joel Willis — Founder of Sora Solutions"
                 fill
-                sizes="(max-width: 768px) 320px, 380px"
+                sizes="(max-width: 768px) 640px, 760px"
+                quality={90}
                 className="object-cover relative z-10"
                 style={{ objectPosition: "10% top" }}
               />

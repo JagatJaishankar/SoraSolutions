@@ -1,42 +1,54 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import {
   motion,
   useScroll,
   useTransform,
   useInView,
+  AnimatePresence,
 } from "framer-motion";
-import { Hammer, Award, PhoneMissed, Lightbulb, Zap } from "lucide-react";
+import { Hammer, Award, PhoneMissed, Lightbulb, Zap, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import ElectricBorder from "@/components/ui/ElectricBorder";
 
 const ICONS = { Hammer, Award, PhoneMissed, Lightbulb, Zap };
 
+const TUNNELING_PHOTOS = [
+  "/images/about/tunneling-carasol/WhatsApp Image 2026-04-15 at 21.56.59.jpeg",
+  "/images/about/tunneling-carasol/WhatsApp Image 2026-04-15 at 21.56.59 (1).jpeg",
+  "/images/about/tunneling-carasol/WhatsApp Image 2026-04-15 at 21.56.59 (2).jpeg",
+  "/images/about/tunneling-carasol/WhatsApp Image 2026-04-15 at 21.57.02.jpeg",
+  "/images/about/tunneling-carasol/WhatsApp Image 2026-04-15 at 21.57.02 (1).jpeg",
+  "/images/about/tunneling-carasol/WhatsApp Image 2026-04-15 at 21.57.02 (2).jpeg",
+];
+
 const CHAPTERS = [
   {
     number: "01",
-    year: "2014",
+    year: "2015",
     title: "Picked Up a Hammer",
-    text: "I left school and picked up a hammer. Spent 6 years as a carpenter \u2014 residential, commercial, renovations, new builds. Loved every minute of it.",
+    text: "I left school and picked up a hammer. Spent 6 years as a carpenter — residential, commercial, renovations, new builds. Loved every minute of it.",
     icon: "Hammer",
     side: "left",
-    image: "/images/joel/jeol-in-contruction-site.png",
-    imageAlt: "Joel Willis on a construction site",
+    image: "/images/about/starting my apprenticeship in 2015..jpg",
+    imageAlt: "Joel Willis starting his carpentry apprenticeship in 2015",
   },
   {
     number: "02",
     year: "2018",
-    title: "Builder\u2019s Licence",
-    text: "Got my builder\u2019s licence and started my own building company. The business went well. We were busy, the work was solid, and we built a good reputation.",
+    title: "Builder's Licence",
+    text: "Got my builder's licence and started my own building company. The business went well. We were busy, the work was solid, and we built a good reputation.",
     icon: "Award",
     side: "right",
+    image: "/images/about/Photo of me with my building company.jpeg",
+    imageAlt: "Joel Willis with his building company",
   },
   {
     number: "03",
     year: "2020",
     title: "The Gap",
-    text: "Looking back, I know we left a lot on the table. We\u2019d miss calls on the job. Quotes went out and follow-ups fell through the cracks. Our marketing was basically word of mouth and hoping the phone kept ringing.",
+    text: "Looking back, I know we left a lot on the table. We'd miss calls on the job. Quotes went out and follow-ups fell through the cracks. Our marketing was basically word of mouth and hoping the phone kept ringing.",
     icon: "PhoneMissed",
     side: "left",
   },
@@ -44,21 +56,112 @@ const CHAPTERS = [
     number: "04",
     year: "2022",
     title: "The Discovery",
-    text: "After 4 years running the company, I moved into tunnelling \u2014 great money, steady work, and time to think about what I\u2019d do next. That\u2019s when I discovered digital marketing, AI, and business automation. And I saw a massive gap.",
+    text: "After 4 years running the company, I moved into tunnelling — great money, steady work, and time to think about what I'd do next. That's when I discovered digital marketing, AI, and business automation. And I saw a massive gap.",
     icon: "Lightbulb",
     side: "right",
-    image: "/images/joel/joel-working-on-computer.png",
-    imageAlt: "Joel Willis working on his computer, learning digital marketing",
+    carousel: TUNNELING_PHOTOS,
   },
   {
     number: "05",
     year: "2025",
     title: "Built Sora",
-    text: "Trade businesses are some of the most skilled, hardworking businesses in the country. But most of them are leaving growth on the table. So I built Sora. Every strategy we build, every system we set up \u2014 it\u2019s designed to be the missing piece I wish I\u2019d had.",
+    text: "Trade businesses are some of the most skilled, hardworking businesses in the country. But most of them are leaving growth on the table. So I built Sora. Every strategy we build, every system we set up — it's designed to be the missing piece I wish I'd had.",
     icon: "Zap",
     side: "left",
   },
 ];
+
+function TunnelingCarousel({ photos }) {
+  const [index, setIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
+  const timerRef = useRef(null);
+
+  const go = useCallback((dir) => {
+    setDirection(dir);
+    setIndex((i) => (i + dir + photos.length) % photos.length);
+  }, [photos.length]);
+
+  useEffect(() => {
+    timerRef.current = setInterval(() => go(1), 3500);
+    return () => clearInterval(timerRef.current);
+  }, [go]);
+
+  const pause = () => clearInterval(timerRef.current);
+  const resume = () => {
+    timerRef.current = setInterval(() => go(1), 3500);
+  };
+
+  const variants = {
+    enter: (dir) => ({ x: dir > 0 ? "100%" : "-100%", opacity: 0 }),
+    center: { x: 0, opacity: 1 },
+    exit: (dir) => ({ x: dir > 0 ? "-100%" : "100%", opacity: 0 }),
+  };
+
+  return (
+    <div
+      className="relative w-full h-52 rounded-xl overflow-hidden mt-5 group"
+      onMouseEnter={pause}
+      onMouseLeave={resume}
+    >
+      <AnimatePresence custom={direction} initial={false}>
+        <motion.div
+          key={index}
+          custom={direction}
+          variants={variants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{ duration: 0.45, ease: "easeInOut" }}
+          className="absolute inset-0"
+        >
+          <Image
+            src={photos[index]}
+            alt={`Joel tunnelling project — photo ${index + 1}`}
+            fill
+            sizes="(max-width: 768px) 90vw, 45vw"
+            className="object-cover object-center"
+            quality={85}
+          />
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Prev / Next */}
+      <button
+        onClick={() => go(-1)}
+        className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-7 h-7 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+        aria-label="Previous photo"
+      >
+        <ChevronLeft size={14} className="text-white" />
+      </button>
+      <button
+        onClick={() => go(1)}
+        className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-7 h-7 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+        aria-label="Next photo"
+      >
+        <ChevronRight size={14} className="text-white" />
+      </button>
+
+      {/* Dots */}
+      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-10 flex gap-1.5">
+        {photos.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => { setDirection(i > index ? 1 : -1); setIndex(i); }}
+            className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+              i === index ? "bg-white w-4" : "bg-white/50"
+            }`}
+            aria-label={`Go to photo ${i + 1}`}
+          />
+        ))}
+      </div>
+
+      {/* Counter */}
+      <span className="absolute top-2 right-2 z-10 bg-black/40 backdrop-blur-sm text-white text-[10px] font-medium px-2 py-0.5 rounded-full">
+        {index + 1} / {photos.length}
+      </span>
+    </div>
+  );
+}
 
 function ChapterCard({ chapter }) {
   const ref = useRef(null);
@@ -72,7 +175,7 @@ function ChapterCard({ chapter }) {
       {/* Gradient top border */}
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#9740fe] to-[#222872]" />
 
-      {/* Watermark number — top right, increased opacity */}
+      {/* Watermark number */}
       <span className="absolute top-4 right-6 text-[80px] font-black text-[#9740fe]/[0.08] leading-none pointer-events-none z-0">
         {chapter.number}
       </span>
@@ -97,8 +200,11 @@ function ChapterCard({ chapter }) {
         {chapter.text}
       </p>
 
-      {/* Photo — only on chapters that have one */}
-      {chapter.image && (
+      {/* Carousel */}
+      {chapter.carousel && <TunnelingCarousel photos={chapter.carousel} />}
+
+      {/* Single photo */}
+      {chapter.image && !chapter.carousel && (
         <div className="relative w-full h-48 rounded-xl overflow-hidden mt-5 z-10">
           <Image
             src={chapter.image}
@@ -106,6 +212,7 @@ function ChapterCard({ chapter }) {
             fill
             sizes="(max-width: 768px) 90vw, 45vw"
             className="object-cover object-center"
+            quality={85}
           />
         </div>
       )}
@@ -190,7 +297,7 @@ export default function JoelTimeline() {
           The Journey
         </h2>
         <p className="text-lg font-light tracking-wide text-black/60 max-w-2xl mx-auto">
-          From the tools to the tech &mdash; here&apos;s how Sora came to be.
+          From the tools to the tech — here's how Sora came to be.
         </p>
       </div>
 

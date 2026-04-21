@@ -2,9 +2,10 @@
 
 import { useState, useRef, useCallback } from "react";
 import { GripVertical } from "lucide-react";
+import Image from "next/image";
 import ElectricBorder from "@/components/ui/ElectricBorder";
 
-export default function BeforeAfterSlider({ beforeContent, afterContent }) {
+export default function BeforeAfterSlider({ beforeContent, afterContent, beforeImage, afterImage }) {
   const containerRef = useRef(null);
   const [sliderPos, setSliderPos] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
@@ -67,26 +68,46 @@ export default function BeforeAfterSlider({ beforeContent, afterContent }) {
       >
         {/* Before layer */}
         <div className="absolute inset-0 bg-[#faf9ff] flex items-center justify-center p-4 sm:p-6">
-          <span className="text-black/40 text-xs sm:text-sm font-medium text-center">
-            {beforeContent}
-          </span>
+          {beforeImage ? (
+            <Image
+              src={beforeImage}
+              alt="Before"
+              fill
+              className="object-cover object-top"
+              sizes="(max-width: 768px) 100vw, 45vw"
+            />
+          ) : (
+            <span className="text-black/40 text-xs sm:text-sm font-medium text-center">
+              {beforeContent}
+            </span>
+          )}
         </div>
 
         {/* After layer (clipped) */}
         <div
           className="absolute inset-0 bg-gradient-to-br from-[#d9d0fb] to-[#9740fe]/20 flex items-center justify-center p-4 sm:p-6"
-          style={{ clipPath: `inset(0 ${100 - sliderPos}% 0 0)` }}
+          style={{ clipPath: `inset(0 0 0 ${sliderPos}%)` }}
         >
-          <span className="text-primary text-xs sm:text-sm font-medium text-center">
-            {afterContent}
-          </span>
+          {afterImage ? (
+            <Image
+              src={afterImage}
+              alt="After"
+              fill
+              className="object-cover object-top"
+              sizes="(max-width: 768px) 100vw, 45vw"
+            />
+          ) : (
+            <span className="text-primary text-xs sm:text-sm font-medium text-center">
+              {afterContent}
+            </span>
+          )}
         </div>
 
         {/* Labels */}
-        <span className="absolute top-3 left-3 bg-black/50 text-white text-xs px-2 py-1 rounded-full backdrop-blur-sm">
+        <span className="absolute top-3 left-3 z-20 bg-black/50 text-white text-xs px-2 py-1 rounded-full backdrop-blur-sm">
           Before
         </span>
-        <span className="absolute top-3 right-3 bg-black/50 text-white text-xs px-2 py-1 rounded-full backdrop-blur-sm">
+        <span className="absolute top-3 right-3 z-20 bg-black/50 text-white text-xs px-2 py-1 rounded-full backdrop-blur-sm">
           After
         </span>
 

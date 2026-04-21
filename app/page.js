@@ -13,6 +13,7 @@ import ProblemCards from "@/components/home/ProblemCards";
 import ServicesGrid from "@/components/home/ServicesGrid";
 import WebsiteShowcase from "@/components/home/WebsiteShowcase";
 
+const VideoSection = dynamic(() => import("@/components/home/VideoSection"));
 const WhatYouGet = dynamic(() => import("@/components/home/WhatYouGet"));
 const ComparisonTable = dynamic(() => import("@/components/home/ComparisonTable"));
 const HowItWorks = dynamic(() => import("@/components/home/HowItWorks"));
@@ -46,13 +47,13 @@ export default function Home() {
       />
       <HeroSection />
       <TrustBarSection />
+      <VideoSection />
       {/* <AuditFormSection /> */}
       <ProblemCards />
       <div className="bg-[#faf9ff] section-shadow">
         <ServicesGrid />
         <WebsiteShowcase />
       </div>
-      {/* <VideoSection /> */}
       <WhatYouGet />
       <ComparisonTable />
       <HowItWorks />

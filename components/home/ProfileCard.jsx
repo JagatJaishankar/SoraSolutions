@@ -394,7 +394,8 @@ export default function ProfileCard({
                   src={avatarUrl}
                   alt={`${name} avatar`}
                   fill
-                  sizes="320px"
+                  sizes="(max-width: 768px) 90vw, 640px"
+                  quality={90}
                 />
                 {/* Gradient overlays for text readability */}
                 <div

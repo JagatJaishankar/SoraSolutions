@@ -22,6 +22,8 @@ export default function ServiceSection({
   titleOverride,
   beforeContent,
   afterContent,
+  beforeImage,
+  afterImage,
   children,
 }) {
   const ref = useRef(null);
@@ -36,11 +38,13 @@ export default function ServiceSection({
 
   const renderVisual = () => {
     if (children) return children;
-    if (beforeContent && afterContent) {
+    if (beforeContent || afterContent || beforeImage || afterImage) {
       return (
         <BeforeAfterSlider
           beforeContent={beforeContent}
           afterContent={afterContent}
+          beforeImage={beforeImage}
+          afterImage={afterImage}
         />
       );
     }
