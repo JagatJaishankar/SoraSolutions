@@ -49,15 +49,19 @@ const SERVICES = [
   },
 ];
 
-function WideCardImage({ src, alt }) {
+function WideCardImage({ src, alt, mobileHeight = "h-44" }) {
   return (
-    <div className="relative h-52 md:h-auto md:flex-1 overflow-hidden">
-      <Image
-        src={src}
-        alt={alt}
-        fill
-        className="object-contain object-[right_55%]"
-      />
+    <div className="order-first md:order-none md:flex-1">
+      {/* Mobile: centered with padding */}
+      <div className="px-8 pt-6 pb-2 md:hidden">
+        <div className={`relative ${mobileHeight}`}>
+          <Image src={src} alt={alt} fill className="object-contain" sizes="(max-width: 768px) 80vw, 0vw" />
+        </div>
+      </div>
+      {/* Desktop: full bleed */}
+      <div className="hidden md:block relative h-full min-h-[240px]">
+        <Image src={src} alt={alt} fill className="object-contain object-[right_55%]" sizes="(min-width: 768px) 50vw, 0vw" />
+      </div>
     </div>
   );
 }
@@ -92,7 +96,7 @@ function ServiceCardContent({ service }) {
 
   const textSide = (
     <div className="flex-1 p-6 md:p-10 flex flex-col">
-      <div className={`w-14 h-14 rounded-2xl ${iconBg} flex items-center justify-center mb-4`}>
+      <div className={`w-14 h-14 rounded-2xl ${iconBg} hidden md:flex items-center justify-center mb-4`}>
         <Icon className={iconColor} size={28} />
       </div>
       <h3 className={`text-2xl font-bold tracking-tight ${textColor} mb-3`}>
@@ -116,7 +120,7 @@ function ServiceCardContent({ service }) {
     return (
       <div className="flex flex-col md:flex-row h-full rounded-2xl overflow-hidden">
         {textSide}
-        <WideCardImage src={service.image} alt="Websites & SEO" />
+        <WideCardImage src={service.image} alt="Websites & SEO" mobileHeight="h-40" />
       </div>
     );
   }
@@ -125,15 +129,28 @@ function ServiceCardContent({ service }) {
     return (
       <div className={`flex flex-col md:flex-row h-full ${bgClass} rounded-2xl overflow-hidden`}>
         {textSide}
-        <WideCardImage src={service.image} alt="AI & Automation" />
+        <WideCardImage src={service.image} alt="AI & Automation" mobileHeight="h-72" />
       </div>
     );
   }
 
   return (
     <div className={`flex flex-col h-full ${bgClass} rounded-2xl overflow-hidden`}>
+      {/* Mobile: image at top, centered with padding */}
+      <div className="px-8 pt-6 pb-2 md:hidden">
+        <div className="relative h-64">
+          <Image
+            src={service.image}
+            alt={service.title}
+            fill
+            className="object-contain"
+            sizes="(max-width: 768px) 80vw, 0vw"
+          />
+        </div>
+      </div>
       <div className="flex flex-col flex-grow p-6 md:p-10">
-        <div className={`w-14 h-14 rounded-2xl ${iconBg} flex items-center justify-center mb-4`}>
+        {/* Icon: desktop only */}
+        <div className={`w-14 h-14 rounded-2xl ${iconBg} hidden md:flex items-center justify-center mb-4`}>
           <Icon className={iconColor} size={28} />
         </div>
         <h3 className={`text-2xl font-bold tracking-tight ${textColor} mb-3`}>
@@ -151,7 +168,8 @@ function ServiceCardContent({ service }) {
           </span>
         </div>
       </div>
-      <div className="relative h-44 overflow-hidden">
+      {/* Desktop: image at bottom */}
+      <div className="relative h-44 overflow-hidden hidden md:block">
         <Image
           src={service.image}
           alt={service.title}

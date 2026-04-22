@@ -31,7 +31,9 @@ function AgencyPanel() {
               {row.label}
             </div>
             <div className="text-lg font-light text-black/40 flex items-start">
-              <X className="text-black/20 mr-3 flex-shrink-0 w-5 h-5 mt-0.5" />
+              <span className="w-6 h-6 rounded-full bg-black/10 flex items-center justify-center flex-shrink-0 mr-3 mt-0.5">
+                <X className="w-3.5 h-3.5 text-black/30" />
+              </span>
               {row.agency}
             </div>
           </div>
@@ -43,18 +45,20 @@ function AgencyPanel() {
 
 function SoraPanel({ revealSora }) {
   return (
-    <div className="relative -translate-y-1">
+    <div className="relative -translate-y-3">
       {/* Glow shadow */}
-      <div className="absolute inset-0 shadow-[0_10px_40px_rgba(151,64,254,0.15)] rounded-2xl pointer-events-none" />
+      <div className="absolute inset-0 shadow-[0_16px_48px_rgba(151,64,254,0.22)] rounded-2xl pointer-events-none" />
 
       {/* Gradient border wrapper */}
       <div className="rounded-2xl bg-gradient-to-br from-primary to-secondary p-[1.5px] h-full">
         <div className="bg-[#faf9ff] backdrop-blur-xl rounded-[calc(1rem-1.5px)] p-8 md:p-10 h-full">
-          <div className="mb-6">
-            <span className="bg-accent text-primary text-sm font-bold px-4 py-2 rounded-full">
+          <div className="mb-4">
+            <span className="bg-accent text-primary text-sm font-bold px-4 py-2 rounded-full inline-flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               With Sora
             </span>
           </div>
+          <div className="border-t border-black/10 mb-2" />
           <div className="flex flex-col">
             {rows.map((row, i) => (
               <motion.div
@@ -70,7 +74,9 @@ function SoraPanel({ revealSora }) {
                   {row.label}
                 </div>
                 <div className="text-lg font-medium text-black flex items-start">
-                  <Check className="text-[#9740fe] mr-3 flex-shrink-0 w-5 h-5 mt-0.5" />
+                  <span className="w-6 h-6 rounded-full bg-accent flex items-center justify-center flex-shrink-0 mr-3 mt-0.5">
+                    <Check className="w-3.5 h-3.5 text-primary" />
+                  </span>
                   {row.sora}
                 </div>
               </motion.div>
@@ -101,10 +107,9 @@ export default function ComparisonTable() {
         <div className="text-center mb-16">
           <h2 className="text-4xl font-extrabold tracking-tight text-black">
             Why{" "}
-            <span className="underline decoration-black decoration-2 underline-offset-4">
-              Sora
+            <span className="gradient-text underline decoration-primary decoration-2 underline-offset-4">
+              Sora?
             </span>
-            ?
           </h2>
           <p className="mt-4 text-lg font-light tracking-wide text-black/60 max-w-2xl mx-auto">
             You&apos;ve probably worked with agencies before. Here&apos;s how that usually goes — and why this is different.
