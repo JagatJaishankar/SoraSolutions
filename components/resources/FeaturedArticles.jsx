@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Clock } from "lucide-react";
 import { getPillarArticles } from "@/lib/blogData";
 
@@ -37,31 +38,36 @@ export default function FeaturedArticles() {
               }
               transition={{ delay: i * 0.1, duration: 0.5 }}
               whileHover={{ y: -4 }}
-              className="h-full cursor-pointer"
+              className="cursor-pointer"
             >
-              <Link href={`/blog/${article.slug}`} className="block h-full">
-                <div className="p-[1.5px] rounded-2xl bg-gradient-to-br from-[#9740fe] to-[#222872] h-full hover:shadow-xl transition-shadow duration-300">
-                  <div className="bg-white/90 backdrop-blur-xl rounded-[calc(1rem-1.5px)] p-8 h-full flex flex-col">
+              <Link href={`/blog/${article.slug}`} className="block">
+                <div className="relative overflow-hidden rounded-2xl h-[300px] hover:shadow-xl transition-shadow duration-300">
+                  <Image
+                    fill
+                    className="object-cover"
+                    src={article.image}
+                    alt={article.title}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,0.82) 65%, rgba(0,0,0,0.96) 100%)" }} />
+                  <div className="absolute inset-0 z-10 p-8 flex flex-col justify-end">
                     <div className="flex items-center gap-3 mb-4">
-                      <span className="bg-[#d9d0fb] text-[#9740fe] text-xs font-semibold px-3 py-1 rounded-full">
+                      <span className="bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full">
                         {article.category}
                       </span>
-                      <span className="bg-[#090b3c] text-white text-xs font-semibold px-3 py-1 rounded-full">
+                      <span className="bg-white/10 text-white text-xs font-semibold px-3 py-1 rounded-full">
                         Complete Guide
                       </span>
                     </div>
-                    <h3 className="text-xl font-bold tracking-tight text-black mb-2">
+                    <h3 className="text-xl font-bold tracking-tight text-white mb-3 line-clamp-2">
                       {article.title}
                     </h3>
-                    <p className="text-sm font-light tracking-wide text-black/60 mb-4 flex-grow">
-                      {article.description}
-                    </p>
-                    <div className="flex items-center justify-between mt-auto">
-                      <span className="flex items-center gap-1 text-xs text-black/40">
+                    <div className="flex items-center justify-between">
+                      <span className="flex items-center gap-1 text-xs text-white/50">
                         <Clock size={12} />
                         {article.readTime}
                       </span>
-                      <span className="text-sm text-[#9740fe] font-medium inline-flex items-center gap-1">
+                      <span className="text-sm text-[#d9d0fb] font-medium inline-flex items-center gap-1">
                         Read guide <ArrowRight size={14} />
                       </span>
                     </div>

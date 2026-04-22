@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "rm -rf .next && mkdir -p .next && xattr -w com.apple.fileprovider.ignore#P 1 .next && next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "rm -rf .next && mkdir -p .next && xattr -w com.apple.fileprovider.ignore#P 1 .next && ./node_modules/.bin/next dev",
+    "build": "./node_modules/.bin/next build",
+    "start": "./node_modules/.bin/next start",
     "lint": "eslint"
   },
   "dependencies": {

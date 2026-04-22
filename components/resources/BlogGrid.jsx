@@ -3,6 +3,7 @@
 import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Clock } from "lucide-react";
 import { getAllArticles, CATEGORIES } from "@/lib/blogData";
 
@@ -71,33 +72,41 @@ export default function BlogGrid() {
                 isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }
               }
               transition={{ delay: Math.min(i * 0.05, 0.5), duration: 0.4 }}
+              whileHover={{ y: -4 }}
             >
-              <Link href={`/blog/${article.slug}`} className="block h-full">
-                <div className="bg-white/80 backdrop-blur-xl border border-white/20 rounded-2xl p-6 h-full hover:-translate-y-1 hover:shadow-xl transition-all duration-300 flex flex-col">
-                  <div className="flex items-center gap-2 mb-4">
-                    <span className="bg-[#d9d0fb] text-[#9740fe] text-xs font-semibold px-3 py-1 rounded-full">
-                      {article.category}
-                    </span>
-                    {article.type === "pillar" && (
-                      <span className="bg-[#090b3c] text-white text-xs font-semibold px-2 py-0.5 rounded-full">
-                        Guide
+              <Link href={`/blog/${article.slug}`} className="block">
+                <div className="relative overflow-hidden rounded-2xl h-[240px] hover:shadow-xl transition-shadow duration-300">
+                  <Image
+                    fill
+                    className="object-cover"
+                    src={article.image}
+                    alt={article.title}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                  <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0.85) 65%, rgba(0,0,0,0.97) 100%)" }} />
+                  <div className="relative z-10 p-6 flex flex-col h-full justify-end">
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className="bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                        {article.category}
                       </span>
-                    )}
-                  </div>
-                  <h3 className="text-xl font-bold tracking-tight text-black mb-2 line-clamp-2">
-                    {article.title}
-                  </h3>
-                  <p className="text-sm font-light tracking-wide text-black/60 mb-4 flex-grow line-clamp-2">
-                    {article.description}
-                  </p>
-                  <div className="flex items-center justify-between mt-auto">
-                    <span className="flex items-center gap-1 text-xs text-black/40">
-                      <Clock size={12} />
-                      {article.readTime}
-                    </span>
-                    <span className="text-sm text-[#9740fe] font-medium inline-flex items-center gap-1">
-                      Read <ArrowRight size={14} />
-                    </span>
+                      {article.type === "pillar" && (
+                        <span className="bg-white/10 text-white text-xs font-semibold px-2 py-0.5 rounded-full">
+                          Guide
+                        </span>
+                      )}
+                    </div>
+                    <h3 className="text-base font-bold tracking-tight text-white mb-1 line-clamp-2">
+                      {article.title}
+                    </h3>
+                    <div className="flex items-center justify-between mt-2">
+                      <span className="flex items-center gap-1 text-xs text-white/50">
+                        <Clock size={12} />
+                        {article.readTime}
+                      </span>
+                      <span className="text-sm text-[#d9d0fb] font-medium inline-flex items-center gap-1">
+                        Read <ArrowRight size={14} />
+                      </span>
+                    </div>
                   </div>
                 </div>
               </Link>

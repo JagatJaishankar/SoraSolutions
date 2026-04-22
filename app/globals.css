@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@source not "**/.next*/**";
+@source not "**/node_modules*/**";
 
 html {
   scroll-behavior: smooth;
