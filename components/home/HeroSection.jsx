@@ -78,7 +78,7 @@ export default function HeroSection() {
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
           >
-            <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden">
+            <div className="relative aspect-[16/9] sm:aspect-[4/3] w-full rounded-2xl overflow-hidden">
               <Image
                 src="/images/home-page/hero-image.webp"
                 alt="Sora Solutions"

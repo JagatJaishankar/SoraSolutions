@@ -69,7 +69,7 @@ export default function ProblemCards() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-[100px]">
+    <section className="hidden md:block py-[100px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           heading="Sound Familiar?"

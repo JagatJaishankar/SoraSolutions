@@ -15,6 +15,7 @@ const SERVICES = [
     href: "/services#websites",
     span: "md:col-span-7",
     wide: true,
+    image: "/images/home-page/website-and-seo.webp",
   },
   {
     title: "Pipeline & Follow-Up",
@@ -24,6 +25,7 @@ const SERVICES = [
     href: "/services#crm",
     span: "md:col-span-5",
     lilac: true,
+    image: "/images/home-page/pipeline.webp",
   },
   {
     title: "Marketing Campaigns",
@@ -32,6 +34,7 @@ const SERVICES = [
     badge: "Leads in 48 hours",
     href: "/services#google-ads",
     span: "md:col-span-5",
+    image: "/images/home-page/marketing-campaign.webp",
   },
   {
     title: "AI & Automation",
@@ -42,23 +45,19 @@ const SERVICES = [
     span: "md:col-span-7",
     wide: true,
     dark: true,
+    image: "/images/home-page/ai-service.webp",
   },
 ];
 
-
-
-function WebsiteSEOCard({ service, textSide }) {
+function WideCardImage({ src, alt }) {
   return (
-    <div className="flex flex-col md:flex-row h-full rounded-2xl overflow-hidden">
-      {textSide}
-      <div className="flex-1 hidden md:block relative overflow-hidden">
-        <Image
-          src="/images/home-page/website-and-seo.webp"
-          alt="Websites & SEO"
-          fill
-          className="object-contain object-[right_55%]"
-        />
-      </div>
+    <div className="relative h-52 md:h-auto md:flex-1 overflow-hidden">
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        className="object-contain object-[right_55%]"
+      />
     </div>
   );
 }
@@ -91,26 +90,19 @@ function ServiceCardContent({ service }) {
   const badgeText = service.dark ? "text-[#d9d0fb]" : "text-[#9740fe]";
   const linkColor = service.dark ? "text-[#d9d0fb]" : "text-[#9740fe]";
 
-
   const textSide = (
     <div className="flex-1 p-6 md:p-10 flex flex-col">
-      <div
-        className={`w-14 h-14 rounded-2xl ${iconBg} flex items-center justify-center mb-4`}
-      >
+      <div className={`w-14 h-14 rounded-2xl ${iconBg} flex items-center justify-center mb-4`}>
         <Icon className={iconColor} size={28} />
       </div>
       <h3 className={`text-2xl font-bold tracking-tight ${textColor} mb-3`}>
         {service.title}
       </h3>
-      <p
-        className={`text-sm font-light tracking-wide ${taglineColor} mb-4 leading-relaxed flex-grow`}
-      >
+      <p className={`text-sm font-light tracking-wide ${taglineColor} mb-4 leading-relaxed flex-grow`}>
         {service.description}
       </p>
       <div className="flex items-center justify-between mt-auto">
-        <span
-          className={`${badgeBg} ${badgeText} text-xs font-semibold px-3 py-1.5 rounded-full`}
-        >
+        <span className={`${badgeBg} ${badgeText} text-xs font-semibold px-3 py-1.5 rounded-full`}>
           {service.badge}
         </span>
         <span className={`${linkColor} text-sm font-medium hover:underline`}>
@@ -121,51 +113,51 @@ function ServiceCardContent({ service }) {
   );
 
   if (service.title === "Websites & SEO") {
-    return <WebsiteSEOCard service={service} textSide={textSide} />;
+    return (
+      <div className="flex flex-col md:flex-row h-full rounded-2xl overflow-hidden">
+        {textSide}
+        <WideCardImage src={service.image} alt="Websites & SEO" />
+      </div>
+    );
   }
 
   if (service.title === "AI & Automation") {
     return (
-      <div
-        className={`flex flex-col md:flex-row h-full ${bgClass} rounded-2xl overflow-hidden`}
-      >
+      <div className={`flex flex-col md:flex-row h-full ${bgClass} rounded-2xl overflow-hidden`}>
         {textSide}
-        <div className="flex-1 hidden md:block relative overflow-hidden">
-          <Image
-            src="/images/home-page/ai-service.webp"
-            alt="AI & Automation"
-            fill
-            className="object-contain object-[right_55%]"
-          />
-        </div>
+        <WideCardImage src={service.image} alt="AI & Automation" />
       </div>
     );
   }
 
   return (
-    <div className={`flex flex-col h-full p-6 md:p-10 ${bgClass} rounded-2xl`}>
-      <div
-        className={`w-14 h-14 rounded-2xl ${iconBg} flex items-center justify-center mb-4`}
-      >
-        <Icon className={iconColor} size={28} />
+    <div className={`flex flex-col h-full ${bgClass} rounded-2xl overflow-hidden`}>
+      <div className="flex flex-col flex-grow p-6 md:p-10">
+        <div className={`w-14 h-14 rounded-2xl ${iconBg} flex items-center justify-center mb-4`}>
+          <Icon className={iconColor} size={28} />
+        </div>
+        <h3 className={`text-2xl font-bold tracking-tight ${textColor} mb-3`}>
+          {service.title}
+        </h3>
+        <p className={`text-sm font-light tracking-wide ${taglineColor} mb-4 leading-relaxed flex-grow`}>
+          {service.description}
+        </p>
+        <div className="flex items-center justify-between mt-auto">
+          <span className={`${badgeBg} ${badgeText} text-xs font-semibold px-3 py-1.5 rounded-full`}>
+            {service.badge}
+          </span>
+          <span className={`${linkColor} text-sm font-medium hover:underline`}>
+            Learn more &rarr;
+          </span>
+        </div>
       </div>
-      <h3 className={`text-2xl font-bold tracking-tight ${textColor} mb-3`}>
-        {service.title}
-      </h3>
-      <p
-        className={`text-sm font-light tracking-wide ${taglineColor} mb-4 leading-relaxed flex-grow`}
-      >
-        {service.description}
-      </p>
-      <div className="flex items-center justify-between mt-auto">
-        <span
-          className={`${badgeBg} ${badgeText} text-xs font-semibold px-3 py-1.5 rounded-full`}
-        >
-          {service.badge}
-        </span>
-        <span className={`${linkColor} text-sm font-medium hover:underline`}>
-          Learn more &rarr;
-        </span>
+      <div className="relative h-44 overflow-hidden">
+        <Image
+          src={service.image}
+          alt={service.title}
+          fill
+          className="object-contain object-bottom"
+        />
       </div>
     </div>
   );

@@ -57,7 +57,7 @@ export default function VideoModal({ isOpen, onClose, title, videoUrl, videoSrc 
 
           {/* Modal */}
           <motion.div
-            className="relative z-10 w-full max-w-4xl rounded-2xl overflow-hidden bg-black"
+            className="relative z-10 w-[96vw] max-w-[1600px] rounded-2xl overflow-hidden bg-black"
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}

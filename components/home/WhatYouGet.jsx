@@ -64,7 +64,7 @@ export default function WhatYouGet() {
   }, []);
 
   return (
-    <section className="py-[100px]">
+    <section ref={sectionRef} className="py-[100px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <div className="text-center mb-20">
@@ -78,7 +78,6 @@ export default function WhatYouGet() {
 
         {/* Overlapping cards */}
         <div
-          ref={sectionRef}
           className="hidden md:flex items-center justify-center pb-12"
         >
           {dashboards.map((item, i) => (
