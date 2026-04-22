@@ -53,7 +53,7 @@ function WideCardImage({ src, alt, mobileHeight = "h-44" }) {
   return (
     <div className="order-first md:order-none md:flex-1">
       {/* Mobile: centered with padding */}
-      <div className="px-8 pt-6 pb-2 md:hidden">
+      <div className="px-8 md:hidden">
         <div className={`relative ${mobileHeight}`}>
           <Image src={src} alt={alt} fill className="object-contain" sizes="(max-width: 768px) 80vw, 0vw" />
         </div>
@@ -137,8 +137,8 @@ function ServiceCardContent({ service }) {
   return (
     <div className={`flex flex-col h-full ${bgClass} rounded-2xl overflow-hidden`}>
       {/* Mobile: image at top, centered with padding */}
-      <div className="px-8 pt-6 pb-2 md:hidden">
-        <div className="relative h-64">
+      <div className="px-8 md:hidden">
+        <div className="relative h-96">
           <Image
             src={service.image}
             alt={service.title}
