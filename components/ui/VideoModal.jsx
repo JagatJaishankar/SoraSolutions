@@ -1,10 +1,12 @@
 "use client";
 
-import { useEffect, useCallback } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 
-export default function VideoModal({ isOpen, onClose, title, videoUrl }) {
+export default function VideoModal({ isOpen, onClose, title, videoUrl, videoSrc }) {
+  const modalVideoRef = useRef(null);
+
   const handleKeyDown = useCallback(
     (e) => {
       if (e.key === "Escape") onClose();
@@ -16,12 +18,26 @@ export default function VideoModal({ isOpen, onClose, title, videoUrl }) {
     if (isOpen) {
       document.addEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "hidden";
+    } else {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "";
     }
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "";
     };
   }, [isOpen, handleKeyDown]);
+
+  useEffect(() => {
+    if (!modalVideoRef.current || !videoSrc) return;
+    if (isOpen) {
+      modalVideoRef.current.currentTime = 0;
+      modalVideoRef.current.play().catch(() => {});
+    } else {
+      modalVideoRef.current.pause();
+      modalVideoRef.current.currentTime = 0;
+    }
+  }, [isOpen, videoSrc]);
 
   return (
     <AnimatePresence>
@@ -57,8 +73,18 @@ export default function VideoModal({ isOpen, onClose, title, videoUrl }) {
               <X className="w-6 h-6" />
             </button>
 
-            {/* Video content — swap in videoUrl when ready */}
-            {videoUrl ? (
+            {videoSrc ? (
+              <div className="aspect-video">
+                <video
+                  ref={modalVideoRef}
+                  src={videoSrc}
+                  controls
+                  autoPlay
+                  playsInline
+                  className="w-full h-full"
+                />
+              </div>
+            ) : videoUrl ? (
               <div className="aspect-video">
                 <iframe
                   src={videoUrl}

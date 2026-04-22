@@ -35,7 +35,7 @@ const CHAPTERS = [
   },
   {
     number: "02",
-    year: "2018",
+    year: "2022",
     title: "Builder's Licence",
     text: "Got my builder's licence and started my own building company. The business went well. We were busy, the work was solid, and we built a good reputation.",
     icon: "Award",
@@ -67,6 +67,8 @@ const CHAPTERS = [
     text: "Trade businesses are some of the most skilled, hardworking businesses in the country. But most of them are leaving growth on the table. So I built Sora. Every strategy we build, every system we set up — it's designed to be the missing piece I wish I'd had.",
     icon: "Zap",
     side: "left",
+    image: "/images/about/building-sora.webp",
+    imageAlt: "Joel Willis building Sora Solutions",
   },
 ];
 

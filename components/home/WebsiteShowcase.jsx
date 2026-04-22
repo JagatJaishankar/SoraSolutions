@@ -7,69 +7,67 @@ import Image from "next/image";
 
 const SLIDES = [
   {
-    feature: "First Impressions",
-    name: "Instant Authority & Trust",
-    desc: "Stunning hero sections with lead forms, star ratings, trust badges, and a clear offer above the fold \u2014 designed to convert from the first second.",
-    img: "/carousel/waterproofing-hero.webp",
-    url: "https://waterproofing-demo.vercel.app",
+    feature: "Gym & Fitness",
+    name: "Premium Gym Websites That Drive Memberships",
+    desc: "Membership tiers, class schedules, recovery suite showcases — every element designed to turn a casual visitor into a signed-up member.",
+    img: "/carousel/00-gym-basin.webp",
+    url: "https://basin-gym-reorder.vercel.app/",
   },
   {
-    feature: "Mobile Optimised",
-    name: "Looks Perfect on Every Device",
-    desc: "Every site is built mobile-first. Fast load, thumb-friendly CTAs, responsive layouts \u2014 your clients book from their phones, so your site has to perform there.",
-    img: "/carousel/mobile-optimised.webp",
-    contain: true,
+    feature: "Beauty & Aesthetics",
+    name: "Aesthetic Clinics That Attract High-Value Clients",
+    desc: "Luxury design, practitioner credentials, treatment galleries, and Afterpay integration — everything a premium cosmetic client needs to book with confidence.",
+    img: "/carousel/00-mirror-mirror.webp",
+    url: "https://mirror-mirror-aesthetics.vercel.app/",
   },
   {
-    feature: "Smart Lead Qualification",
-    name: "Multi-Step Forms That Filter & Qualify",
-    desc: "Job type selectors, photo uploads, timeline pickers \u2014 every enquiry arrives with the detail you need to quote confidently and weed out time-wasters.",
-    img: "/carousel/smart-form.webp",
-    contain: true,
+    feature: "Building & Carpentry",
+    name: "Builders Who Look Like Pros Before They Arrive",
+    desc: "Fixed-price quotes, licensed credentials, project galleries, and a strong local presence — built to win residential jobs before the competition even calls back.",
+    img: "/carousel/00-virtue-building.webp",
+    url: "https://virtue-building-v2.vercel.app/",
   },
   {
-    feature: "Work Portfolio",
-    name: "Craft That Sells Itself",
-    desc: "Photo galleries showcasing real projects \u2014 so your workmanship does the selling for you.",
-    img: "/carousel/plumbing-collage.webp",
+    feature: "Electrical Contracting",
+    name: "Electricians Who Convert Online — Every Time",
+    desc: "Clear service pages, lifetime warranty callouts, service area maps, and instant quote forms — turning search traffic into booked jobs around the clock.",
+    img: "/carousel/00-conlec-demo.webp",
+    url: "https://conlec-demo-site.vercel.app/",
   },
   {
-    feature: "Service Targeting",
-    name: "\u201CWhich Best Describes You?\u201D",
-    desc: "Segment residential, commercial, and strata clients on one page \u2014 each card speaks directly to their situation and drives its own conversion.",
-    img: "/carousel/painters-services.webp",
-    url: "https://painter-deploy.vercel.app",
+    feature: "Civil & Haulage",
+    name: "Haulage Businesses That Book Themselves",
+    desc: "Online availability checkers, transparent pricing, compliance credentials, and same-day booking — so your truck is never sitting idle.",
+    img: "/carousel/00-la-tippers.webp",
+    url: "https://la-tippers-demo.vercel.app/",
   },
   {
-    feature: "Interactive Elements",
-    name: "Websites That Actually Do Things",
-    desc: "Click the lightbulb \u2014 it toggles on and off. Scroll animations, interactive maps, live price calculators. Not just pretty \u2014 engaging.",
-    imgA: "/carousel/electrical-lights.webp",
-    imgB: "/carousel/electrical-lights-on.webp",
-    toggle: true,
-    url: "https://electrical-demo-pearl.vercel.app",
+    feature: "Property Maintenance",
+    name: "Property Services That Look the Part",
+    desc: "Before/after galleries, service area coverage, owner-operated trust signals, and free quote CTAs — everything a homeowner needs to pick up the phone.",
+    img: "/carousel/00-godfreys-gutter.webp",
+    url: "https://godfreys-gutter-cleaning.vercel.app/",
   },
   {
-    feature: "Service Area Coverage",
-    name: "Show Where You Work",
-    desc: "Interactive maps with suburb grids \u2014 clients instantly know you cover their area. Builds local trust and pre-qualifies location before they even enquire.",
-    img: "/carousel/service-areas.webp",
+    feature: "Coaching & Online Programs",
+    name: "Coaching Businesses That Scale Without You",
+    desc: "Tiered program showcases, founder credibility, community previews, and online booking — so your coaching business generates revenue even while you're training.",
+    img: "/carousel/00-ablock-academy.webp",
+    url: "https://ablock-academy.vercel.app/",
   },
   {
-    feature: "Business Process",
-    name: "You Run This \u2014 They Just Show Up",
-    desc: "Clear step-by-step process sections set expectations, establish authority, and reduce friction. Clients arrive prepared and confident.",
-    img: "/carousel/roofing-process.webp",
-    url: "https://roofing-deploy.vercel.app",
+    feature: "AI Operations Platform",
+    name: "Custom Proposals That Win Enterprise Clients",
+    desc: "Bespoke pitch sites with live demos, AI agent breakdowns, and ROI calculators — tailored proposals that close complex deals without a single in-person meeting.",
+    img: "/carousel/00-jl-monin-proposal.webp",
+    url: "https://jl-monin-proposal.vercel.app/",
   },
 ];
-
-const TOGGLE_SLIDE_INDEX = 5;
 
 const POSITIONS = [
   { tx: -540, tz: -190, ry: 52, s: 0.66, o: 0.2 },
   { tx: -300, tz: -90, ry: 40, s: 0.78, o: 0.58 },
-  { tx: 0, tz: 0, ry: 0, s: 1, o: 1 },
+  { tx: 0, tz: 0, ry: 0, s: 1.19, o: 1 },
   { tx: 300, tz: -90, ry: -40, s: 0.78, o: 0.58 },
   { tx: 540, tz: -190, ry: -52, s: 0.66, o: 0.2 },
 ];
@@ -77,7 +75,7 @@ const POSITIONS = [
 const MOBILE_POSITIONS = [
   { tx: -360, tz: -190, ry: 52, s: 0.66, o: 0.2 },
   { tx: -200, tz: -90, ry: 40, s: 0.78, o: 0.58 },
-  { tx: 0, tz: 0, ry: 0, s: 1, o: 1 },
+  { tx: 0, tz: 0, ry: 0, s: 1.19, o: 1 },
   { tx: 200, tz: -90, ry: -40, s: 0.78, o: 0.58 },
   { tx: 360, tz: -190, ry: -52, s: 0.66, o: 0.2 },
 ];
@@ -92,7 +90,6 @@ function getOffset(index, current, total) {
 export default function WebsiteShowcase() {
   const [current, setCurrent] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
-  const [toggleOn, setToggleOn] = useState(false);
   const touchStartX = useRef(0);
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
@@ -103,15 +100,6 @@ export default function WebsiteShowcase() {
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
   }, []);
-
-  useEffect(() => {
-    if (current !== TOGGLE_SLIDE_INDEX) {
-      setToggleOn(false);
-      return;
-    }
-    const id = setInterval(() => setToggleOn((prev) => !prev), 1800);
-    return () => clearInterval(id);
-  }, [current]);
 
   const navigate = useCallback(
     (dir) => setCurrent((prev) => (prev + dir + SLIDES.length) % SLIDES.length),
@@ -138,8 +126,11 @@ export default function WebsiteShowcase() {
 
   const positions = isMobile ? MOBILE_POSITIONS : POSITIONS;
   const cardW = isMobile ? 320 : 480;
-  const cardH = isMobile ? 210 : 320;
-  const reflectionH = isMobile ? 50 : 80;
+  // Height derived from image aspect ratio (2764×1310 = 2.11:1) to avoid left/right cropping
+  const cardH = isMobile ? 152 : 228;
+  // Size container to side-card visual height — active card overflows via overflow-visible
+  const containerH = Math.round(cardH * 0.78) + 8;
+  const activeOverflow = Math.round(cardH * (1.19 - 0.78) / 2);
   const activeSlide = SLIDES[current];
 
   return (
@@ -151,10 +142,13 @@ export default function WebsiteShowcase() {
       className="relative pt-4 pb-[100px] overflow-x-hidden"
     >
       <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Spacer — gives the 1.19× active card room above the container */}
+        <div style={{ height: activeOverflow }} aria-hidden="true" />
+
         {/* Carousel */}
         <div
-          className="relative mx-auto overflow-hidden"
-          style={{ height: cardH + reflectionH + 20, perspective: "1600px" }}
+          className="relative mx-auto overflow-visible"
+          style={{ height: containerH, perspective: "1600px" }}
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
@@ -185,7 +179,7 @@ export default function WebsiteShowcase() {
                   left: "50%",
                   top: "50%",
                   marginLeft: -cardW / 2,
-                  marginTop: -(cardH + reflectionH) / 2,
+                  marginTop: -cardH / 2,
                   transform: `translateX(${pos.tx}px) translateZ(${pos.tz}px) rotateY(${pos.ry}deg) scale(${pos.s})`,
                   opacity: pos.o,
                   transition:
@@ -197,99 +191,17 @@ export default function WebsiteShowcase() {
                   if (!isActive) setCurrent(i);
                 }}
               >
-                {/* Main card */}
-                <div className="relative w-full overflow-hidden rounded-xl" style={{ height: cardH }}>
-                  {isActive && (
-                    <div className="absolute inset-0 rounded-xl shadow-[0_20px_60px_rgba(0,0,0,0.15)] pointer-events-none z-30" />
-                  )}
-
-                  {slide.toggle ? (
-                    <>
-                      <Image
-                        src={slide.imgA}
-                        alt={slide.name}
-                        fill
-                        sizes="(max-width: 768px) 320px, 480px"
-                        loading={isActive ? "eager" : "lazy"}
-                        className={`object-cover object-top transition-opacity duration-[900ms] ease ${
-                          toggleOn ? "opacity-0" : "opacity-100"
-                        }`}
-                        draggable={false}
-                      />
-                      <Image
-                        src={slide.imgB}
-                        alt={`${slide.name} - on`}
-                        fill
-                        sizes="(max-width: 768px) 320px, 480px"
-                        loading={isActive ? "eager" : "lazy"}
-                        className={`object-cover object-top transition-opacity duration-[900ms] ease ${
-                          toggleOn ? "opacity-100" : "opacity-0"
-                        }`}
-                        draggable={false}
-                      />
-                      {isActive && (
-                        <span className="absolute bottom-2.5 right-2.5 z-20 bg-white/80 backdrop-blur-sm border border-black/5 rounded-full px-2.5 py-1 text-[9px] font-semibold tracking-widest uppercase text-black/70">
-                          ⚡ Click to Toggle
-                        </span>
-                      )}
-                    </>
-                  ) : slide.contain ? (
-                    <Image
-                      src={slide.img}
-                      alt={slide.name}
-                      fill
-                      sizes="(max-width: 768px) 320px, 480px"
-                      loading={isActive ? "eager" : "lazy"}
-                      className="object-contain object-center"
-                      draggable={false}
-                    />
-                  ) : (
-                    <Image
-                      src={slide.img}
-                      alt={slide.name}
-                      fill
-                      sizes="(max-width: 768px) 320px, 480px"
-                      loading={isActive ? "eager" : "lazy"}
-                      className="object-cover object-top"
-                      draggable={false}
-                    />
-                  )}
+                <div className="relative w-full h-full overflow-hidden border-0 outline-none">
+                  <Image
+                    src={slide.img}
+                    alt={slide.name}
+                    fill
+                    sizes="(max-width: 768px) 320px, 480px"
+                    loading={isActive ? "eager" : "lazy"}
+                    className="object-cover object-top border-0 outline-none"
+                    draggable={false}
+                  />
                 </div>
-
-                {/* Reflection — active card only */}
-                {isActive && (
-                  <div
-                    className="w-full overflow-hidden pointer-events-none relative"
-                    style={{
-                      height: reflectionH,
-                      transform: "scaleY(-1) perspective(800px) rotateX(2deg)",
-                      maskImage: "linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.08) 40%, transparent 80%)",
-                      WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.08) 40%, transparent 80%)",
-                      opacity: 0.35,
-                      filter: "blur(3px) saturate(0.7)",
-                    }}
-                  >
-                    {slide.toggle ? (
-                      <Image
-                        src={toggleOn ? slide.imgB : slide.imgA}
-                        alt=""
-                        fill
-                        sizes="(max-width: 768px) 320px, 480px"
-                        className="object-cover object-top"
-                        draggable={false}
-                      />
-                    ) : (
-                      <Image
-                        src={slide.img}
-                        alt=""
-                        fill
-                        sizes="(max-width: 768px) 320px, 480px"
-                        className={slide.contain ? "object-contain object-center" : "object-cover object-top"}
-                        draggable={false}
-                      />
-                    )}
-                  </div>
-                )}
               </div>
             );
           })}
@@ -310,6 +222,9 @@ export default function WebsiteShowcase() {
             <ChevronRight className="w-5 h-5" />
           </button>
         </div>
+
+        {/* Spacer — gives the 1.19× active card room below the container */}
+        <div style={{ height: activeOverflow }} aria-hidden="true" />
 
         {/* Info panel — fade transition on slide change */}
         <div className="text-center mt-10 min-h-[160px]">
