@@ -26,6 +26,8 @@ const SERVICES = [
     span: "md:col-span-5",
     lilac: true,
     image: "/images/home-page/pipeline.webp",
+    mobileScale: "scale-[1.3]",
+    mobileHeight: "h-52",
   },
   {
     title: "Marketing Campaigns",
@@ -35,6 +37,8 @@ const SERVICES = [
     href: "/services#google-ads",
     span: "md:col-span-5",
     image: "/images/home-page/marketing-campaign.webp",
+    mobileScale: "scale-[1.3]",
+    mobileHeight: "h-72",
   },
   {
     title: "AI & Automation",
@@ -49,11 +53,11 @@ const SERVICES = [
   },
 ];
 
-function WideCardImage({ src, alt, mobileHeight = "h-44" }) {
+function WideCardImage({ src, alt, mobileHeight = "h-44", mobilePt = "pt-4" }) {
   return (
     <div className="order-first md:order-none md:flex-1">
       {/* Mobile: centered with padding */}
-      <div className="px-8 md:hidden">
+      <div className={`px-8 ${mobilePt} md:hidden`}>
         <div className={`relative ${mobileHeight}`}>
           <Image src={src} alt={alt} fill className="object-contain" sizes="(max-width: 768px) 80vw, 0vw" />
         </div>
@@ -120,7 +124,7 @@ function ServiceCardContent({ service }) {
     return (
       <div className="flex flex-col md:flex-row h-full rounded-2xl overflow-hidden">
         {textSide}
-        <WideCardImage src={service.image} alt="Websites & SEO" mobileHeight="h-40" />
+        <WideCardImage src={service.image} alt="Websites & SEO" mobileHeight="h-40" mobilePt="pt-10" />
       </div>
     );
   }
@@ -138,17 +142,17 @@ function ServiceCardContent({ service }) {
     <div className={`flex flex-col h-full ${bgClass} rounded-2xl overflow-hidden`}>
       {/* Mobile: image at top, centered with padding */}
       <div className="px-8 md:hidden">
-        <div className="relative h-96">
+        <div className={`relative ${service.mobileHeight ?? "h-96"} overflow-hidden`}>
           <Image
             src={service.image}
             alt={service.title}
             fill
-            className="object-contain"
+            className={`object-contain ${service.mobileScale ?? "scale-[1.3]"}`}
             sizes="(max-width: 768px) 80vw, 0vw"
           />
         </div>
       </div>
-      <div className="flex flex-col flex-grow p-6 md:p-10">
+      <div className="flex flex-col flex-grow pt-2 px-6 pb-6 md:p-10">
         {/* Icon: desktop only */}
         <div className={`w-14 h-14 rounded-2xl ${iconBg} hidden md:flex items-center justify-center mb-4`}>
           <Icon className={iconColor} size={28} />
@@ -167,15 +171,6 @@ function ServiceCardContent({ service }) {
             Learn more &rarr;
           </span>
         </div>
-      </div>
-      {/* Desktop: image at bottom */}
-      <div className="relative h-44 overflow-hidden hidden md:block">
-        <Image
-          src={service.image}
-          alt={service.title}
-          fill
-          className="object-contain object-bottom"
-        />
       </div>
     </div>
   );
