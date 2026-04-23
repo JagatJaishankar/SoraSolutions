@@ -90,7 +90,6 @@ function getOffset(index, current, total) {
 export default function WebsiteShowcase() {
   const [current, setCurrent] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
-  const touchStartX = useRef(0);
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
@@ -115,14 +114,7 @@ export default function WebsiteShowcase() {
     return () => window.removeEventListener("keydown", handleKey);
   }, [navigate]);
 
-  const handleTouchStart = (e) => {
-    touchStartX.current = e.touches[0].clientX;
-  };
 
-  const handleTouchEnd = (e) => {
-    const dx = e.changedTouches[0].clientX - touchStartX.current;
-    if (Math.abs(dx) > 48) navigate(dx < 0 ? 1 : -1);
-  };
 
   const positions = isMobile ? MOBILE_POSITIONS : POSITIONS;
   const cardW = isMobile ? 320 : 480;
@@ -147,10 +139,8 @@ export default function WebsiteShowcase() {
 
         {/* Carousel */}
         <div
-          className="relative mx-auto overflow-visible"
+          className="relative mx-auto overflow-visible touch-pan-y"
           style={{ height: containerH, perspective: "1600px" }}
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
         >
           {SLIDES.map((slide, i) => {
             const offset = getOffset(i, current, SLIDES.length);

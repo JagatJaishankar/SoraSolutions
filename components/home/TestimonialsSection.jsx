@@ -270,17 +270,11 @@ export default function TestimonialsSection() {
       {/* Continuous carousel */}
       <div
         ref={containerRef}
-        className="relative overflow-hidden"
+        className="relative overflow-hidden touch-pan-y"
         onMouseEnter={() => {
           isHoveredRef.current = true;
         }}
         onMouseLeave={() => {
-          isHoveredRef.current = false;
-        }}
-        onTouchStart={() => {
-          isHoveredRef.current = true;
-        }}
-        onTouchEnd={() => {
           isHoveredRef.current = false;
         }}
       >
