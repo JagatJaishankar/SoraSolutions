@@ -138,12 +138,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${fontVars} font-[family-name:var(--font-poppins)] antialiased overflow-x-hidden w-full max-w-full`}
+        className={`${fontVars} font-[family-name:var(--font-poppins)] antialiased w-full`}
       >
         <GradientBackground />
         <GridOverlay />
         <FloatingLogos />
-        <div className="relative z-10 w-full overflow-x-hidden">
+        <div className="relative z-10 w-full">
           <Navbar />
           {children}
           <Footer />
