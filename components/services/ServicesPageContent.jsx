@@ -176,6 +176,8 @@ export default function ServicesPageContent() {
         tinted={false}
         beforeContent="Wasted ad spend. Clicks but no calls. Reports full of vanity metrics."
         afterContent="Every click tracked to a booked job. Cost per lead dropping monthly."
+        beforeImage="/images/services/Google Ads-Before.webp"
+        afterImage="/images/services/after/Google Ads-After.webp"
       />
 
       <ServiceDivider

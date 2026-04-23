@@ -131,7 +131,7 @@ export default function WebsiteShowcase() {
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, ease: "easeOut" }}
-      className="relative pt-4 pb-[100px] overflow-x-hidden"
+      className="relative pt-4 pb-[100px] overflow-hidden"
     >
       <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Spacer — gives the 1.19× active card room above the container */}

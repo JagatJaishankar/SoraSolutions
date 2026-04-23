@@ -45,15 +45,17 @@ const CHAPTERS = [
   },
   {
     number: "03",
-    year: "2020",
+    year: "2023",
     title: "The Gap",
     text: "Looking back, I know we left a lot on the table. We'd miss calls on the job. Quotes went out and follow-ups fell through the cracks. Our marketing was basically word of mouth and hoping the phone kept ringing.",
     icon: "PhoneMissed",
     side: "left",
+    image: "/images/about/the-gap.webp",
+    imageAlt: "Joel Willis reflecting on missed opportunities and business gaps during his carpentry years",
   },
   {
     number: "04",
-    year: "2022",
+    year: "2025",
     title: "The Discovery",
     text: "After 4 years running the company, I moved into tunnelling — great money, steady work, and time to think about what I'd do next. That's when I discovered digital marketing, AI, and business automation. And I saw a massive gap.",
     icon: "Lightbulb",
@@ -62,7 +64,7 @@ const CHAPTERS = [
   },
   {
     number: "05",
-    year: "2025",
+    year: "2026",
     title: "Built Sora",
     text: "Trade businesses are some of the most skilled, hardworking businesses in the country. But most of them are leaving growth on the table. So I built Sora. Every strategy we build, every system we set up — it's designed to be the missing piece I wish I'd had.",
     icon: "Zap",
