@@ -143,7 +143,7 @@ export default function RootLayout({ children }) {
         <GradientBackground />
         <GridOverlay />
         <FloatingLogos />
-        <div className="relative z-10 w-full overflow-x-hidden touch-pan-y">
+        <div className="relative z-10 w-full overflow-x-hidden">
           <Navbar />
           {children}
           <Footer />
