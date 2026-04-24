@@ -56,7 +56,7 @@ export default function Navbar() {
             {/* Left pill — Logo */}
             <div className={`pointer-events-auto bg-white/70 backdrop-blur-2xl border border-white/20 rounded-full px-5 h-12 flex items-center transition-shadow duration-300 ${scrolled ? "shadow-lg" : ""}`}>
               <Link href="/" className="flex items-center">
-                <Image src="/images/sora-logo.webp" alt="Sora Solutions" width={160} height={36} className="h-9 w-auto object-contain" priority />
+                <Image src="/images/sora-logo.webp" alt="Sora Solutions" width={160} height={36} className="h-9 lg:h-[43px] w-auto object-contain" priority />
               </Link>
             </div>
 
