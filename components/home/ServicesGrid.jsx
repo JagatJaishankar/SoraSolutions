@@ -11,32 +11,18 @@ const SERVICES = [
     title: "Websites & SEO",
     description: "Custom trade websites + local SEO + Google Business Profile. A website that ranks and converts — not just a digital brochure.",
     icon: Globe,
-    badge: "Get found + convert",
     href: "/services#websites",
-    span: "md:col-span-7",
-    wide: true,
-    image: "/images/home-page/website-and-seo.webp",
-  },
-  {
-    title: "Pipeline & Follow-Up",
-    description: "GoHighLevel setup, automated follow-ups, missed call text-back, booking systems, pipeline management. Every lead tracked. Every follow-up automated.",
-    icon: Database,
-    badge: "Instant impact",
-    href: "/services#crm",
-    span: "md:col-span-5",
+    span: "md:col-span-8",
     lilac: true,
-    image: "/images/home-page/pipeline.webp",
-    mobileScale: "scale-[1.3]",
-    mobileHeight: "h-52",
+    image: "/images/home-page/service-cards/service-website.webp",
   },
   {
     title: "Marketing Campaigns",
     description: "Google Ads, Meta Ads, review generation, past client reactivation offers, loyalty/reward systems. Targeted campaigns that bring the right customers to your door.",
     icon: Target,
-    badge: "Leads in 48 hours",
     href: "/services#google-ads",
-    span: "md:col-span-5",
-    image: "/images/home-page/marketing-campaign.webp",
+    span: "md:col-span-4",
+    image: "/images/home-page/service-cards/service-campaigns.webp",
     mobileScale: "scale-[1.3]",
     mobileHeight: "h-72",
   },
@@ -44,134 +30,92 @@ const SERVICES = [
     title: "AI & Automation",
     description: "Intelligent systems for follow-ups, bookings, missed calls, quoting reminders. Smart systems that handle the stuff you don't have time for.",
     icon: Brain,
-    badge: "Instant impact",
     href: "/services#ai",
-    span: "md:col-span-7",
-    wide: true,
-    dark: true,
-    image: "/images/home-page/ai-service.webp",
+    span: "md:col-span-4",
+    image: "/images/home-page/service-cards/service-automation.webp",
+    mobileScale: "scale-[1.3]",
+    mobileHeight: "h-72",
+  },
+  {
+    title: "Pipeline & Follow-Up",
+    description: "GoHighLevel setup, automated follow-ups, missed call text-back, booking systems, pipeline management. Every lead tracked. Every follow-up automated.",
+    icon: Database,
+    href: "/services#crm",
+    span: "md:col-span-8",
+    lilac: true,
+    image: "/images/home-page/service-cards/service-pipeline.webp",
   },
 ];
 
-function WideCardImage({ src, alt, mobileHeight = "h-44", mobilePt = "pt-4" }) {
+function WideCardImage({ src, alt, paddingClass = "p-5", scaleClass = "scale-100" }) {
   return (
-    <div className="order-first md:order-none md:flex-1">
-      {/* Mobile: centered with padding */}
-      <div className={`px-8 ${mobilePt} md:hidden`}>
-        <div className={`relative ${mobileHeight}`}>
-          <Image src={src} alt={alt} fill className="object-contain" sizes="(max-width: 768px) 80vw, 0vw" />
-        </div>
-      </div>
-      {/* Desktop: full bleed */}
-      <div className="hidden md:block relative h-full min-h-[240px]">
-        <Image src={src} alt={alt} fill className="object-contain object-[right_55%]" sizes="(min-width: 768px) 50vw, 0vw" />
+    <div className="hidden md:block md:flex-[1.2]">
+      <div className="relative h-full min-h-[280px]">
+        <Image src={src} alt={alt} fill className={`object-contain ${paddingClass} ${scaleClass}`} sizes="(min-width: 768px) 50vw, 0vw" />
       </div>
     </div>
   );
 }
 
 function ServiceCardContent({ service }) {
-  const Icon = service.icon;
-
-  const bgClass = service.dark
-    ? "bg-[#090b3c]"
-    : service.lilac
-    ? "bg-[#d9d0fb]"
-    : "";
-  const textColor = service.dark ? "text-white" : "text-black";
-  const taglineColor = service.dark
-    ? "text-white/60"
-    : service.lilac
-    ? "text-black/70"
-    : "text-black/60";
-  const iconBg = service.dark
-    ? "bg-white/10"
-    : service.lilac
-    ? "bg-white/60"
-    : "bg-[#d9d0fb]";
-  const iconColor = service.dark ? "text-[#d9d0fb]" : "text-[#9740fe]";
-  const badgeBg = service.dark
-    ? "bg-white/10"
-    : service.lilac
-    ? "bg-white/60"
-    : "bg-[#d9d0fb]";
-  const badgeText = service.dark ? "text-[#d9d0fb]" : "text-[#9740fe]";
-  const linkColor = service.dark ? "text-[#d9d0fb]" : "text-[#9740fe]";
+  const isLilac = service.lilac;
+  const bgClass = isLilac ? "md:bg-[#d9d0fb]" : "";
+  const textColor = "text-black";
+  const taglineColor = isLilac ? "text-black/70" : "text-black/60";
+  const badgeBg = isLilac ? "bg-white/60" : "bg-[#d9d0fb]";
+  const badgeText = "text-[#9740fe]";
 
   const textSide = (
     <div className="flex-1 p-6 md:p-10 flex flex-col">
-      <div className={`w-14 h-14 rounded-2xl ${iconBg} hidden md:flex items-center justify-center mb-4`}>
-        <Icon className={iconColor} size={28} />
-      </div>
       <h3 className={`text-2xl font-bold tracking-tight ${textColor} mb-3`}>
         {service.title}
       </h3>
       <p className={`text-sm font-light tracking-wide ${taglineColor} mb-4 leading-relaxed flex-grow`}>
         {service.description}
       </p>
-      <div className="flex items-center justify-between mt-auto">
-        <span className={`${badgeBg} ${badgeText} text-xs font-semibold px-3 py-1.5 rounded-full`}>
-          {service.badge}
-        </span>
-        <span className={`${linkColor} text-sm font-medium hover:underline`}>
-          Learn more &rarr;
+      <div className="mt-auto">
+        <span className={`${badgeBg} ${badgeText} text-xs font-semibold px-3 py-1.5 rounded-full inline-block`}>
+          Learn More &rarr;
         </span>
       </div>
     </div>
   );
 
-  if (service.title === "Websites & SEO") {
-    return (
-      <div className="flex flex-col md:flex-row h-full rounded-2xl overflow-hidden">
-        {textSide}
-        <WideCardImage src={service.image} alt="Websites & SEO" mobileHeight="h-40" mobilePt="pt-10" />
-      </div>
-    );
-  }
-
-  if (service.title === "AI & Automation") {
-    return (
-      <div className={`flex flex-col md:flex-row h-full ${bgClass} rounded-2xl overflow-hidden`}>
-        {textSide}
-        <WideCardImage src={service.image} alt="AI & Automation" mobileHeight="h-72" />
-      </div>
-    );
-  }
+  const isWide = service.span === "md:col-span-8";
 
   return (
-    <div className={`flex flex-col h-full ${bgClass} rounded-2xl overflow-hidden`}>
-      {/* Mobile: image at top, centered with padding */}
-      <div className="px-8 md:hidden">
-        <div className={`relative ${service.mobileHeight ?? "h-96"} overflow-hidden`}>
+    <div className={`flex flex-col ${isWide ? "md:flex-row" : ""} h-full ${bgClass} rounded-2xl overflow-hidden`}>
+      {/* Mobile image — all cards */}
+      <div className={`md:hidden ${service.title === "Websites & SEO" ? "" : "pt-4"}`}>
+        <div className="relative h-48 w-full">
           <Image
             src={service.image}
             alt={service.title}
             fill
-            className={`object-contain ${service.mobileScale ?? "scale-[1.3]"}`}
-            sizes="(max-width: 768px) 80vw, 0vw"
+            className={`object-contain ${service.title === "Websites & SEO" ? "object-left" : ""}`}
+            sizes="100vw"
           />
         </div>
       </div>
-      <div className="flex flex-col flex-grow pt-2 px-6 pb-6 md:p-10">
-        {/* Icon: desktop only */}
-        <div className={`w-14 h-14 rounded-2xl ${iconBg} hidden md:flex items-center justify-center mb-4`}>
-          <Icon className={iconColor} size={28} />
-        </div>
-        <h3 className={`text-2xl font-bold tracking-tight ${textColor} mb-3`}>
-          {service.title}
-        </h3>
-        <p className={`text-sm font-light tracking-wide ${taglineColor} mb-4 leading-relaxed flex-grow`}>
-          {service.description}
-        </p>
-        <div className="flex items-center justify-between mt-auto">
-          <span className={`${badgeBg} ${badgeText} text-xs font-semibold px-3 py-1.5 rounded-full`}>
-            {service.badge}
-          </span>
-          <span className={`${linkColor} text-sm font-medium hover:underline`}>
-            Learn more &rarr;
-          </span>
-        </div>
-      </div>
+      {textSide}
+      {isWide && (
+        <WideCardImage
+          src={service.image}
+          alt={service.title}
+          paddingClass={
+            service.title === "Websites & SEO"
+              ? "pt-16 pb-2 px-5"
+              : service.title === "Pipeline & Follow-Up"
+              ? "pr-16 pl-2 py-5"
+              : "p-5"
+          }
+          scaleClass={
+            service.title === "Websites & SEO"
+              ? "scale-[1.2]"
+              : "scale-100"
+          }
+        />
+      )}
     </div>
   );
 }
@@ -214,7 +158,7 @@ export default function ServicesGrid() {
               <TiltCard
                 href={service.href}
                 className="h-full"
-                accentLine={!service.dark && !service.lilac}
+                accentLine={!service.lilac}
               >
                 <ServiceCardContent service={service} />
               </TiltCard>

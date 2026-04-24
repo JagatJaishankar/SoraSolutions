@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import Image from "next/image";
 
 export default function FlipCard({
   icon: Icon,
@@ -9,13 +10,15 @@ export default function FlipCard({
   backCopy,
   backFooter,
   className = "",
-  frontBg = "bg-white/80",
-  frontBorder = "border-white/20",
+  frontImage,
+  imageAlt,
+  frontBg = "bg-white",
+  frontBorder = "border-gray-200",
   frontTextColor = "text-black",
   frontDescColor = "text-black/60",
   frontHintColor = "text-black/40",
-  backBg = "bg-white/80",
-  backBorder = "border-white/20",
+  backBg = "bg-white",
+  backBorder = "border-gray-200",
   backTextColor = "text-black/70",
   iconBg = "bg-gradient-to-br from-primary to-secondary",
   iconColor = "text-white",
@@ -30,7 +33,7 @@ export default function FlipCard({
 
   return (
     <div
-      className={`perspective-[800px] h-[360px] group cursor-pointer ${className}`}
+      className={`perspective-[800px] h-[420px] group cursor-pointer ${className}`}
       onClick={handleClick}
     >
       <div
@@ -39,32 +42,61 @@ export default function FlipCard({
         }`}
       >
         {/* Front Face */}
-        <div className={`absolute inset-0 [backface-visibility:hidden] ${frontBg} backdrop-blur-xl border ${frontBorder} rounded-2xl p-8 flex flex-col items-center justify-center text-center`}>
-          <div className={`w-14 h-14 rounded-xl ${iconBg} flex items-center justify-center mb-5`}>
-            <Icon className={`w-7 h-7 ${iconColor}`} strokeWidth={1.5} />
+        <div className={`absolute inset-0 [backface-visibility:hidden] border ${frontBorder} rounded-2xl flex flex-col overflow-hidden ${frontBg}`}>
+          {/* Image Area */}
+          {frontImage && (
+            <div className="h-[58%] w-full relative bg-white">
+              <Image
+                src={frontImage}
+                alt={imageAlt || title}
+                fill
+                className="object-contain p-5"
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
+            </div>
+          )}
+          {/* Text Area */}
+          <div className="flex-1 flex flex-col items-start justify-center px-6 py-5">
+            {!frontImage && Icon && (
+              <div className={`w-14 h-14 rounded-xl ${iconBg} flex items-center justify-center mb-4`}>
+                <Icon className={`w-7 h-7 ${iconColor}`} strokeWidth={1.5} />
+              </div>
+            )}
+            <h3 className={`text-lg font-extrabold tracking-tight ${frontTextColor} mb-2`}>
+              {title}
+            </h3>
+            <p className={`text-sm font-light tracking-wide ${frontDescColor} leading-relaxed line-clamp-3 mb-3`}>
+              {frontTeaser}
+            </p>
+            <p className={`text-xs font-medium ${frontHintColor} hidden md:block`}>
+              Hover to read more
+            </p>
+            <p className={`text-xs font-medium ${frontHintColor} md:hidden`}>
+              Tap to read more
+            </p>
           </div>
-          <h3 className={`text-xl font-extrabold tracking-tight ${frontTextColor} mb-3`}>
-            {title}
-          </h3>
-          <p className={`text-base font-light tracking-wide ${frontDescColor} leading-relaxed`}>
-            {frontTeaser}
-          </p>
-          <p className={`mt-5 text-sm font-medium ${frontHintColor} hidden md:block`}>
-            Hover to read more
-          </p>
-          <p className={`mt-5 text-sm font-medium ${frontHintColor} md:hidden`}>
-            Tap to read more
-          </p>
         </div>
 
         {/* Back Face */}
-        <div className={`absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] ${backBg} backdrop-blur-xl border ${backBorder} rounded-2xl p-8 flex flex-col items-center justify-center text-center`}>
-          <p className={`text-base font-light tracking-wide ${backTextColor} leading-relaxed mb-6`}>
-            {backCopy}
-          </p>
-          <p className="text-sm font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-            {backFooter}
-          </p>
+        <div className={`absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] border ${backBorder} rounded-2xl flex flex-col overflow-hidden ${backBg}`}>
+          {/* Image Area */}
+          {frontImage && (
+            <div className="h-[58%] w-full relative bg-white">
+              <Image
+                src={frontImage}
+                alt={imageAlt || title}
+                fill
+                className="object-contain p-5"
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
+            </div>
+          )}
+          {/* Text Area */}
+          <div className="flex-1 flex flex-col items-start justify-center px-6 py-5">
+            <p className={`text-sm font-light tracking-wide ${backTextColor} leading-relaxed line-clamp-5`}>
+              {backCopy}
+            </p>
+          </div>
         </div>
       </div>
     </div>

@@ -15,12 +15,7 @@ const PROBLEMS = [
     backCopy:
       "You're out on a job, the phone rings — but you can't answer. By the time you call back, they've already booked someone else. Every missed call is money walking out the door.",
     backFooter: "Sora fills this gap \u2192",
-    frontBg: "bg-[#faf9ff]",
-    frontBorder: "border-[#d9d0fb]",
-    backBg: "bg-[#faf9ff]",
-    backBorder: "border-[#d9d0fb]",
-    iconBg: "bg-[#d9d0fb]",
-    iconColor: "text-[#9740fe]",
+    frontImage: "/images/home-page/problem-section/problem-01-front.webp",
   },
   {
     icon: Filter,
@@ -30,12 +25,7 @@ const PROBLEMS = [
     backCopy:
       "Not all leads are equal. When your marketing isn't targeted, you waste hours quoting jobs you'd never win — or ones that aren't worth winning. Volume isn't the goal. The right jobs are.",
     backFooter: "Sora fills this gap \u2192",
-    frontBg: "bg-[#d9d0fb]",
-    frontBorder: "border-[#9740fe]/20",
-    backBg: "bg-[#d9d0fb]",
-    backBorder: "border-[#9740fe]/20",
-    iconBg: "bg-[#9740fe]/20",
-    iconColor: "text-[#222872]",
+    frontImage: "/images/home-page/problem-section/problem-02-front.webp",
   },
   {
     icon: BarChart2,
@@ -45,16 +35,7 @@ const PROBLEMS = [
     backCopy:
       "The feast-or-famine cycle burns you out and makes it impossible to grow. Without a steady pipeline, you can't hire, can't plan, and can't scale — you're just reacting.",
     backFooter: "Sora fills this gap \u2192",
-    frontBg: "bg-[#090b3c]",
-    frontBorder: "border-white/10",
-    frontTextColor: "text-white",
-    frontDescColor: "text-white/60",
-    frontHintColor: "text-white/40",
-    backBg: "bg-[#090b3c]",
-    backBorder: "border-white/10",
-    backTextColor: "text-white/70",
-    iconBg: "bg-white/10",
-    iconColor: "text-[#d9d0fb]",
+    frontImage: "/images/home-page/problem-section/problem-03-front.webp",
   },
 ];
 
@@ -101,17 +82,8 @@ export default function ProblemCards() {
                   title={problem.title}
                   frontTeaser={problem.frontTeaser}
                   backCopy={problem.backCopy}
-                  backFooter={problem.backFooter}
-                  frontBg={problem.frontBg}
-                  frontBorder={problem.frontBorder}
-                  frontTextColor={problem.frontTextColor}
-                  frontDescColor={problem.frontDescColor}
-                  frontHintColor={problem.frontHintColor}
-                  backBg={problem.backBg}
-                  backBorder={problem.backBorder}
-                  backTextColor={problem.backTextColor}
-                  iconBg={problem.iconBg}
-                  iconColor={problem.iconColor}
+                  frontImage={problem.frontImage}
+                  imageAlt={problem.title}
                 />
               </motion.div>
             );
