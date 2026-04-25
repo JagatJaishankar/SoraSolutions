@@ -49,13 +49,6 @@ const SLIDES = [
     url: "https://godfreys-gutter-cleaning.vercel.app/",
   },
   {
-    feature: "Coaching & Online Programs",
-    name: "Coaching Businesses That Scale Without You",
-    desc: "Tiered program showcases, founder credibility, community previews, and online booking — so your coaching business generates revenue even while you're training.",
-    img: "/carousel/00-ablock-academy.webp",
-    url: "https://ablock-academy.vercel.app/",
-  },
-  {
     feature: "AI Operations Platform",
     name: "Custom Proposals That Win Enterprise Clients",
     desc: "Bespoke pitch sites with live demos, AI agent breakdowns, and ROI calculators — tailored proposals that close complex deals without a single in-person meeting.",

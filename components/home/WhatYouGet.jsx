@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const dashboards = [
   {
-    title: "Booking Calendar",
+    title: "Workflow Automation",
     rotate: "-6deg",
     image: "/images/home-page/00-automation-flow.webp",
     defaultZ: "z-10",
