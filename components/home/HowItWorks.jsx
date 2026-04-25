@@ -2,29 +2,29 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
-import { Radar, Zap, TrendingUp } from "lucide-react";
 import GlassCard from "@/components/ui/GlassCard";
 import PrimaryButton from "@/components/ui/PrimaryButton";
+import Image from "next/image";
 
 const steps = [
   {
     number: "01",
     title: "Get Found",
-    icon: Radar,
+    image: "/images/home-page/timeline-section/01-get-found.png",
     description: "We put your business where customers are already searching.",
     pills: ["Websites", "SEO", "Google Ads", "Social Ads"],
   },
   {
     number: "02",
     title: "Convert & Capture",
-    icon: Zap,
+    image: "/images/home-page/timeline-section/02-capture-and-convert.png",
     description: "Every enquiry goes into your system and gets followed up instantly.",
     pills: ["CRM", "AI Follow-up", "Lead Capture", "Missed Call Text-back"],
   },
   {
     number: "03",
     title: "Grow & Dominate",
-    icon: TrendingUp,
+    image: "/images/home-page/timeline-section/03-grow-and-dominate.png",
     description: "We optimise what's working and build your reputation on autopilot.",
     pills: ["Review Automation", "Analytics", "Ongoing Strategy"],
   },
@@ -32,8 +32,7 @@ const steps = [
 
 function StepCard({ step, index }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const Icon = step.icon;
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   return (
     <div ref={ref} className="relative grid grid-cols-[40px_24px_1fr] md:grid-cols-[48px_28px_1fr] items-start">
@@ -60,25 +59,40 @@ function StepCard({ step, index }) {
         animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
       >
-        <GlassCard className="p-6 md:p-8" hover={false}>
-          <div className="flex items-center gap-4 mb-3">
-            <div className="w-11 h-11 rounded-xl bg-accent flex items-center justify-center flex-shrink-0">
-              <Icon className="w-5 h-5 text-primary" />
+        <GlassCard className="p-4 md:p-6" hover={false}>
+          <div className="flex flex-col sm:flex-row gap-4 md:gap-6">
+            {/* Image */}
+            <div className="flex-shrink-0">
+              <div className="w-24 h-24 md:w-32 md:h-32 rounded-2xl overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/20">
+                <Image
+                  src={step.image}
+                  alt={step.title}
+                  width={128}
+                  height={128}
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </div>
-            <h3 className="text-2xl font-bold text-black">{step.title}</h3>
-          </div>
-          <p className="text-base font-normal tracking-wide text-black/60 leading-relaxed mb-4">
-            {step.description}
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {step.pills.map((pill) => (
-              <span
-                key={pill}
-                className="bg-accent text-primary text-xs font-semibold rounded-full px-3 py-1"
-              >
-                {pill}
-              </span>
-            ))}
+
+            {/* Content */}
+            <div className="flex flex-col justify-center text-left !text-black">
+              <h3 className="text-xl md:text-2xl font-bold !text-black mb-2">
+                {step.title}
+              </h3>
+              <p className="text-sm md:text-base font-normal tracking-wide !text-black/60 leading-relaxed mb-4">
+                {step.description}
+              </p>
+              <div className="flex flex-wrap justify-start gap-2">
+                {step.pills.map((pill) => (
+                  <span
+                    key={pill}
+                    className="bg-accent text-primary text-xs font-semibold rounded-full px-3 py-1"
+                  >
+                    {pill}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
         </GlassCard>
       </motion.div>
@@ -90,13 +104,13 @@ export default function HowItWorks() {
   const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start center", "end center"],
+    offset: ["start end", "end start"],
   });
   const lineScaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
     <section ref={sectionRef} className="py-[100px]">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[880px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <div className="text-center mb-16 md:mb-24">
           <h2 className="text-4xl font-extrabold tracking-tight text-black">
@@ -108,7 +122,7 @@ export default function HowItWorks() {
         </div>
 
         {/* Timeline — left-aligned */}
-        <div className="relative flex flex-col gap-12 md:gap-16">
+        <div className="relative flex flex-col gap-16 md:gap-20">
           {/* Progress line track */}
           <div className="absolute left-[19px] md:left-[23px] top-0 bottom-0 w-[2px] md:w-[3px]">
             <div className="absolute inset-0 bg-black/10 rounded-full" />
