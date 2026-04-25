@@ -92,7 +92,7 @@ function ServiceCardContent({ service }) {
             src={service.image}
             alt={service.title}
             fill
-            className={`object-contain ${service.title === "Websites & SEO" ? "object-left" : ""}`}
+            className="object-contain object-center"
             sizes="100vw"
           />
         </div>

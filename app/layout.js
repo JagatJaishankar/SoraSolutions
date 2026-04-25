@@ -143,7 +143,7 @@ export default function RootLayout({ children }) {
         <GradientBackground />
         <GridOverlay />
         <FloatingLogos />
-        <div className="relative z-10 w-full">
+        <div className="relative z-10 w-full" style={{ overflowX: "clip" }}>
           <Navbar />
           {children}
           <Footer />
