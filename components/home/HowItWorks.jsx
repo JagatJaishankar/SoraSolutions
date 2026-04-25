@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import GlassCard from "@/components/ui/GlassCard";
 import PrimaryButton from "@/components/ui/PrimaryButton";
@@ -10,21 +10,21 @@ const steps = [
   {
     number: "01",
     title: "Get Found",
-    image: "/images/home-page/timeline-section/01-get-found.png",
+    image: "/images/home-page/timeline-section/01-get-found.webp",
     description: "We put your business where customers are already searching.",
     pills: ["Websites", "SEO", "Google Ads", "Social Ads"],
   },
   {
     number: "02",
     title: "Convert & Capture",
-    image: "/images/home-page/timeline-section/02-capture-and-convert.png",
+    image: "/images/home-page/timeline-section/02-capture-and-convert.webp",
     description: "Every enquiry goes into your system and gets followed up instantly.",
     pills: ["CRM", "AI Follow-up", "Lead Capture", "Missed Call Text-back"],
   },
   {
     number: "03",
     title: "Grow & Dominate",
-    image: "/images/home-page/timeline-section/03-grow-and-dominate.png",
+    image: "/images/home-page/timeline-section/03-grow-and-dominate.webp",
     description: "We optimise what's working and build your reputation on autopilot.",
     pills: ["Review Automation", "Analytics", "Ongoing Strategy"],
   },
@@ -102,6 +102,15 @@ function StepCard({ step, index }) {
 
 export default function HowItWorks() {
   const sectionRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
@@ -126,10 +135,14 @@ export default function HowItWorks() {
           {/* Progress line track */}
           <div className="absolute left-[19px] md:left-[23px] top-0 bottom-0 w-[2px] md:w-[3px]">
             <div className="absolute inset-0 bg-black/10 rounded-full" />
-            <motion.div
-              className="absolute top-0 left-0 right-0 origin-top bg-gradient-to-b from-primary to-secondary rounded-full"
-              style={{ scaleY: lineScaleY, height: "100%" }}
-            />
+            {isMobile ? (
+              <div className="absolute top-0 left-0 right-0 h-full bg-gradient-to-b from-primary to-secondary rounded-full" />
+            ) : (
+              <motion.div
+                className="absolute top-0 left-0 right-0 origin-top bg-gradient-to-b from-primary to-secondary rounded-full"
+                style={{ scaleY: lineScaleY, height: "100%" }}
+              />
+            )}
           </div>
 
           {/* Steps */}

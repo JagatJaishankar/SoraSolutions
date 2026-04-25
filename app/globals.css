@@ -12,6 +12,9 @@ body {
 
 /* Mobile-only: prevent horizontal overscroll/bounce */
 @media (max-width: 768px) {
+  html {
+    overflow-x: clip;
+  }
   body {
     overscroll-behavior-x: none;
   }

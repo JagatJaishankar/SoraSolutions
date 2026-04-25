@@ -63,6 +63,7 @@ export default function WordFlip() {
           overflow: "hidden",
           verticalAlign: "bottom",
           paddingRight: "0.08em",
+          maxWidth: "100%",
         }}
       >
         {/* Invisible sizer — holds layout width + height */}

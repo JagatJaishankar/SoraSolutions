@@ -48,7 +48,7 @@ export default function TradeFade() {
           Fixed-size container prevents layout shift as trade names change width.
           "Electricians" at text-3xl font-black ≈ 215px; icon + gap ≈ 32px → 250px total.
         */}
-        <div className="relative h-9 min-w-[250px] flex items-center">
+        <div className="relative h-9 min-w-[160px] sm:min-w-[250px] flex items-center">
           <AnimatePresence mode="sync">
             <motion.span
               key={index}
