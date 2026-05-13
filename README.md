@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Sora Solutions
 
-## Getting Started
+> Sora Solutions is a modern AI agency website built to showcase automation services for businesses in a clear, credible, and conversion-focused way.
 
-First, run the development server:
+<img width="800" alt="Screenshot 2026-05-13 at 6 08 01 PM" src="https://github.com/user-attachments/assets/e7c9ef20-32e5-4d80-a953-537202eac8e1" />
+<img width="800" alt="Screenshot 2026-05-13 at 6 08 36 PM" src="https://github.com/user-attachments/assets/33469e39-3fb4-4d4c-ace7-04486873ca36" />
+<img width="800" alt="Screenshot 2026-05-13 at 6 09 53 PM" src="https://github.com/user-attachments/assets/ecd4a0bf-54b5-4b6e-89a9-9d1b21587722" />
+<img width="800" alt="Screenshot 2026-05-13 at 6 10 19 PM" src="https://github.com/user-attachments/assets/1ae8bffd-7791-417c-9506-5f2cacba0ecf" />
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## The Problem
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+*Many businesses want to use AI and automation to save time, reduce repetitive work, and improve operations, but they don’t know where to start or who to trust. Most agency websites either feel too vague, too generic, or too technical, which makes it harder for potential clients to quickly understand the value of the service.*
 
-## Learn More
+## The Solution
 
-To learn more about Next.js, take a look at the following resources:
+*Sora Solutions is a professional agency website designed to clearly present AI automation services in a way that feels modern, trustworthy, and easy to understand. It gives businesses a clean entry point to explore what the agency offers, how automation can help their workflow, and why working with a specialized partner can accelerate implementation.*
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Key Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Modern Agency Landing Page** — Presents the business with a polished and premium web presence.
+- **Clear Service Breakdown** — Explains AI automation offerings in simple, client-friendly sections.
+- **Conversion-Focused Structure** — Guides visitors toward taking action through strategic layout and call-to-action placement.
+- **Responsive Design** — Delivers a consistent experience across desktop and mobile devices.
+- **Trust-Oriented Presentation** — Uses clean UI, strong hierarchy, and modern branding to build credibility.
 
-## Deploy on Vercel
+## Tech Stack
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Category | Technology |
+|----------|-----------|
+| Frontend | Next.js, React, Tailwind CSS |
+| Backend | Next.js |
+| Deployment | Vercel |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Live Demo
+
+🔗 **[Try it live →](https://sora-solutions.vercel.app/)**
+
+---
+
+Built by [Jagat Jaishankar](https://jagatjaishankar.com) · [Twitter](https://x.com/JaishankarJagat) · [LinkedIn](https://linkedin.com/in/jagatjaishankar)
+
